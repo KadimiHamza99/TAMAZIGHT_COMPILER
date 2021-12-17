@@ -1,0 +1,90 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ADD
+    ADERYIS
+    ARU
+    ASEKKIT
+    AZAYEZ
+    BOOL
+    CLASS
+    DIV
+    DIV_EUC
+    FLOAT
+    GHER
+    ILAW
+    INHERITANCE
+    INT
+    MA
+    MA_ULAC
+    MOD
+    MULTIP
+    SEHVIVER
+    STRING
+    TAGGAYT
+    TIMMAD
+    TUKKEST
+    TYPE
+    T_TIDETT
+    USLIG
+    VAR
+    VISIBILITY
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression PLUS term
+Rule 2     expression -> expression MINUS term
+Rule 3     expression -> term
+Rule 4     term -> term TIMES factor
+Rule 5     term -> term DIVIDE factor
+Rule 6     term -> factor
+Rule 7     factor -> NUMBER
+Rule 8     factor -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+ADD                  : 
+ADERYIS              : 
+ARU                  : 
+ASEKKIT              : 
+AZAYEZ               : 
+BOOL                 : 
+CLASS                : 
+DIV                  : 
+DIV_EUC              : 
+FLOAT                : 
+GHER                 : 
+ILAW                 : 
+INHERITANCE          : 
+INT                  : 
+MA                   : 
+MA_ULAC              : 
+MINUS                : 2
+MOD                  : 
+MULTIP               : 
+SEHVIVER             : 
+STRING               : 
+TAGGAYT              : 
+TIMMAD               : 
+TUKKEST              : 
+TYPE                 : 
+T_TIDETT             : 
+USLIG                : 
+VAR                  : 
+VISIBILITY           : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+DIVIDE               : 5
+LPAREN               : 8
+NUMBER               : 7
+PLUS                 : 1
+RPAREN               : 8
+TIMES                : 4
+expression           : 1 2 8 0
+factor               : 4 5 6
+term                 : 1 2 3 4 5
+

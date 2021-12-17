@@ -6,75 +6,42 @@ RED = '\033[91m'
 END = '\033[0m'
 BOLD = '\033[1m'
 UNDERLINE = '\033[4m'
+reserved = {
+    'AZAYEZ' : 'AZAYEZ',
+    'USLIG' : 'USLIG',
+    'SEHVIVER' : 'SEHVIVER',
+    'TAGGAYT' : 'TAGGAYT',
+    'TIMMAD' : 'TIMMAD',
+    'ILAW' : 'ILAW',
+    'ASEKKIT' : 'ASEKKIT',
+    'ARU' : 'ARU',
+    'GHER' : 'GHER',
+    'MA' : 'MA',
+    'MA_ULAC' : 'MA_ULAC',
+    'T_TIDETT' : 'T_TIDETT',
+    'ADERYIS' : 'ADERYIS',
+    'TUKKEST' : 'TUKKEST'
+}
+
+literals = [',', ';', '=', '(', ')', '{', '}']
 
 tokens = [
-    'ADD',
-    'MINUS',
-    'MULTIP',
-    'DIV',
-    'INT',
-    'FLOAT',
-    'EQ',
-    'NOT_EQ',
-    'LESS_T',
-    'BIG_T',
-    'LESS_E',
-    'BIG_E',
-    'LPAR',
-    'RPAR',
-    'LACC',
-    'RACC',
-    'VAR',
-    'STRING',
-    'DIV_EUC',
-    'MOD',
-    'AFFECT',
-    'LBRA',
-    'RBRA',
-    'FINLIGNE',
-    'CONDITION',
-    'BOUCLE_FOR',
-    'BOUCLE_WHILE',
-    'BOOL'
-]
+    'ADD','MINUS','MULTIP','DIV','DIV_EUC','MOD',
+    'VAR','INT','FLOAT','STRING','BOOL',
+] + list(reserved.values())
 
 #For Simple Tokens
+    ##You should avoid writing individual rules for reserved words
 t_ADD = r'\+'
 t_MINUS = r'\-'
 t_MULTIP = r'\*'
 t_DIV = r'\/'
-t_EQ = r'=='
-t_NOT_EQ = r'!='
-t_LESS_T = r'<'
-t_BIG_T = r'>'
-t_LESS_E = r'<='
-t_BIG_E = r'>='
-t_DIV_EUC = r'//'
 t_MOD = r'%'
-t_AFFECT = r'='
-t_LPAR=r'\('
-t_RPAR=r'\)'
-t_LACC=r'\{'
-t_RACC=r'\}'
-t_LBRA=r'\['
-t_RBRA=r'\]'
-t_FINLIGNE = r';'
+t_DIV_EUC = r'//'
 
-#For Complex Tokens INT FLOAT VAR STRING 
+#For Complex Tokens INT FLOAT VAR STRING
 def t_BOOL(t):
     r'false|true'
-    return t
-
-def t_BOUCLE_FOR(t) :
-    r'for'
-    return t
-
-def t_BOUCLE_WHILE(t) :
-    r'while'
-    return t
-
-def t_CONDITION(t):
-    r'if'
     return t
 
 def t_STRING(t):
@@ -97,7 +64,11 @@ def t_INT(t) :
     t.value = int(t.value)
     return t
 
+
 #Default Configuration
+def t_COMMENT(t):
+    r'\@.*'
+    pass
 
 t_ignore = ' '
 
@@ -110,14 +81,14 @@ def t_newline(t) :
     t.lexer.lineno = len(t.value)
 
 #To display Lexer Results
-lexer = lex.lex()
+lexer = lex.lex(debug=0)
 
 data = '''
-    while;
-    for;
-    true;
-    false;
-    if;
+    USLIG TAGGAYT test{
+        private string = "hamza kadimi";
+        protected a = 6;
+        @hamza
+    }
 '''
 lexer.input(data)
 
