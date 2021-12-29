@@ -177,11 +177,22 @@ def run(p):
     else: return p
 parser = yacc.yacc()
 
-while True:
-    try:
-        s=input('>> ')
-    except EOFError:
-        break
-    parser.parse(s)
+data='''
+    azayez taggayt $className {
+        azayez urkid ilem agejdan(){
+            $a = 7
+            $b = 3
+            $c = $a + $b
+        }
+    }
+'''
+parser.parse(data)
+
+# while True:
+#     try:
+#         s=input('>> ')
+#     except EOFError:
+#         break
+#     parser.parse(s)
 
 ### < / P A R S E R > ###
