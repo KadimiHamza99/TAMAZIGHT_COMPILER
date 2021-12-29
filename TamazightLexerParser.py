@@ -129,7 +129,7 @@ def p_varAssign(p):
 
 def p_printStat(p):
     '''
-    print_statement : aru '(' NAME ')'
+    print_statement : aru '(' expression ')'
     '''
     p[0]=('aru_statement',p[3])
 
@@ -191,10 +191,16 @@ def run(p):
         elif p[0] == 'var':
             if(p[1] not in env) : return 'Undeclared variable found!'
             else : return env[p[1]]
-        if(p[0]=='aru_statement'): print(env[p[1]])
+        if(p[0]=='aru_statement'): 
+            if(p[1] in env): 
+                print(env[p[1]])
+            else :
+                return run(p[1])
         elif(p[0]=='efk_statement') :
             s=input()
-            env[p[1]] = s
+            if(s.isalnum) : env[p[1]] = str(s)
+            elif(s.isnumeric) : env[p[1]] = int(s)
+            
     else: return p
 parser = yacc.yacc()
 
@@ -202,7 +208,8 @@ data='''
     azayez taggayt $className {
         azayez urkid ilem agejdan(){
             efk($a)
-            aru($a)
+            efk($b)
+            aru($b+$a)
         }
     }
 '''
