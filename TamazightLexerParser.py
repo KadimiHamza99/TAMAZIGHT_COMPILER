@@ -14,20 +14,11 @@ UNDERLINE = '\033[4m'
 ####< L E X E R > ###
 
 reserved = {
-    'AZAYEZ': 'AZAYEZ',
-    'USLIG': 'USLIG',
-    'SEHVIVER': 'SEHVIVER',
-    'TAGGAYT': 'TAGGAYT',
-    'TIMMAD': 'TIMMAD',
-    'ILAW': 'ILAW',
-    'ASEKKIT': 'ASEKKIT',
-    'ARU': 'ARU',
-    'GHER': 'GHER',
-    'MA': 'MA',
-    'MA_ULAC': 'MA_ULAC',
-    'T_TIDETT': 'T_TIDETT',
-    'ADERYIS': 'ADERYIS',
-    'TUKKEST': 'TUKKEST'
+    'azayez':'azayez',
+    'taggayt':'taggayt',
+    'urkid':'urkid',
+    'ilem':'ilem',
+    'agejdan':'agejdan'
 }
 
 tokens = [
@@ -49,6 +40,11 @@ t_MINUS = r'\-'
 t_MULTIPLY = r'\*'
 t_DIVIDE = r'\/'
 t_EQUALS = r'\='
+t_azayez = r'azayez'
+t_taggayt = r'taggayt'
+t_urkid = r'urkid'
+t_ilem = r'ilem'
+t_agejdan = r'agejdan'
 
 t_ignore = r' '
 
@@ -95,10 +91,23 @@ precedence = (
     ('left','MULTIPLY','DIVIDE')
 )
 
+
+def p_code(p):
+    '''
+    code : azayez taggayt NAME '{' main '}'
+    '''
+
+def p_main(p) :
+    '''
+    main : azayez urkid ilem agejdan '(' ')' '{' statement '}'
+    '''
+
+
+
 def p_statement(p):
     '''
-    statement : var_assign
-            | empty
+    statement   : var_assign
+                | empty
     '''
     print(run(p[1]))
 
@@ -155,7 +164,7 @@ def run(p):
         elif p[0] == '*': return run(p[1]) * run(p[2])
         elif p[0] == '/': return run(p[1]) / run(p[2])
         elif p[0] == '=':
-            if type(p[2]) == tuple : env[p[1]] = p[2][1]
+            if (type(p[2]) == tuple and p[2][0] == 'string') : env[p[1]] = p[2][1]
             else : env[p[1]] = run(p[2])
             print(env)
         elif p[0] == 'var':
