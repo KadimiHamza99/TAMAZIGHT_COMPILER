@@ -99,10 +99,14 @@ def p_code(p):
 
 def p_main(p) :
     '''
-    main : azayez urkid ilem agejdan '(' ')' '{' statement '}'
+    main : azayez urkid ilem agejdan '(' ')' '{' statements '}'
     '''
 
-
+def p_statements(p) :
+    '''
+    statements : statements statement
+                | empty
+    '''
 
 def p_statement(p):
     '''

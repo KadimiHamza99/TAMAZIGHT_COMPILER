@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "leftPLUSMINUSleftMULTIPLYDIVIDEDIVIDE EQUALS FLOAT INT MINUS MULTIPLY NAME PLUS STRING agejdan azayez ilem taggayt urkid\n    code : azayez taggayt NAME '{' main '}'\n    \n    main : azayez urkid ilem agejdan '(' ')' '{' statement '}'\n    \n    statement   : var_assign\n                | empty\n    \n    var_assign : NAME EQUALS expression\n    \n    expression :  expression MULTIPLY expression\n                | expression DIVIDE expression\n                | expression MINUS expression\n                | expression PLUS expression\n    \n    expression : INT \n                | FLOAT\n    \n    expression : STRING\n    \n    expression : NAME\n    \n    empty :\n    "
+_lr_signature = "leftPLUSMINUSleftMULTIPLYDIVIDEDIVIDE EQUALS FLOAT INT MINUS MULTIPLY NAME PLUS STRING agejdan azayez ilem taggayt urkid\n    code : azayez taggayt NAME '{' main '}'\n    \n    main : azayez urkid ilem agejdan '(' ')' '{' statements '}'\n    \n    statements : statements statement\n                | empty\n    \n    statement   : var_assign\n                | empty\n    \n    var_assign : NAME EQUALS expression\n    \n    expression :  expression MULTIPLY expression\n                | expression DIVIDE expression\n                | expression MINUS expression\n                | expression PLUS expression\n    \n    expression : INT \n                | FLOAT\n    \n    expression : STRING\n    \n    expression : NAME\n    \n    empty :\n    "
     
-_lr_action_items = {'azayez':([0,5,],[2,6,]),'$end':([1,9,],[0,-1,]),'taggayt':([2,],[3,]),'NAME':([3,14,20,26,27,28,29,],[4,18,21,21,21,21,21,]),'{':([4,13,],[5,14,]),'urkid':([6,],[8,]),'}':([7,14,15,16,17,19,21,22,23,24,25,30,31,32,33,],[9,-14,19,-3,-4,-2,-13,-5,-10,-11,-12,-6,-7,-8,-9,]),'ilem':([8,],[10,]),'agejdan':([10,],[11,]),'(':([11,],[12,]),')':([12,],[13,]),'EQUALS':([18,],[20,]),'INT':([20,26,27,28,29,],[23,23,23,23,23,]),'FLOAT':([20,26,27,28,29,],[24,24,24,24,24,]),'STRING':([20,26,27,28,29,],[25,25,25,25,25,]),'MULTIPLY':([21,22,23,24,25,30,31,32,33,],[-13,26,-10,-11,-12,-6,-7,26,26,]),'DIVIDE':([21,22,23,24,25,30,31,32,33,],[-13,27,-10,-11,-12,-6,-7,27,27,]),'MINUS':([21,22,23,24,25,30,31,32,33,],[-13,28,-10,-11,-12,-6,-7,-8,-9,]),'PLUS':([21,22,23,24,25,30,31,32,33,],[-13,29,-10,-11,-12,-6,-7,-8,-9,]),}
+_lr_action_items = {'azayez':([0,5,],[2,6,]),'$end':([1,9,],[0,-1,]),'taggayt':([2,],[3,]),'NAME':([3,14,15,16,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,],[4,-16,21,-4,-3,-5,-6,23,-15,-7,-12,-13,-14,23,23,23,23,-8,-9,-10,-11,]),'{':([4,13,],[5,14,]),'urkid':([6,],[8,]),'}':([7,14,15,16,17,18,19,20,23,24,25,26,27,32,33,34,35,],[9,-16,17,-4,-2,-3,-5,-6,-15,-7,-12,-13,-14,-8,-9,-10,-11,]),'ilem':([8,],[10,]),'agejdan':([10,],[11,]),'(':([11,],[12,]),')':([12,],[13,]),'EQUALS':([21,],[22,]),'INT':([22,28,29,30,31,],[25,25,25,25,25,]),'FLOAT':([22,28,29,30,31,],[26,26,26,26,26,]),'STRING':([22,28,29,30,31,],[27,27,27,27,27,]),'MULTIPLY':([23,24,25,26,27,32,33,34,35,],[-15,28,-12,-13,-14,-8,-9,28,28,]),'DIVIDE':([23,24,25,26,27,32,33,34,35,],[-15,29,-12,-13,-14,-8,-9,29,29,]),'MINUS':([23,24,25,26,27,32,33,34,35,],[-15,30,-12,-13,-14,-8,-9,-10,-11,]),'PLUS':([23,24,25,26,27,32,33,34,35,],[-15,31,-12,-13,-14,-8,-9,-10,-11,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'code':([0,],[1,]),'main':([5,],[7,]),'statement':([14,],[15,]),'var_assign':([14,],[16,]),'empty':([14,],[17,]),'expression':([20,26,27,28,29,],[22,30,31,32,33,]),}
+_lr_goto_items = {'code':([0,],[1,]),'main':([5,],[7,]),'statements':([14,],[15,]),'empty':([14,15,],[16,20,]),'statement':([15,],[18,]),'var_assign':([15,],[19,]),'expression':([22,28,29,30,31,],[24,32,33,34,35,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,18 +27,20 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> code","S'",1,None,None,None),
-  ('code -> azayez taggayt NAME { main }','code',6,'p_code','TamazightLexerParser.py',94),
-  ('main -> azayez urkid ilem agejdan ( ) { statement }','main',9,'p_main','TamazightLexerParser.py',99),
-  ('statement -> var_assign','statement',1,'p_statement','TamazightLexerParser.py',104),
-  ('statement -> empty','statement',1,'p_statement','TamazightLexerParser.py',105),
-  ('var_assign -> NAME EQUALS expression','var_assign',3,'p_varAssign','TamazightLexerParser.py',111),
-  ('expression -> expression MULTIPLY expression','expression',3,'p_expression','TamazightLexerParser.py',118),
-  ('expression -> expression DIVIDE expression','expression',3,'p_expression','TamazightLexerParser.py',119),
-  ('expression -> expression MINUS expression','expression',3,'p_expression','TamazightLexerParser.py',120),
-  ('expression -> expression PLUS expression','expression',3,'p_expression','TamazightLexerParser.py',121),
-  ('expression -> INT','expression',1,'p_expression_int_float','TamazightLexerParser.py',127),
-  ('expression -> FLOAT','expression',1,'p_expression_int_float','TamazightLexerParser.py',128),
-  ('expression -> STRING','expression',1,'p_expression_string','TamazightLexerParser.py',134),
-  ('expression -> NAME','expression',1,'p_expression_var','TamazightLexerParser.py',140),
-  ('empty -> <empty>','empty',0,'p_empty','TamazightLexerParser.py',146),
+  ('code -> azayez taggayt NAME { main }','code',6,'p_code','TamazightLexerParser.py',97),
+  ('main -> azayez urkid ilem agejdan ( ) { statements }','main',9,'p_main','TamazightLexerParser.py',102),
+  ('statements -> statements statement','statements',2,'p_statements','TamazightLexerParser.py',107),
+  ('statements -> empty','statements',1,'p_statements','TamazightLexerParser.py',108),
+  ('statement -> var_assign','statement',1,'p_statement','TamazightLexerParser.py',113),
+  ('statement -> empty','statement',1,'p_statement','TamazightLexerParser.py',114),
+  ('var_assign -> NAME EQUALS expression','var_assign',3,'p_varAssign','TamazightLexerParser.py',120),
+  ('expression -> expression MULTIPLY expression','expression',3,'p_expression','TamazightLexerParser.py',127),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression','TamazightLexerParser.py',128),
+  ('expression -> expression MINUS expression','expression',3,'p_expression','TamazightLexerParser.py',129),
+  ('expression -> expression PLUS expression','expression',3,'p_expression','TamazightLexerParser.py',130),
+  ('expression -> INT','expression',1,'p_expression_int_float','TamazightLexerParser.py',136),
+  ('expression -> FLOAT','expression',1,'p_expression_int_float','TamazightLexerParser.py',137),
+  ('expression -> STRING','expression',1,'p_expression_string','TamazightLexerParser.py',143),
+  ('expression -> NAME','expression',1,'p_expression_var','TamazightLexerParser.py',149),
+  ('empty -> <empty>','empty',0,'p_empty','TamazightLexerParser.py',155),
 ]
