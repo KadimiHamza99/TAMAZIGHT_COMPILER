@@ -18,7 +18,9 @@ reserved = {
     'taggayt':'taggayt',
     'urkid':'urkid',
     'ilem':'ilem',
-    'agejdan':'agejdan'
+    'agejdan':'agejdan',
+    'aru':'aru',
+    'efk':'efk'
 }
 
 tokens = [
@@ -45,6 +47,8 @@ t_taggayt = r'taggayt'
 t_urkid = r'urkid'
 t_ilem = r'ilem'
 t_agejdan = r'agejdan'
+t_aru = r'aru'
+t_efk = r'efk'
 
 t_ignore = r' '
 
@@ -111,6 +115,8 @@ def p_statements(p) :
 def p_statement(p):
     '''
     statement   : var_assign
+                | print_statement
+                | scanf_statement
                 | empty
     '''
     print(run(p[1]))
@@ -121,6 +127,17 @@ def p_varAssign(p):
     '''
     p[0] = ('=',p[1],p[3])
 
+def p_printStat(p):
+    '''
+    print_statement : aru '(' NAME ')'
+    '''
+    p[0]=('aru_statement',p[3])
+
+def p_scanfStat(p):
+    '''
+    scanf_statement : efk '(' NAME ')'
+    '''
+    p[0]=('efk_statement',p[3])
 
 def p_expression(p):
     '''
@@ -174,15 +191,18 @@ def run(p):
         elif p[0] == 'var':
             if(p[1] not in env) : return 'Undeclared variable found!'
             else : return env[p[1]]
+        if(p[0]=='aru_statement'): print(env[p[1]])
+        elif(p[0]=='efk_statement') :
+            s=input()
+            env[p[1]] = s
     else: return p
 parser = yacc.yacc()
 
 data='''
     azayez taggayt $className {
         azayez urkid ilem agejdan(){
-            $a = 7
-            $b = 3
-            $c = $a + $b
+            efk($a)
+            aru($a)
         }
     }
 '''

@@ -8,33 +8,39 @@ Rule 2     main -> azayez urkid ilem agejdan ( ) { statements }
 Rule 3     statements -> statements statement
 Rule 4     statements -> empty
 Rule 5     statement -> var_assign
-Rule 6     statement -> empty
-Rule 7     var_assign -> NAME EQUALS expression
-Rule 8     expression -> expression MULTIPLY expression
-Rule 9     expression -> expression DIVIDE expression
-Rule 10    expression -> expression MINUS expression
-Rule 11    expression -> expression PLUS expression
-Rule 12    expression -> INT
-Rule 13    expression -> FLOAT
-Rule 14    expression -> STRING
-Rule 15    expression -> NAME
-Rule 16    empty -> <empty>
+Rule 6     statement -> print_statement
+Rule 7     statement -> scanf_statement
+Rule 8     statement -> empty
+Rule 9     var_assign -> NAME EQUALS expression
+Rule 10    print_statement -> aru ( NAME )
+Rule 11    scanf_statement -> efk ( NAME )
+Rule 12    expression -> expression MULTIPLY expression
+Rule 13    expression -> expression DIVIDE expression
+Rule 14    expression -> expression MINUS expression
+Rule 15    expression -> expression PLUS expression
+Rule 16    expression -> INT
+Rule 17    expression -> FLOAT
+Rule 18    expression -> STRING
+Rule 19    expression -> NAME
+Rule 20    empty -> <empty>
 
 Terminals, with rules where they appear
 
-(                    : 2
-)                    : 2
-DIVIDE               : 9
-EQUALS               : 7
-FLOAT                : 13
-INT                  : 12
-MINUS                : 10
-MULTIPLY             : 8
-NAME                 : 1 7 15
-PLUS                 : 11
-STRING               : 14
+(                    : 2 10 11
+)                    : 2 10 11
+DIVIDE               : 13
+EQUALS               : 9
+FLOAT                : 17
+INT                  : 16
+MINUS                : 14
+MULTIPLY             : 12
+NAME                 : 1 9 10 11 19
+PLUS                 : 15
+STRING               : 18
 agejdan              : 2
+aru                  : 10
 azayez               : 1 2
+efk                  : 11
 error                : 
 ilem                 : 2
 taggayt              : 1
@@ -45,9 +51,11 @@ urkid                : 2
 Nonterminals, with rules where they appear
 
 code                 : 0
-empty                : 4 6
-expression           : 7 8 8 9 9 10 10 11 11
+empty                : 4 8
+expression           : 9 12 12 13 13 14 14 15 15
 main                 : 1
+print_statement      : 6
+scanf_statement      : 7
 statement            : 3
 statements           : 2 3
 var_assign           : 5
@@ -160,10 +168,12 @@ state 14
     (2) main -> azayez urkid ilem agejdan ( ) { . statements }
     (3) statements -> . statements statement
     (4) statements -> . empty
-    (16) empty -> .
+    (20) empty -> .
 
-    }               reduce using rule 16 (empty -> .)
-    NAME            reduce using rule 16 (empty -> .)
+    }               reduce using rule 20 (empty -> .)
+    NAME            reduce using rule 20 (empty -> .)
+    aru             reduce using rule 20 (empty -> .)
+    efk             reduce using rule 20 (empty -> .)
 
     statements                     shift and go to state 15
     empty                          shift and go to state 16
@@ -173,21 +183,33 @@ state 15
     (2) main -> azayez urkid ilem agejdan ( ) { statements . }
     (3) statements -> statements . statement
     (5) statement -> . var_assign
-    (6) statement -> . empty
-    (7) var_assign -> . NAME EQUALS expression
-    (16) empty -> .
+    (6) statement -> . print_statement
+    (7) statement -> . scanf_statement
+    (8) statement -> . empty
+    (9) var_assign -> . NAME EQUALS expression
+    (10) print_statement -> . aru ( NAME )
+    (11) scanf_statement -> . efk ( NAME )
+    (20) empty -> .
 
   ! shift/reduce conflict for } resolved as shift
   ! shift/reduce conflict for NAME resolved as shift
+  ! shift/reduce conflict for aru resolved as shift
+  ! shift/reduce conflict for efk resolved as shift
     }               shift and go to state 17
-    NAME            shift and go to state 21
+    NAME            shift and go to state 23
+    aru             shift and go to state 24
+    efk             shift and go to state 25
 
-  ! }               [ reduce using rule 16 (empty -> .) ]
-  ! NAME            [ reduce using rule 16 (empty -> .) ]
+  ! }               [ reduce using rule 20 (empty -> .) ]
+  ! NAME            [ reduce using rule 20 (empty -> .) ]
+  ! aru             [ reduce using rule 20 (empty -> .) ]
+  ! efk             [ reduce using rule 20 (empty -> .) ]
 
     statement                      shift and go to state 18
     var_assign                     shift and go to state 19
-    empty                          shift and go to state 20
+    print_statement                shift and go to state 20
+    scanf_statement                shift and go to state 21
+    empty                          shift and go to state 22
 
 state 16
 
@@ -195,6 +217,8 @@ state 16
 
     }               reduce using rule 4 (statements -> empty .)
     NAME            reduce using rule 4 (statements -> empty .)
+    aru             reduce using rule 4 (statements -> empty .)
+    efk             reduce using rule 4 (statements -> empty .)
 
 
 state 17
@@ -210,6 +234,8 @@ state 18
 
     }               reduce using rule 3 (statements -> statements statement .)
     NAME            reduce using rule 3 (statements -> statements statement .)
+    aru             reduce using rule 3 (statements -> statements statement .)
+    efk             reduce using rule 3 (statements -> statements statement .)
 
 
 state 19
@@ -218,267 +244,373 @@ state 19
 
     }               reduce using rule 5 (statement -> var_assign .)
     NAME            reduce using rule 5 (statement -> var_assign .)
+    aru             reduce using rule 5 (statement -> var_assign .)
+    efk             reduce using rule 5 (statement -> var_assign .)
 
 
 state 20
 
-    (6) statement -> empty .
+    (6) statement -> print_statement .
 
-    }               reduce using rule 6 (statement -> empty .)
-    NAME            reduce using rule 6 (statement -> empty .)
+    }               reduce using rule 6 (statement -> print_statement .)
+    NAME            reduce using rule 6 (statement -> print_statement .)
+    aru             reduce using rule 6 (statement -> print_statement .)
+    efk             reduce using rule 6 (statement -> print_statement .)
 
 
 state 21
 
-    (7) var_assign -> NAME . EQUALS expression
+    (7) statement -> scanf_statement .
 
-    EQUALS          shift and go to state 22
+    }               reduce using rule 7 (statement -> scanf_statement .)
+    NAME            reduce using rule 7 (statement -> scanf_statement .)
+    aru             reduce using rule 7 (statement -> scanf_statement .)
+    efk             reduce using rule 7 (statement -> scanf_statement .)
 
 
 state 22
 
-    (7) var_assign -> NAME EQUALS . expression
-    (8) expression -> . expression MULTIPLY expression
-    (9) expression -> . expression DIVIDE expression
-    (10) expression -> . expression MINUS expression
-    (11) expression -> . expression PLUS expression
-    (12) expression -> . INT
-    (13) expression -> . FLOAT
-    (14) expression -> . STRING
-    (15) expression -> . NAME
+    (8) statement -> empty .
 
-    INT             shift and go to state 25
-    FLOAT           shift and go to state 26
-    STRING          shift and go to state 27
-    NAME            shift and go to state 23
+    }               reduce using rule 8 (statement -> empty .)
+    NAME            reduce using rule 8 (statement -> empty .)
+    aru             reduce using rule 8 (statement -> empty .)
+    efk             reduce using rule 8 (statement -> empty .)
 
-    expression                     shift and go to state 24
 
 state 23
 
-    (15) expression -> NAME .
+    (9) var_assign -> NAME . EQUALS expression
 
-    MULTIPLY        reduce using rule 15 (expression -> NAME .)
-    DIVIDE          reduce using rule 15 (expression -> NAME .)
-    MINUS           reduce using rule 15 (expression -> NAME .)
-    PLUS            reduce using rule 15 (expression -> NAME .)
-    }               reduce using rule 15 (expression -> NAME .)
-    NAME            reduce using rule 15 (expression -> NAME .)
+    EQUALS          shift and go to state 26
 
 
 state 24
 
-    (7) var_assign -> NAME EQUALS expression .
-    (8) expression -> expression . MULTIPLY expression
-    (9) expression -> expression . DIVIDE expression
-    (10) expression -> expression . MINUS expression
-    (11) expression -> expression . PLUS expression
+    (10) print_statement -> aru . ( NAME )
 
-    }               reduce using rule 7 (var_assign -> NAME EQUALS expression .)
-    NAME            reduce using rule 7 (var_assign -> NAME EQUALS expression .)
-    MULTIPLY        shift and go to state 28
-    DIVIDE          shift and go to state 29
-    MINUS           shift and go to state 30
-    PLUS            shift and go to state 31
+    (               shift and go to state 27
 
 
 state 25
 
-    (12) expression -> INT .
+    (11) scanf_statement -> efk . ( NAME )
 
-    MULTIPLY        reduce using rule 12 (expression -> INT .)
-    DIVIDE          reduce using rule 12 (expression -> INT .)
-    MINUS           reduce using rule 12 (expression -> INT .)
-    PLUS            reduce using rule 12 (expression -> INT .)
-    }               reduce using rule 12 (expression -> INT .)
-    NAME            reduce using rule 12 (expression -> INT .)
+    (               shift and go to state 28
 
 
 state 26
 
-    (13) expression -> FLOAT .
+    (9) var_assign -> NAME EQUALS . expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression DIVIDE expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression PLUS expression
+    (16) expression -> . INT
+    (17) expression -> . FLOAT
+    (18) expression -> . STRING
+    (19) expression -> . NAME
 
-    MULTIPLY        reduce using rule 13 (expression -> FLOAT .)
-    DIVIDE          reduce using rule 13 (expression -> FLOAT .)
-    MINUS           reduce using rule 13 (expression -> FLOAT .)
-    PLUS            reduce using rule 13 (expression -> FLOAT .)
-    }               reduce using rule 13 (expression -> FLOAT .)
-    NAME            reduce using rule 13 (expression -> FLOAT .)
+    INT             shift and go to state 31
+    FLOAT           shift and go to state 32
+    STRING          shift and go to state 33
+    NAME            shift and go to state 29
 
+    expression                     shift and go to state 30
 
 state 27
 
-    (14) expression -> STRING .
+    (10) print_statement -> aru ( . NAME )
 
-    MULTIPLY        reduce using rule 14 (expression -> STRING .)
-    DIVIDE          reduce using rule 14 (expression -> STRING .)
-    MINUS           reduce using rule 14 (expression -> STRING .)
-    PLUS            reduce using rule 14 (expression -> STRING .)
-    }               reduce using rule 14 (expression -> STRING .)
-    NAME            reduce using rule 14 (expression -> STRING .)
+    NAME            shift and go to state 34
 
 
 state 28
 
-    (8) expression -> expression MULTIPLY . expression
-    (8) expression -> . expression MULTIPLY expression
-    (9) expression -> . expression DIVIDE expression
-    (10) expression -> . expression MINUS expression
-    (11) expression -> . expression PLUS expression
-    (12) expression -> . INT
-    (13) expression -> . FLOAT
-    (14) expression -> . STRING
-    (15) expression -> . NAME
+    (11) scanf_statement -> efk ( . NAME )
 
-    INT             shift and go to state 25
-    FLOAT           shift and go to state 26
-    STRING          shift and go to state 27
-    NAME            shift and go to state 23
+    NAME            shift and go to state 35
 
-    expression                     shift and go to state 32
 
 state 29
 
-    (9) expression -> expression DIVIDE . expression
-    (8) expression -> . expression MULTIPLY expression
-    (9) expression -> . expression DIVIDE expression
-    (10) expression -> . expression MINUS expression
-    (11) expression -> . expression PLUS expression
-    (12) expression -> . INT
-    (13) expression -> . FLOAT
-    (14) expression -> . STRING
-    (15) expression -> . NAME
+    (19) expression -> NAME .
 
-    INT             shift and go to state 25
-    FLOAT           shift and go to state 26
-    STRING          shift and go to state 27
-    NAME            shift and go to state 23
+    MULTIPLY        reduce using rule 19 (expression -> NAME .)
+    DIVIDE          reduce using rule 19 (expression -> NAME .)
+    MINUS           reduce using rule 19 (expression -> NAME .)
+    PLUS            reduce using rule 19 (expression -> NAME .)
+    }               reduce using rule 19 (expression -> NAME .)
+    NAME            reduce using rule 19 (expression -> NAME .)
+    aru             reduce using rule 19 (expression -> NAME .)
+    efk             reduce using rule 19 (expression -> NAME .)
 
-    expression                     shift and go to state 33
 
 state 30
 
-    (10) expression -> expression MINUS . expression
-    (8) expression -> . expression MULTIPLY expression
-    (9) expression -> . expression DIVIDE expression
-    (10) expression -> . expression MINUS expression
-    (11) expression -> . expression PLUS expression
-    (12) expression -> . INT
-    (13) expression -> . FLOAT
-    (14) expression -> . STRING
-    (15) expression -> . NAME
+    (9) var_assign -> NAME EQUALS expression .
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . DIVIDE expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . PLUS expression
 
-    INT             shift and go to state 25
-    FLOAT           shift and go to state 26
-    STRING          shift and go to state 27
-    NAME            shift and go to state 23
+    }               reduce using rule 9 (var_assign -> NAME EQUALS expression .)
+    NAME            reduce using rule 9 (var_assign -> NAME EQUALS expression .)
+    aru             reduce using rule 9 (var_assign -> NAME EQUALS expression .)
+    efk             reduce using rule 9 (var_assign -> NAME EQUALS expression .)
+    MULTIPLY        shift and go to state 36
+    DIVIDE          shift and go to state 37
+    MINUS           shift and go to state 38
+    PLUS            shift and go to state 39
 
-    expression                     shift and go to state 34
 
 state 31
 
-    (11) expression -> expression PLUS . expression
-    (8) expression -> . expression MULTIPLY expression
-    (9) expression -> . expression DIVIDE expression
-    (10) expression -> . expression MINUS expression
-    (11) expression -> . expression PLUS expression
-    (12) expression -> . INT
-    (13) expression -> . FLOAT
-    (14) expression -> . STRING
-    (15) expression -> . NAME
+    (16) expression -> INT .
 
-    INT             shift and go to state 25
-    FLOAT           shift and go to state 26
-    STRING          shift and go to state 27
-    NAME            shift and go to state 23
+    MULTIPLY        reduce using rule 16 (expression -> INT .)
+    DIVIDE          reduce using rule 16 (expression -> INT .)
+    MINUS           reduce using rule 16 (expression -> INT .)
+    PLUS            reduce using rule 16 (expression -> INT .)
+    }               reduce using rule 16 (expression -> INT .)
+    NAME            reduce using rule 16 (expression -> INT .)
+    aru             reduce using rule 16 (expression -> INT .)
+    efk             reduce using rule 16 (expression -> INT .)
 
-    expression                     shift and go to state 35
 
 state 32
 
-    (8) expression -> expression MULTIPLY expression .
-    (8) expression -> expression . MULTIPLY expression
-    (9) expression -> expression . DIVIDE expression
-    (10) expression -> expression . MINUS expression
-    (11) expression -> expression . PLUS expression
+    (17) expression -> FLOAT .
 
-    MULTIPLY        reduce using rule 8 (expression -> expression MULTIPLY expression .)
-    DIVIDE          reduce using rule 8 (expression -> expression MULTIPLY expression .)
-    MINUS           reduce using rule 8 (expression -> expression MULTIPLY expression .)
-    PLUS            reduce using rule 8 (expression -> expression MULTIPLY expression .)
-    }               reduce using rule 8 (expression -> expression MULTIPLY expression .)
-    NAME            reduce using rule 8 (expression -> expression MULTIPLY expression .)
-
-  ! MULTIPLY        [ shift and go to state 28 ]
-  ! DIVIDE          [ shift and go to state 29 ]
-  ! MINUS           [ shift and go to state 30 ]
-  ! PLUS            [ shift and go to state 31 ]
+    MULTIPLY        reduce using rule 17 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 17 (expression -> FLOAT .)
+    MINUS           reduce using rule 17 (expression -> FLOAT .)
+    PLUS            reduce using rule 17 (expression -> FLOAT .)
+    }               reduce using rule 17 (expression -> FLOAT .)
+    NAME            reduce using rule 17 (expression -> FLOAT .)
+    aru             reduce using rule 17 (expression -> FLOAT .)
+    efk             reduce using rule 17 (expression -> FLOAT .)
 
 
 state 33
 
-    (9) expression -> expression DIVIDE expression .
-    (8) expression -> expression . MULTIPLY expression
-    (9) expression -> expression . DIVIDE expression
-    (10) expression -> expression . MINUS expression
-    (11) expression -> expression . PLUS expression
+    (18) expression -> STRING .
 
-    MULTIPLY        reduce using rule 9 (expression -> expression DIVIDE expression .)
-    DIVIDE          reduce using rule 9 (expression -> expression DIVIDE expression .)
-    MINUS           reduce using rule 9 (expression -> expression DIVIDE expression .)
-    PLUS            reduce using rule 9 (expression -> expression DIVIDE expression .)
-    }               reduce using rule 9 (expression -> expression DIVIDE expression .)
-    NAME            reduce using rule 9 (expression -> expression DIVIDE expression .)
-
-  ! MULTIPLY        [ shift and go to state 28 ]
-  ! DIVIDE          [ shift and go to state 29 ]
-  ! MINUS           [ shift and go to state 30 ]
-  ! PLUS            [ shift and go to state 31 ]
+    MULTIPLY        reduce using rule 18 (expression -> STRING .)
+    DIVIDE          reduce using rule 18 (expression -> STRING .)
+    MINUS           reduce using rule 18 (expression -> STRING .)
+    PLUS            reduce using rule 18 (expression -> STRING .)
+    }               reduce using rule 18 (expression -> STRING .)
+    NAME            reduce using rule 18 (expression -> STRING .)
+    aru             reduce using rule 18 (expression -> STRING .)
+    efk             reduce using rule 18 (expression -> STRING .)
 
 
 state 34
 
-    (10) expression -> expression MINUS expression .
-    (8) expression -> expression . MULTIPLY expression
-    (9) expression -> expression . DIVIDE expression
-    (10) expression -> expression . MINUS expression
-    (11) expression -> expression . PLUS expression
+    (10) print_statement -> aru ( NAME . )
 
-    MINUS           reduce using rule 10 (expression -> expression MINUS expression .)
-    PLUS            reduce using rule 10 (expression -> expression MINUS expression .)
-    }               reduce using rule 10 (expression -> expression MINUS expression .)
-    NAME            reduce using rule 10 (expression -> expression MINUS expression .)
-    MULTIPLY        shift and go to state 28
-    DIVIDE          shift and go to state 29
-
-  ! MULTIPLY        [ reduce using rule 10 (expression -> expression MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 10 (expression -> expression MINUS expression .) ]
-  ! MINUS           [ shift and go to state 30 ]
-  ! PLUS            [ shift and go to state 31 ]
+    )               shift and go to state 40
 
 
 state 35
 
-    (11) expression -> expression PLUS expression .
-    (8) expression -> expression . MULTIPLY expression
-    (9) expression -> expression . DIVIDE expression
-    (10) expression -> expression . MINUS expression
-    (11) expression -> expression . PLUS expression
+    (11) scanf_statement -> efk ( NAME . )
 
-    MINUS           reduce using rule 11 (expression -> expression PLUS expression .)
-    PLUS            reduce using rule 11 (expression -> expression PLUS expression .)
-    }               reduce using rule 11 (expression -> expression PLUS expression .)
-    NAME            reduce using rule 11 (expression -> expression PLUS expression .)
-    MULTIPLY        shift and go to state 28
-    DIVIDE          shift and go to state 29
+    )               shift and go to state 41
 
-  ! MULTIPLY        [ reduce using rule 11 (expression -> expression PLUS expression .) ]
-  ! DIVIDE          [ reduce using rule 11 (expression -> expression PLUS expression .) ]
-  ! MINUS           [ shift and go to state 30 ]
-  ! PLUS            [ shift and go to state 31 ]
+
+state 36
+
+    (12) expression -> expression MULTIPLY . expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression DIVIDE expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression PLUS expression
+    (16) expression -> . INT
+    (17) expression -> . FLOAT
+    (18) expression -> . STRING
+    (19) expression -> . NAME
+
+    INT             shift and go to state 31
+    FLOAT           shift and go to state 32
+    STRING          shift and go to state 33
+    NAME            shift and go to state 29
+
+    expression                     shift and go to state 42
+
+state 37
+
+    (13) expression -> expression DIVIDE . expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression DIVIDE expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression PLUS expression
+    (16) expression -> . INT
+    (17) expression -> . FLOAT
+    (18) expression -> . STRING
+    (19) expression -> . NAME
+
+    INT             shift and go to state 31
+    FLOAT           shift and go to state 32
+    STRING          shift and go to state 33
+    NAME            shift and go to state 29
+
+    expression                     shift and go to state 43
+
+state 38
+
+    (14) expression -> expression MINUS . expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression DIVIDE expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression PLUS expression
+    (16) expression -> . INT
+    (17) expression -> . FLOAT
+    (18) expression -> . STRING
+    (19) expression -> . NAME
+
+    INT             shift and go to state 31
+    FLOAT           shift and go to state 32
+    STRING          shift and go to state 33
+    NAME            shift and go to state 29
+
+    expression                     shift and go to state 44
+
+state 39
+
+    (15) expression -> expression PLUS . expression
+    (12) expression -> . expression MULTIPLY expression
+    (13) expression -> . expression DIVIDE expression
+    (14) expression -> . expression MINUS expression
+    (15) expression -> . expression PLUS expression
+    (16) expression -> . INT
+    (17) expression -> . FLOAT
+    (18) expression -> . STRING
+    (19) expression -> . NAME
+
+    INT             shift and go to state 31
+    FLOAT           shift and go to state 32
+    STRING          shift and go to state 33
+    NAME            shift and go to state 29
+
+    expression                     shift and go to state 45
+
+state 40
+
+    (10) print_statement -> aru ( NAME ) .
+
+    }               reduce using rule 10 (print_statement -> aru ( NAME ) .)
+    NAME            reduce using rule 10 (print_statement -> aru ( NAME ) .)
+    aru             reduce using rule 10 (print_statement -> aru ( NAME ) .)
+    efk             reduce using rule 10 (print_statement -> aru ( NAME ) .)
+
+
+state 41
+
+    (11) scanf_statement -> efk ( NAME ) .
+
+    }               reduce using rule 11 (scanf_statement -> efk ( NAME ) .)
+    NAME            reduce using rule 11 (scanf_statement -> efk ( NAME ) .)
+    aru             reduce using rule 11 (scanf_statement -> efk ( NAME ) .)
+    efk             reduce using rule 11 (scanf_statement -> efk ( NAME ) .)
+
+
+state 42
+
+    (12) expression -> expression MULTIPLY expression .
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . DIVIDE expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . PLUS expression
+
+    MULTIPLY        reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    DIVIDE          reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    MINUS           reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    PLUS            reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    }               reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    NAME            reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    aru             reduce using rule 12 (expression -> expression MULTIPLY expression .)
+    efk             reduce using rule 12 (expression -> expression MULTIPLY expression .)
+
+  ! MULTIPLY        [ shift and go to state 36 ]
+  ! DIVIDE          [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! PLUS            [ shift and go to state 39 ]
+
+
+state 43
+
+    (13) expression -> expression DIVIDE expression .
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . DIVIDE expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . PLUS expression
+
+    MULTIPLY        reduce using rule 13 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 13 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 13 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 13 (expression -> expression DIVIDE expression .)
+    }               reduce using rule 13 (expression -> expression DIVIDE expression .)
+    NAME            reduce using rule 13 (expression -> expression DIVIDE expression .)
+    aru             reduce using rule 13 (expression -> expression DIVIDE expression .)
+    efk             reduce using rule 13 (expression -> expression DIVIDE expression .)
+
+  ! MULTIPLY        [ shift and go to state 36 ]
+  ! DIVIDE          [ shift and go to state 37 ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! PLUS            [ shift and go to state 39 ]
+
+
+state 44
+
+    (14) expression -> expression MINUS expression .
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . DIVIDE expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . PLUS expression
+
+    MINUS           reduce using rule 14 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 14 (expression -> expression MINUS expression .)
+    }               reduce using rule 14 (expression -> expression MINUS expression .)
+    NAME            reduce using rule 14 (expression -> expression MINUS expression .)
+    aru             reduce using rule 14 (expression -> expression MINUS expression .)
+    efk             reduce using rule 14 (expression -> expression MINUS expression .)
+    MULTIPLY        shift and go to state 36
+    DIVIDE          shift and go to state 37
+
+  ! MULTIPLY        [ reduce using rule 14 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 14 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! PLUS            [ shift and go to state 39 ]
+
+
+state 45
+
+    (15) expression -> expression PLUS expression .
+    (12) expression -> expression . MULTIPLY expression
+    (13) expression -> expression . DIVIDE expression
+    (14) expression -> expression . MINUS expression
+    (15) expression -> expression . PLUS expression
+
+    MINUS           reduce using rule 15 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 15 (expression -> expression PLUS expression .)
+    }               reduce using rule 15 (expression -> expression PLUS expression .)
+    NAME            reduce using rule 15 (expression -> expression PLUS expression .)
+    aru             reduce using rule 15 (expression -> expression PLUS expression .)
+    efk             reduce using rule 15 (expression -> expression PLUS expression .)
+    MULTIPLY        shift and go to state 36
+    DIVIDE          shift and go to state 37
+
+  ! MULTIPLY        [ reduce using rule 15 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 15 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ shift and go to state 38 ]
+  ! PLUS            [ shift and go to state 39 ]
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for } in state 15 resolved as shift
 WARNING: shift/reduce conflict for NAME in state 15 resolved as shift
+WARNING: shift/reduce conflict for aru in state 15 resolved as shift
+WARNING: shift/reduce conflict for efk in state 15 resolved as shift
