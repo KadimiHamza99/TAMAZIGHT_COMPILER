@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "leftPLUSMINUSleftMULTIPLYDIVIDEDIVIDE EQUALS FLOAT INT MINUS MULTIPLY NAME PLUS STRING agejdan aru azayez efk ilem taggayt urkid\n    code : azayez taggayt NAME '{' main '}'\n    \n    main : azayez urkid ilem agejdan '(' ')' '{' statements '}'\n    \n    statements : statements statement\n                | empty\n    \n    statement   : var_assign\n                | print_statement\n                | scanf_statement\n                | empty\n    \n    var_assign : NAME EQUALS expression\n    \n    print_statement : aru '(' expression ')'\n    \n    scanf_statement : efk '(' NAME ')'\n    \n    expression :  expression MULTIPLY expression\n                | expression DIVIDE expression\n                | expression MINUS expression\n                | expression PLUS expression\n    \n    expression : INT \n                | FLOAT\n    \n    expression : STRING\n    \n    expression : NAME\n    \n    empty :\n    "
+_lr_signature = "leftPLUSMINUSleftMULTIPLYDIVIDEDIVIDE EQUALS FLOAT INT MINUS MULTIPLY NAME PLUS STRING agejdan aru azayez efk ilem taggayt urkid\n    code : azayez taggayt NAME '{' main '}'\n    \n    main : azayez urkid ilem agejdan '(' ')' '{' statements '}'\n    \n    statements : statements statement\n                | empty\n    \n    statement   : var_assign\n                | print_statement\n                | scanf_statement\n                | empty\n    \n    var_assign : NAME EQUALS expression ';'\n    \n    print_statement : aru '(' expression ')' ';'\n    \n    scanf_statement : efk '(' NAME ')' ';'\n    \n    expression :  expression MULTIPLY expression\n                | expression DIVIDE expression\n                | expression MINUS expression\n                | expression PLUS expression\n    \n    expression : INT \n                | FLOAT\n    \n    expression : STRING\n    \n    expression : NAME\n    \n    empty :\n    "
     
-_lr_action_items = {'azayez':([0,5,],[2,6,]),'$end':([1,9,],[0,-1,]),'taggayt':([2,],[3,]),'NAME':([3,14,15,16,18,19,20,21,22,26,27,28,29,30,31,32,33,36,37,38,39,40,41,42,43,44,45,],[4,-20,23,-4,-3,-5,-6,-7,-8,29,29,35,-19,-9,-16,-17,-18,29,29,29,29,-10,-11,-12,-13,-14,-15,]),'{':([4,13,],[5,14,]),'urkid':([6,],[8,]),'}':([7,14,15,16,17,18,19,20,21,22,29,30,31,32,33,40,41,42,43,44,45,],[9,-20,17,-4,-2,-3,-5,-6,-7,-8,-19,-9,-16,-17,-18,-10,-11,-12,-13,-14,-15,]),'ilem':([8,],[10,]),'agejdan':([10,],[11,]),'(':([11,24,25,],[12,27,28,]),')':([12,29,31,32,33,34,35,42,43,44,45,],[13,-19,-16,-17,-18,40,41,-12,-13,-14,-15,]),'aru':([14,15,16,18,19,20,21,22,29,30,31,32,33,40,41,42,43,44,45,],[-20,24,-4,-3,-5,-6,-7,-8,-19,-9,-16,-17,-18,-10,-11,-12,-13,-14,-15,]),'efk':([14,15,16,18,19,20,21,22,29,30,31,32,33,40,41,42,43,44,45,],[-20,25,-4,-3,-5,-6,-7,-8,-19,-9,-16,-17,-18,-10,-11,-12,-13,-14,-15,]),'EQUALS':([23,],[26,]),'INT':([26,27,36,37,38,39,],[31,31,31,31,31,31,]),'FLOAT':([26,27,36,37,38,39,],[32,32,32,32,32,32,]),'STRING':([26,27,36,37,38,39,],[33,33,33,33,33,33,]),'MULTIPLY':([29,30,31,32,33,34,42,43,44,45,],[-19,36,-16,-17,-18,36,-12,-13,36,36,]),'DIVIDE':([29,30,31,32,33,34,42,43,44,45,],[-19,37,-16,-17,-18,37,-12,-13,37,37,]),'MINUS':([29,30,31,32,33,34,42,43,44,45,],[-19,38,-16,-17,-18,38,-12,-13,-14,-15,]),'PLUS':([29,30,31,32,33,34,42,43,44,45,],[-19,39,-16,-17,-18,39,-12,-13,-14,-15,]),}
+_lr_action_items = {'azayez':([0,5,],[2,6,]),'$end':([1,9,],[0,-1,]),'taggayt':([2,],[3,]),'NAME':([3,14,15,16,18,19,20,21,22,26,27,28,36,37,38,39,40,47,48,],[4,-20,23,-4,-3,-5,-6,-7,-8,29,29,35,-9,29,29,29,29,-10,-11,]),'{':([4,13,],[5,14,]),'urkid':([6,],[8,]),'}':([7,14,15,16,17,18,19,20,21,22,36,47,48,],[9,-20,17,-4,-2,-3,-5,-6,-7,-8,-9,-10,-11,]),'ilem':([8,],[10,]),'agejdan':([10,],[11,]),'(':([11,24,25,],[12,27,28,]),')':([12,29,31,32,33,34,35,43,44,45,46,],[13,-19,-16,-17,-18,41,42,-12,-13,-14,-15,]),'aru':([14,15,16,18,19,20,21,22,36,47,48,],[-20,24,-4,-3,-5,-6,-7,-8,-9,-10,-11,]),'efk':([14,15,16,18,19,20,21,22,36,47,48,],[-20,25,-4,-3,-5,-6,-7,-8,-9,-10,-11,]),'EQUALS':([23,],[26,]),'INT':([26,27,37,38,39,40,],[31,31,31,31,31,31,]),'FLOAT':([26,27,37,38,39,40,],[32,32,32,32,32,32,]),'STRING':([26,27,37,38,39,40,],[33,33,33,33,33,33,]),';':([29,30,31,32,33,41,42,43,44,45,46,],[-19,36,-16,-17,-18,47,48,-12,-13,-14,-15,]),'MULTIPLY':([29,30,31,32,33,34,43,44,45,46,],[-19,37,-16,-17,-18,37,-12,-13,37,37,]),'DIVIDE':([29,30,31,32,33,34,43,44,45,46,],[-19,38,-16,-17,-18,38,-12,-13,38,38,]),'MINUS':([29,30,31,32,33,34,43,44,45,46,],[-19,39,-16,-17,-18,39,-12,-13,-14,-15,]),'PLUS':([29,30,31,32,33,34,43,44,45,46,],[-19,40,-16,-17,-18,40,-12,-13,-14,-15,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'code':([0,],[1,]),'main':([5,],[7,]),'statements':([14,],[15,]),'empty':([14,15,],[16,22,]),'statement':([15,],[18,]),'var_assign':([15,],[19,]),'print_statement':([15,],[20,]),'scanf_statement':([15,],[21,]),'expression':([26,27,36,37,38,39,],[30,34,42,43,44,45,]),}
+_lr_goto_items = {'code':([0,],[1,]),'main':([5,],[7,]),'statements':([14,],[15,]),'empty':([14,15,],[16,22,]),'statement':([15,],[18,]),'var_assign':([15,],[19,]),'print_statement':([15,],[20,]),'scanf_statement':([15,],[21,]),'expression':([26,27,37,38,39,40,],[30,34,43,44,45,46,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -35,9 +35,9 @@ _lr_productions = [
   ('statement -> print_statement','statement',1,'p_statement','TamazightLexerParser.py',118),
   ('statement -> scanf_statement','statement',1,'p_statement','TamazightLexerParser.py',119),
   ('statement -> empty','statement',1,'p_statement','TamazightLexerParser.py',120),
-  ('var_assign -> NAME EQUALS expression','var_assign',3,'p_varAssign','TamazightLexerParser.py',126),
-  ('print_statement -> aru ( expression )','print_statement',4,'p_printStat','TamazightLexerParser.py',132),
-  ('scanf_statement -> efk ( NAME )','scanf_statement',4,'p_scanfStat','TamazightLexerParser.py',138),
+  ('var_assign -> NAME EQUALS expression ;','var_assign',4,'p_varAssign','TamazightLexerParser.py',126),
+  ('print_statement -> aru ( expression ) ;','print_statement',5,'p_printStat','TamazightLexerParser.py',132),
+  ('scanf_statement -> efk ( NAME ) ;','scanf_statement',5,'p_scanfStat','TamazightLexerParser.py',138),
   ('expression -> expression MULTIPLY expression','expression',3,'p_expression','TamazightLexerParser.py',144),
   ('expression -> expression DIVIDE expression','expression',3,'p_expression','TamazightLexerParser.py',145),
   ('expression -> expression MINUS expression','expression',3,'p_expression','TamazightLexerParser.py',146),

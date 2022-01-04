@@ -14,13 +14,13 @@ UNDERLINE = '\033[4m'
 ####< L E X E R > ###
 
 reserved = {
-    'azayez':'azayez',
-    'taggayt':'taggayt',
-    'urkid':'urkid',
-    'ilem':'ilem',
-    'agejdan':'agejdan',
-    'aru':'aru',
-    'efk':'efk'
+    'azayez': 'azayez',
+    'taggayt': 'taggayt',
+    'urkid': 'urkid',
+    'ilem': 'ilem',
+    'agejdan': 'agejdan',
+    'aru': 'aru',
+    'efk': 'efk'
 }
 
 tokens = [
@@ -33,7 +33,7 @@ tokens = [
     'MULTIPLY',
     'EQUALS',
     'STRING'
-]+ list(reserved.values())
+] + list(reserved.values())
 
 literals = [',', ';', '(', ')', '{', '}']
 
@@ -52,37 +52,46 @@ t_efk = r'efk'
 
 t_ignore = r' '
 
+
 def t_STRING(t):
     r'("[^"]*")|(\'[^\']*\')'
     t.value = str(t.value)
     return t
 
-def t_FLOAT(t) :
+
+def t_FLOAT(t):
     r'\d+\.\d*'
-    t.value=float(t.value)
+    t.value = float(t.value)
     return t
+
 
 def t_INT(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
+
 def t_NAME(t):
     r'\$[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = "NAME"
     return t
 
+
 def t_error(t):
-    print(f"{RED}  {BOLD}  ERROR MESSAGE TAMAZIGHT {END}:  {BLUE} '{t.value[0]}' {END}")
+    print(
+        f"{RED}  {BOLD}  ERROR MESSAGE TAMAZIGHT {END}:  {BLUE} '{t.value[0]}' {END}")
     t.lexer.skip(1)
 
-def t_newline(t) :
+
+def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+
 
 def t_COMMENT(t):
     r'\@.*'
     pass
+
 
 lexer = lex.lex()
 
@@ -91,8 +100,8 @@ lexer = lex.lex()
 ### < P A R S E R >###
 
 precedence = (
-    ('left','PLUS','MINUS'),
-    ('left','MULTIPLY','DIVIDE')
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'MULTIPLY', 'DIVIDE')
 )
 
 
@@ -101,16 +110,19 @@ def p_code(p):
     code : azayez taggayt NAME '{' main '}'
     '''
 
-def p_main(p) :
+
+def p_main(p):
     '''
     main : azayez urkid ilem agejdan '(' ')' '{' statements '}'
     '''
 
-def p_statements(p) :
+
+def p_statements(p):
     '''
     statements : statements statement
                 | empty
     '''
+
 
 def p_statement(p):
     '''
@@ -121,23 +133,27 @@ def p_statement(p):
     '''
     print(run(p[1]))
 
+
 def p_varAssign(p):
     '''
-    var_assign : NAME EQUALS expression
+    var_assign : NAME EQUALS expression ';'
     '''
-    p[0] = ('=',p[1],p[3])
+    p[0] = ('=', p[1], p[3])
+
 
 def p_printStat(p):
     '''
-    print_statement : aru '(' expression ')'
+    print_statement : aru '(' expression ')' ';'
     '''
-    p[0]=('aru_statement',p[3])
+    p[0] = ('aru_statement', p[3])
+
 
 def p_scanfStat(p):
     '''
-    scanf_statement : efk '(' NAME ')'
+    scanf_statement : efk '(' NAME ')' ';'
     '''
-    p[0]=('efk_statement',p[3])
+    p[0] = ('efk_statement', p[3])
+
 
 def p_expression(p):
     '''
@@ -146,7 +162,8 @@ def p_expression(p):
                 | expression MINUS expression
                 | expression PLUS expression
     '''
-    p[0] = (p[2],p[1],p[3])
+    p[0] = (p[2], p[1], p[3])
+
 
 def p_expression_int_float(p):
     '''
@@ -155,17 +172,20 @@ def p_expression_int_float(p):
     '''
     p[0] = p[1]
 
+
 def p_expression_string(p):
     '''
     expression : STRING
     '''
-    p[0] = ('string',p[1])
+    p[0] = ('string', p[1])
+
 
 def p_expression_var(p):
     '''
     expression : NAME
     '''
-    p[0] = ('var',p[1])
+    p[0] = ('var', p[1])
+
 
 def p_empty(p):
     '''
@@ -173,46 +193,77 @@ def p_empty(p):
     '''
     p[0] = None
 
+
 def p_error(p):
     print("Syntax error found !")
 
+
 env = {}
 
+
 def run(p):
-    if type(p) == tuple :
-        if p[0] == '+': return run(p[1]) + run(p[2])
-        elif p[0] == '-': return run(p[1]) - run(p[2])
-        elif p[0] == '*': return run(p[1]) * run(p[2])
-        elif p[0] == '/': return run(p[1]) / run(p[2])
+    if type(p) == tuple:
+        if p[0] == '+':
+            return run(p[1]) + run(p[2])
+        elif p[0] == '-':
+            return run(p[1]) - run(p[2])
+        elif p[0] == '*':
+            return run(p[1]) * run(p[2])
+        elif p[0] == '/':
+            return run(p[1]) / run(p[2])
         elif p[0] == '=':
-            if (type(p[2]) == tuple and p[2][0] == 'string') : env[p[1]] = p[2][1]
-            else : env[p[1]] = run(p[2])
+            if (type(p[2]) == tuple and p[2][0] == 'string'):
+                env[p[1]] = p[2][1]
+            else:
+                env[p[1]] = run(p[2])
             print(env)
         elif p[0] == 'var':
-            if(p[1] not in env) : return 'Undeclared variable found!'
-            else : return env[p[1]]
-        if(p[0]=='aru_statement'): 
-            if(p[1] in env): 
+            if(p[1] not in env):
+                return 'Undeclared variable found!'
+            else:
+                return env[p[1]]
+        if(p[0] == 'aru_statement'):
+            if(p[1] in env):
                 print(env[p[1]])
-            else :
+            else:
                 return run(p[1])
-        elif(p[0]=='efk_statement') :
-            s=input()
-            if(s.isalnum) : env[p[1]] = str(s)
-            elif(s.isnumeric) : env[p[1]] = int(s)
-            
-    else: return p
+        elif(p[0] == 'efk_statement'):
+            s = input()
+            if(s.isnumeric()):
+                print("it s int")
+                env[p[1]] = int(s)
+            elif(s.isalnum()):
+                env[p[1]] = s
+                print("its string")
+            elif(isfloat(s)):
+                env[p[1]] = float(s)
+                print("it s float")
+    else:
+        return p
+
+
 parser = yacc.yacc()
 
-data='''
+data = '''
     azayez taggayt $className {
         azayez urkid ilem agejdan(){
-            efk($a)
-            efk($b)
-            aru($b+$a)
+            efk($a);
+            efk($b);
+            $c = $a+$b;
+            aru($c);
         }
     }
 '''
+
+
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
+
 parser.parse(data)
 
 # while True:
