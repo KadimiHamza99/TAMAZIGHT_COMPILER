@@ -1,0 +1,13 @@
+   azayez taggayt $className {
+          uslig $fun(){
+                 $a = 9;
+                 aru($a);
+             }
+          uslig urkid ilem agejdan (){
+             $a = 5;
+             tasekkirt $fun;
+          }
+
+
+
+     }

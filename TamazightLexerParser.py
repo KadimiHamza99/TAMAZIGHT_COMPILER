@@ -24,7 +24,8 @@ reserved = {
     'sehviver': 'sehviver',
     'uslig': 'uslig',
     'ma': 'ma',
-    'tamenguct': 'tamenguct'
+    'tamenguct': 'tamenguct',
+    'tasekkirt': 'tasekkirt'
 }
 
 tokens = [
@@ -60,6 +61,7 @@ t_agejdan = r'agejdan'
 t_uslig = r'uslig'
 t_sehviver = r'sehviver'
 t_tamenguct = r'tamenguct'
+t_tasekkirt = r'tasekkirt'
 t_aru = r'aru'
 t_efk = r'efk'
 t_ma = r'ma'
@@ -119,6 +121,7 @@ lexer = lex.lex()
 
 ### < P A R S E R >###
 
+envFunct = {}
 precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'MULTIPLY', 'DIVIDE')
@@ -156,21 +159,44 @@ def p_attr_statement(p):
 
 def p_function(p):
     '''
-    functions_statement : main functions_statement
-                        | method
+    functions_statement : method functions_statement
+                        | main functions_statement
                         | empty
     '''
 
 
+
 def p_method(p):
     '''
-        method : encaps NAME '(' ')' '{' statements '}'
+        method : encaps NAME '(' ')' '{' fStates '}'
     '''
+    p[0] = ('functionName', p[2], p[6])
+    envFunct[p[2]] = p[6]
+
+
+def p_fStates(p):
+    '''
+        fStates : fState fState
+                | empty
+    '''
+    p[0] = (p[1], p[2])
+
+
+def p_fState(p):
+    '''
+    fState : var_assign
+            | print_statement
+            | scanf_statement
+            | if_statement
+            | loop_control
+            | empty
+    '''
+    p[0] = p[1]
 
 
 def p_main(p):
     '''
-    main :   encaps urkid ilem agejdan '(' ')' '{' statements '}'
+    main :  encaps urkid ilem agejdan '(' ')' '{' statements '}'
     '''
 
 
@@ -185,6 +211,7 @@ def p_statement(p):
     '''
     statement   : var_assign
                 | print_statement
+                | call_function
                 | scanf_statement
                 | if_statement
                 | loop_control
@@ -198,6 +225,13 @@ def p_varAssign(p):
     var_assign : NAME EQUALS expression ';'
     '''
     p[0] = ('=', p[1], p[3])
+
+
+def p_callFunction(p):
+    '''
+    call_function : tasekkirt NAME ';'
+    '''
+    p[0] = ('functionCall', p[2])
 
 
 def p_printStat(p):
@@ -218,7 +252,8 @@ def p_loopControl(p):
     '''
         loop_control : tamenguct '(' INT ')' '{' statementsLoop '}'
     '''
-    p[0] = ('loopStat', p[3],p[6])
+    p[0] = ('loopStat', p[3], p[6])
+
 
 def p_statementsLoop(p):
     '''
@@ -226,17 +261,19 @@ def p_statementsLoop(p):
                         | empty
     '''
 
-    p[0] =(p[1], p[2])
+    p[0] = (p[1], p[2])
+
 
 def p_statementloop(p):
     '''
      statementLoop : var_assign
-                        | print_statement
-                        | scanf_statement
-                        | if_statement
-                        | empty
+                    | print_statement
+                    | scanf_statement
+                    | if_statement
+                    | empty
     '''
     p[0] = p[1]
+
 
 def p_ifStatement(p):
     '''
@@ -378,6 +415,10 @@ def run(p):
             for i in range(a):
                 run(p[2][0])
                 run(p[2][1])
+        elif p[0] == 'functionCall':
+            r = p[1]
+            for i in [0,1]:
+                run(envFunct[r][i])
 
         elif p[0] == 'if_statement':
             print(p[2])
@@ -485,17 +526,21 @@ def compare(a, b):
 
 parser = yacc.yacc()
 
-data = '''
-    azayez taggayt $className {
-        uslig urkid ilem agejdan(){
-            $a=4;
-            tamenguct(5){
-                aru($a);
-                $b = 6;
-            }
-        }
-    }
-'''
+# data = '''
+#     azayez taggayt $className {
+#          uslig $fun(){
+#                 $a = 9;
+#                 aru($a);
+#             }
+#          uslig urkid ilem agejdan (){
+#             $a = 5;
+#             tasekkirt $fun;
+#          }
+#
+#
+#
+#     }
+# '''
 
 
 def isfloat(num):
@@ -506,7 +551,15 @@ def isfloat(num):
         return False
 
 
+# parser.parse(data)
+
+path = "C:/Users/LENOVO/Desktop/CompilateurAmazigh/T++.txt"
+
+file = open(path, 'r')
+data = file.read()
 parser.parse(data)
+# for tok in parser:
+#    parse(tok)
 
 # while True:
 #     try:
@@ -516,41 +569,3 @@ parser.parse(data)
 #     parser.parse(s)
 
 ### < / P A R S E R > ###
-
-
-# elif p[0] == 'conditionSOS':
-# if p[0][1] == "==":
-#     if run(p[1][1]) == run(p[1][2]):
-#         run(p[2])
-# if p[0][1] == ">=":
-#     if run(p[1][1]) >= run(p[1][2]):
-#         run(p[2])
-# if p[0][1] == "<=":
-#     if run(p[1][1]) <= run(p[1][2]):
-#         run(p[2])
-# if p[0][1] == ">":
-#     if run(p[1][1]) > run(p[1][2]):
-#         run(p[2])
-# if p[0][1] == "<":
-#     if run(p[1][1]) < run(p[1][2]):
-#         run(p[2])
-# if p[0][1] == "!=":
-#     if run(p[1][1]) != run(p[1][2]):
-#         run(p[2])
-
-
-# elif p[1][0] == ">=":
-# if run(p[1][1]) >= run(p[1][2]):
-#     run(p[2])
-# elif p[1][0] == "<=":
-#     if run(p[1][1]) <= run(p[1][2]):
-#         run(p[2])
-#     elif p[1][0] == "<":
-#     if run(p[1][1]) < run(p[1][2]):
-#         run(p[2])
-#     elif p[1][0] == ">":
-#     if run(p[1][1]) > run(p[1][2]):
-#         run(p[2])
-#     elif p[1][0] == "!=":
-#     if run(p[1][1]) != run(p[1][2]):
-#         run(p[2])
