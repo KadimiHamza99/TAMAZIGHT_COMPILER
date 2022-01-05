@@ -1,13 +1,34 @@
-   azayez taggayt $className {
-          uslig $fun(){
-                 $a = 9;
-                 aru($a);
-             }
-          uslig urkid ilem agejdan (){
-             $a = 5;
-             tasekkirt $fun;
-          }
+@ClassName
+azayez taggayt $Tpp {
+        
+        @DeclareAProcedure
+        uslig $MyFunction(){
+            $a="The function is called";
+            aru($a);
+        }
 
+        @MainMethod
+        uslig urkid ilem agejdan (){
 
+            @MyLoop
+            tamenguct(4){
+                efk($x);
+                aru($x);
+            }
+            aru("b = ");
+            efk($b);
+            @IfStatement
+            ma($b>=10){
+                aru("b is greater or equal than 10");
+            }
+            ma($b<10){
+                aru("b is less than 10");
+            }
 
-     }
+            aru("My Procedure Call");
+            @ProcedureCall
+            tasekkirt $MyFunction;
+
+        }
+
+}

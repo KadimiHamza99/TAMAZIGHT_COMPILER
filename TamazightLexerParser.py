@@ -76,9 +76,9 @@ t_ignore = r' '
 
 
 def t_STRING(t):
-    r'("[^"]")|(\'[^\']\')'
-    t.value = str(t.value)
+    r'"[^("|\n)]*"'
     return t
+
 
 
 def t_FLOAT(t):
@@ -266,7 +266,7 @@ def p_statementsLoop(p):
 
 def p_statementloop(p):
     '''
-     statementLoop : var_assign
+    statementLoop : var_assign
                     | print_statement
                     | scanf_statement
                     | if_statement
@@ -383,7 +383,7 @@ def run(p):
                 env[p[1]] = p[2][1]
             else:
                 env[p[1]] = run(p[2])
-            print(env)
+            # print(env)
         elif p[0] == 'var':
             if p[1] not in env:
                 return 'Undeclared variable found!'
@@ -394,24 +394,21 @@ def run(p):
                 print(env[p[1]])
             elif p[1][1] in env:
                 print(env[p[1][1]])
+            elif p[1][0]=='string':
+                print(p[1][1])
             else:
                 return run(p[1])
         elif p[0] == 'efk_statement':
             s = input()
             if s.isnumeric():
-                print("it s int")
                 env[p[1]] = int(s)
             elif s.isalnum():
                 env[p[1]] = s
-                print("its string")
             elif isfloat(s):
                 env[p[1]] = float(s)
-                print("it s float")
         elif p[0] == 'loopStat':
-            print("hahuwa")
-            print(p)
             a = p[1]
-            print(p[2])
+            # print(p[2])
             for i in range(a):
                 run(p[2][0])
                 run(p[2][1])
@@ -421,7 +418,7 @@ def run(p):
                 run(envFunct[r][i])
 
         elif p[0] == 'if_statement':
-            print(p[2])
+            # print(p[2])
             if p[1][0] == "==":
                 if isinstance(p[1][2], int) and p[1][1][0] == 'var':
                     if compare(env[p[1][1][1]], p[1][2]):
@@ -513,7 +510,7 @@ def run(p):
                 else:
                     print("condition error")
             else:
-                print("error")
+                print("erroooooor !!")
     else:
         return p
 
