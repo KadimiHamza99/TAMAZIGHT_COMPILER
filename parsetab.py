@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "leftPLUSMINUSleftMULTIPLYDIVIDEDIVIDE EQUALS FLOAT INT MINUS MULTIPLY NAME PLUS STRING agejdan aru azayez efk ilem taggayt urkid\n    code : azayez taggayt NAME '{' main '}'\n    \n    main : azayez urkid ilem agejdan '(' ')' '{' statements '}'\n    \n    statements : statements statement\n                | empty\n    \n    statement   : var_assign\n                | print_statement\n                | scanf_statement\n                | empty\n    \n    var_assign : NAME EQUALS expression ';'\n    \n    print_statement : aru '(' expression ')' ';'\n    \n    scanf_statement : efk '(' NAME ')' ';'\n    \n    expression :  expression MULTIPLY expression\n                | expression DIVIDE expression\n                | expression MINUS expression\n                | expression PLUS expression\n    \n    expression : INT \n                | FLOAT\n    \n    expression : STRING\n    \n    expression : NAME\n    \n    empty :\n    "
+_lr_signature = "leftPLUSMINUSleftMULTIPLYDIVIDEDIVIDE EE EQUALS FLOAT GE GT INT LE LT MINUS MULTIPLY NAME NE PLUS STRING agejdan aru azayez efk ilem ma sehviver taggayt tamenguct urkid uslig\n    code : encaps taggayt NAME '{' inner_code '}'\n    \n    encaps : azayez\n            | uslig\n            | sehviver\n            | empty\n    \n    inner_code :  attribut_statement functions_statement\n            | attribut_statement\n            | functions_statement\n    \n    attribut_statement : encaps NAME\n    \n    functions_statement : main functions_statement\n                        | method\n                        | empty\n    \n        method : encaps NAME '(' ')' '{' statements '}'\n    \n    main :   encaps urkid ilem agejdan '(' ')' '{' statements '}'\n    \n    statements : statement statements\n                | empty\n    \n    statement   : var_assign\n                | print_statement\n                | scanf_statement\n                | if_statement\n                | loop_control\n                | empty\n    \n    var_assign : NAME EQUALS expression ';'\n    \n    print_statement : aru '(' expression ')' ';'\n    \n    scanf_statement : efk '(' NAME ')' ';'\n    \n        loop_control : tamenguct '(' INT ')' '{' statementsLoop '}'\n    \n        statementsLoop : statementLoop statementLoop\n                        | empty\n    \n     statementLoop : var_assign\n                        | print_statement\n                        | scanf_statement\n                        | if_statement\n                        | empty\n    \n    if_statement : ma '(' condition ')' '{' con_statements '}'\n    \n    con_statements : con_statement con_statement con_statement\n                    | empty\n    \n        con_statement : var_assign\n                        | print_statement\n                        | scanf_statement\n                        | if_statement\n                        | empty\n    \n        condition : expression comparaison expression\n    \n        comparaison : GT\n                    | LT\n                    | GE\n                    | LE\n                    | EE\n                    | NE\n    \n    expression :  expression MULTIPLY expression\n                | expression DIVIDE expression\n                | expression MINUS expression\n                | expression PLUS expression\n    \n    expression : INT\n                | FLOAT\n    \n    expression : STRING\n    \n    expression : NAME\n    \n    empty :\n    "
     
-_lr_action_items = {'azayez':([0,5,],[2,6,]),'$end':([1,9,],[0,-1,]),'taggayt':([2,],[3,]),'NAME':([3,14,15,16,18,19,20,21,22,26,27,28,36,37,38,39,40,47,48,],[4,-20,23,-4,-3,-5,-6,-7,-8,29,29,35,-9,29,29,29,29,-10,-11,]),'{':([4,13,],[5,14,]),'urkid':([6,],[8,]),'}':([7,14,15,16,17,18,19,20,21,22,36,47,48,],[9,-20,17,-4,-2,-3,-5,-6,-7,-8,-9,-10,-11,]),'ilem':([8,],[10,]),'agejdan':([10,],[11,]),'(':([11,24,25,],[12,27,28,]),')':([12,29,31,32,33,34,35,43,44,45,46,],[13,-19,-16,-17,-18,41,42,-12,-13,-14,-15,]),'aru':([14,15,16,18,19,20,21,22,36,47,48,],[-20,24,-4,-3,-5,-6,-7,-8,-9,-10,-11,]),'efk':([14,15,16,18,19,20,21,22,36,47,48,],[-20,25,-4,-3,-5,-6,-7,-8,-9,-10,-11,]),'EQUALS':([23,],[26,]),'INT':([26,27,37,38,39,40,],[31,31,31,31,31,31,]),'FLOAT':([26,27,37,38,39,40,],[32,32,32,32,32,32,]),'STRING':([26,27,37,38,39,40,],[33,33,33,33,33,33,]),';':([29,30,31,32,33,41,42,43,44,45,46,],[-19,36,-16,-17,-18,47,48,-12,-13,-14,-15,]),'MULTIPLY':([29,30,31,32,33,34,43,44,45,46,],[-19,37,-16,-17,-18,37,-12,-13,37,37,]),'DIVIDE':([29,30,31,32,33,34,43,44,45,46,],[-19,38,-16,-17,-18,38,-12,-13,38,38,]),'MINUS':([29,30,31,32,33,34,43,44,45,46,],[-19,39,-16,-17,-18,39,-12,-13,-14,-15,]),'PLUS':([29,30,31,32,33,34,43,44,45,46,],[-19,40,-16,-17,-18,40,-12,-13,-14,-15,]),}
+_lr_action_items = {'azayez':([0,9,12,14,17,79,],[3,3,3,3,-9,-14,]),'uslig':([0,9,12,14,17,79,],[4,4,4,4,-9,-14,]),'sehviver':([0,9,12,14,17,79,],[5,5,5,5,-9,-14,]),'taggayt':([0,2,3,4,5,6,],[-57,7,-2,-3,-4,-5,]),'$end':([1,19,],[0,-1,]),'NAME':([3,4,5,7,9,10,12,14,16,17,21,28,32,33,34,35,36,37,38,44,47,48,49,51,63,64,65,66,67,71,72,73,74,75,76,77,79,84,85,86,88,90,91,92,93,94,95,97,98,99,100,101,102,103,104,105,106,],[-2,-3,-4,8,-57,17,-57,-57,-5,-9,25,30,30,-22,-17,-18,-19,-20,-21,52,52,58,52,30,-23,52,52,52,52,52,-43,-44,-45,-46,-47,-48,-14,-24,-25,30,30,30,-41,-37,-38,-39,-40,30,-33,-29,-30,-31,-32,-34,30,-41,-26,]),'urkid':([3,4,5,9,10,12,14,16,17,21,79,],[-2,-3,-4,-57,18,-57,-57,-5,-9,18,-14,]),'{':([8,26,43,70,78,],[9,28,51,86,88,]),'}':([9,11,12,13,14,15,16,17,20,22,28,31,32,33,34,35,36,37,38,45,46,51,62,63,79,84,85,86,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,],[-57,19,-7,-8,-57,-11,-12,-9,-6,-10,-57,45,-57,-16,-17,-18,-19,-20,-21,-13,-15,-57,79,-23,-14,-24,-25,-57,-57,103,-57,-36,-37,-38,-39,-40,106,-57,-28,-29,-30,-31,-32,-34,-57,-41,-26,-27,-33,-35,]),'(':([17,25,27,39,40,41,42,],[23,23,29,47,48,49,50,]),'ilem':([18,],[24,]),')':([23,29,52,54,55,56,57,58,59,61,80,81,82,83,87,],[26,43,-56,-53,-54,-55,68,69,70,78,-49,-50,-51,-52,-42,]),'agejdan':([24,],[27,]),'aru':([28,32,33,34,35,36,37,38,51,63,84,85,86,88,90,91,92,93,94,95,97,98,99,100,101,102,103,104,105,106,],[39,39,-22,-17,-18,-19,-20,-21,39,-23,-24,-25,39,39,39,-41,-37,-38,-39,-40,39,-33,-29,-30,-31,-32,-34,39,-41,-26,]),'efk':([28,32,33,34,35,36,37,38,51,63,84,85,86,88,90,91,92,93,94,95,97,98,99,100,101,102,103,104,105,106,],[40,40,-22,-17,-18,-19,-20,-21,40,-23,-24,-25,40,40,40,-41,-37,-38,-39,-40,40,-33,-29,-30,-31,-32,-34,40,-41,-26,]),'ma':([28,32,33,34,35,36,37,38,51,63,84,85,86,88,90,91,92,93,94,95,97,98,99,100,101,102,103,104,105,106,],[41,41,-22,-17,-18,-19,-20,-21,41,-23,-24,-25,41,41,41,-41,-37,-38,-39,-40,41,-33,-29,-30,-31,-32,-34,41,-41,-26,]),'tamenguct':([28,32,33,34,35,36,37,38,51,63,84,85,103,106,],[42,42,-22,-17,-18,-19,-20,-21,42,-23,-24,-25,-34,-26,]),'EQUALS':([30,],[44,]),'INT':([44,47,49,50,64,65,66,67,71,72,73,74,75,76,77,],[54,54,54,61,54,54,54,54,54,-43,-44,-45,-46,-47,-48,]),'FLOAT':([44,47,49,64,65,66,67,71,72,73,74,75,76,77,],[55,55,55,55,55,55,55,55,-43,-44,-45,-46,-47,-48,]),'STRING':([44,47,49,64,65,66,67,71,72,73,74,75,76,77,],[56,56,56,56,56,56,56,56,-43,-44,-45,-46,-47,-48,]),';':([52,53,54,55,56,68,69,80,81,82,83,],[-56,63,-53,-54,-55,84,85,-49,-50,-51,-52,]),'MULTIPLY':([52,53,54,55,56,57,60,80,81,82,83,87,],[-56,64,-53,-54,-55,64,64,-49,-50,64,64,64,]),'DIVIDE':([52,53,54,55,56,57,60,80,81,82,83,87,],[-56,65,-53,-54,-55,65,65,-49,-50,65,65,65,]),'MINUS':([52,53,54,55,56,57,60,80,81,82,83,87,],[-56,66,-53,-54,-55,66,66,-49,-50,-51,-52,66,]),'PLUS':([52,53,54,55,56,57,60,80,81,82,83,87,],[-56,67,-53,-54,-55,67,67,-49,-50,-51,-52,67,]),'GT':([52,54,55,56,60,80,81,82,83,],[-56,-53,-54,-55,72,-49,-50,-51,-52,]),'LT':([52,54,55,56,60,80,81,82,83,],[-56,-53,-54,-55,73,-49,-50,-51,-52,]),'GE':([52,54,55,56,60,80,81,82,83,],[-56,-53,-54,-55,74,-49,-50,-51,-52,]),'LE':([52,54,55,56,60,80,81,82,83,],[-56,-53,-54,-55,75,-49,-50,-51,-52,]),'EE':([52,54,55,56,60,80,81,82,83,],[-56,-53,-54,-55,76,-49,-50,-51,-52,]),'NE':([52,54,55,56,60,80,81,82,83,],[-56,-53,-54,-55,77,-49,-50,-51,-52,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'code':([0,],[1,]),'main':([5,],[7,]),'statements':([14,],[15,]),'empty':([14,15,],[16,22,]),'statement':([15,],[18,]),'var_assign':([15,],[19,]),'print_statement':([15,],[20,]),'scanf_statement':([15,],[21,]),'expression':([26,27,37,38,39,40,],[30,34,43,44,45,46,]),}
+_lr_goto_items = {'code':([0,],[1,]),'encaps':([0,9,12,14,],[2,10,21,21,]),'empty':([0,9,12,14,28,32,51,86,88,90,97,104,],[6,16,16,16,33,33,33,91,98,105,108,105,]),'inner_code':([9,],[11,]),'attribut_statement':([9,],[12,]),'functions_statement':([9,12,14,],[13,20,22,]),'main':([9,12,14,],[14,14,14,]),'method':([9,12,14,],[15,15,15,]),'statements':([28,32,51,],[31,46,62,]),'statement':([28,32,51,],[32,32,32,]),'var_assign':([28,32,51,86,88,90,97,104,],[34,34,34,92,99,92,99,92,]),'print_statement':([28,32,51,86,88,90,97,104,],[35,35,35,93,100,93,100,93,]),'scanf_statement':([28,32,51,86,88,90,97,104,],[36,36,36,94,101,94,101,94,]),'if_statement':([28,32,51,86,88,90,97,104,],[37,37,37,95,102,95,102,95,]),'loop_control':([28,32,51,],[38,38,38,]),'expression':([44,47,49,64,65,66,67,71,],[53,57,60,80,81,82,83,87,]),'condition':([49,],[59,]),'comparaison':([60,],[71,]),'con_statements':([86,],[89,]),'con_statement':([86,90,104,],[90,104,109,]),'statementsLoop':([88,],[96,]),'statementLoop':([88,97,],[97,107,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,24 +27,61 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> code","S'",1,None,None,None),
-  ('code -> azayez taggayt NAME { main }','code',6,'p_code','TamazightLexerParser.py',101),
-  ('main -> azayez urkid ilem agejdan ( ) { statements }','main',9,'p_main','TamazightLexerParser.py',106),
-  ('statements -> statements statement','statements',2,'p_statements','TamazightLexerParser.py',111),
-  ('statements -> empty','statements',1,'p_statements','TamazightLexerParser.py',112),
-  ('statement -> var_assign','statement',1,'p_statement','TamazightLexerParser.py',117),
-  ('statement -> print_statement','statement',1,'p_statement','TamazightLexerParser.py',118),
-  ('statement -> scanf_statement','statement',1,'p_statement','TamazightLexerParser.py',119),
-  ('statement -> empty','statement',1,'p_statement','TamazightLexerParser.py',120),
-  ('var_assign -> NAME EQUALS expression ;','var_assign',4,'p_varAssign','TamazightLexerParser.py',126),
-  ('print_statement -> aru ( expression ) ;','print_statement',5,'p_printStat','TamazightLexerParser.py',132),
-  ('scanf_statement -> efk ( NAME ) ;','scanf_statement',5,'p_scanfStat','TamazightLexerParser.py',138),
-  ('expression -> expression MULTIPLY expression','expression',3,'p_expression','TamazightLexerParser.py',144),
-  ('expression -> expression DIVIDE expression','expression',3,'p_expression','TamazightLexerParser.py',145),
-  ('expression -> expression MINUS expression','expression',3,'p_expression','TamazightLexerParser.py',146),
-  ('expression -> expression PLUS expression','expression',3,'p_expression','TamazightLexerParser.py',147),
-  ('expression -> INT','expression',1,'p_expression_int_float','TamazightLexerParser.py',153),
-  ('expression -> FLOAT','expression',1,'p_expression_int_float','TamazightLexerParser.py',154),
-  ('expression -> STRING','expression',1,'p_expression_string','TamazightLexerParser.py',160),
-  ('expression -> NAME','expression',1,'p_expression_var','TamazightLexerParser.py',166),
-  ('empty -> <empty>','empty',0,'p_empty','TamazightLexerParser.py',172),
+  ('code -> encaps taggayt NAME { inner_code }','code',6,'p_code','TamazightLexerParser.py',130),
+  ('encaps -> azayez','encaps',1,'p_Encaps','TamazightLexerParser.py',136),
+  ('encaps -> uslig','encaps',1,'p_Encaps','TamazightLexerParser.py',137),
+  ('encaps -> sehviver','encaps',1,'p_Encaps','TamazightLexerParser.py',138),
+  ('encaps -> empty','encaps',1,'p_Encaps','TamazightLexerParser.py',139),
+  ('inner_code -> attribut_statement functions_statement','inner_code',2,'p_inCode','TamazightLexerParser.py',145),
+  ('inner_code -> attribut_statement','inner_code',1,'p_inCode','TamazightLexerParser.py',146),
+  ('inner_code -> functions_statement','inner_code',1,'p_inCode','TamazightLexerParser.py',147),
+  ('attribut_statement -> encaps NAME','attribut_statement',2,'p_attr_statement','TamazightLexerParser.py',153),
+  ('functions_statement -> main functions_statement','functions_statement',2,'p_function','TamazightLexerParser.py',159),
+  ('functions_statement -> method','functions_statement',1,'p_function','TamazightLexerParser.py',160),
+  ('functions_statement -> empty','functions_statement',1,'p_function','TamazightLexerParser.py',161),
+  ('method -> encaps NAME ( ) { statements }','method',7,'p_method','TamazightLexerParser.py',167),
+  ('main -> encaps urkid ilem agejdan ( ) { statements }','main',9,'p_main','TamazightLexerParser.py',173),
+  ('statements -> statement statements','statements',2,'p_statements','TamazightLexerParser.py',179),
+  ('statements -> empty','statements',1,'p_statements','TamazightLexerParser.py',180),
+  ('statement -> var_assign','statement',1,'p_statement','TamazightLexerParser.py',186),
+  ('statement -> print_statement','statement',1,'p_statement','TamazightLexerParser.py',187),
+  ('statement -> scanf_statement','statement',1,'p_statement','TamazightLexerParser.py',188),
+  ('statement -> if_statement','statement',1,'p_statement','TamazightLexerParser.py',189),
+  ('statement -> loop_control','statement',1,'p_statement','TamazightLexerParser.py',190),
+  ('statement -> empty','statement',1,'p_statement','TamazightLexerParser.py',191),
+  ('var_assign -> NAME EQUALS expression ;','var_assign',4,'p_varAssign','TamazightLexerParser.py',198),
+  ('print_statement -> aru ( expression ) ;','print_statement',5,'p_printStat','TamazightLexerParser.py',205),
+  ('scanf_statement -> efk ( NAME ) ;','scanf_statement',5,'p_scanfStat','TamazightLexerParser.py',212),
+  ('loop_control -> tamenguct ( INT ) { statementsLoop }','loop_control',7,'p_loopControl','TamazightLexerParser.py',219),
+  ('statementsLoop -> statementLoop statementLoop','statementsLoop',2,'p_statementsLoop','TamazightLexerParser.py',225),
+  ('statementsLoop -> empty','statementsLoop',1,'p_statementsLoop','TamazightLexerParser.py',226),
+  ('statementLoop -> var_assign','statementLoop',1,'p_statementloop','TamazightLexerParser.py',233),
+  ('statementLoop -> print_statement','statementLoop',1,'p_statementloop','TamazightLexerParser.py',234),
+  ('statementLoop -> scanf_statement','statementLoop',1,'p_statementloop','TamazightLexerParser.py',235),
+  ('statementLoop -> if_statement','statementLoop',1,'p_statementloop','TamazightLexerParser.py',236),
+  ('statementLoop -> empty','statementLoop',1,'p_statementloop','TamazightLexerParser.py',237),
+  ('if_statement -> ma ( condition ) { con_statements }','if_statement',7,'p_ifStatement','TamazightLexerParser.py',243),
+  ('con_statements -> con_statement con_statement con_statement','con_statements',3,'p_conStatements','TamazightLexerParser.py',252),
+  ('con_statements -> empty','con_statements',1,'p_conStatements','TamazightLexerParser.py',253),
+  ('con_statement -> var_assign','con_statement',1,'p_conStatement','TamazightLexerParser.py',260),
+  ('con_statement -> print_statement','con_statement',1,'p_conStatement','TamazightLexerParser.py',261),
+  ('con_statement -> scanf_statement','con_statement',1,'p_conStatement','TamazightLexerParser.py',262),
+  ('con_statement -> if_statement','con_statement',1,'p_conStatement','TamazightLexerParser.py',263),
+  ('con_statement -> empty','con_statement',1,'p_conStatement','TamazightLexerParser.py',264),
+  ('condition -> expression comparaison expression','condition',3,'p_condition','TamazightLexerParser.py',271),
+  ('comparaison -> GT','comparaison',1,'p_comparaison','TamazightLexerParser.py',278),
+  ('comparaison -> LT','comparaison',1,'p_comparaison','TamazightLexerParser.py',279),
+  ('comparaison -> GE','comparaison',1,'p_comparaison','TamazightLexerParser.py',280),
+  ('comparaison -> LE','comparaison',1,'p_comparaison','TamazightLexerParser.py',281),
+  ('comparaison -> EE','comparaison',1,'p_comparaison','TamazightLexerParser.py',282),
+  ('comparaison -> NE','comparaison',1,'p_comparaison','TamazightLexerParser.py',283),
+  ('expression -> expression MULTIPLY expression','expression',3,'p_expression','TamazightLexerParser.py',290),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression','TamazightLexerParser.py',291),
+  ('expression -> expression MINUS expression','expression',3,'p_expression','TamazightLexerParser.py',292),
+  ('expression -> expression PLUS expression','expression',3,'p_expression','TamazightLexerParser.py',293),
+  ('expression -> INT','expression',1,'p_expression_int_float','TamazightLexerParser.py',300),
+  ('expression -> FLOAT','expression',1,'p_expression_int_float','TamazightLexerParser.py',301),
+  ('expression -> STRING','expression',1,'p_expression_string','TamazightLexerParser.py',308),
+  ('expression -> NAME','expression',1,'p_expression_var','TamazightLexerParser.py',315),
+  ('empty -> <empty>','empty',0,'p_empty','TamazightLexerParser.py',322),
 ]

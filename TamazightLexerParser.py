@@ -3,7 +3,7 @@ import ply.lex as lex
 import ply.yacc as yacc
 import sys
 
-#Personnaliser l'ecriture des messages d'erreurs et de succés#
+# Personnaliser l'ecriture des messages d'erreurs et de succés#
 
 BLUE = '\33[34m'
 RED = '\033[91m'
@@ -23,26 +23,27 @@ reserved = {
     'efk': 'efk',
     'sehviver': 'sehviver',
     'uslig': 'uslig',
-    'ma': 'ma'
+    'ma': 'ma',
+    'tamenguct': 'tamenguct'
 }
 
 tokens = [
-    'INT',
-    'FLOAT',
-    'NAME',
-    'PLUS',
-    'MINUS',
-    'DIVIDE',
-    'MULTIPLY',
-    'EQUALS',
-    'STRING',
-    'GT',
-    'LT',
-    'GE',
-    'LE',
-    'EE',
-    'NE'
-] + list(reserved.values())
+             'INT',
+             'FLOAT',
+             'NAME',
+             'PLUS',
+             'MINUS',
+             'DIVIDE',
+             'MULTIPLY',
+             'EQUALS',
+             'STRING',
+             'GT',
+             'LT',
+             'GE',
+             'LE',
+             'EE',
+             'NE'
+         ] + list(reserved.values())
 
 literals = [',', ';', '(', ')', '{', '}']
 
@@ -58,6 +59,7 @@ t_ilem = r'ilem'
 t_agejdan = r'agejdan'
 t_uslig = r'uslig'
 t_sehviver = r'sehviver'
+t_tamenguct = r'tamenguct'
 t_aru = r'aru'
 t_efk = r'efk'
 t_ma = r'ma'
@@ -123,7 +125,6 @@ precedence = (
 )
 
 
-
 def p_code(p):
     '''
     code : encaps taggayt NAME '{' inner_code '}'
@@ -142,8 +143,8 @@ def p_Encaps(p):
 def p_inCode(p):
     '''
     inner_code :  attribut_statement functions_statement
-             | attribut_statement
-             | functions_statement
+            | attribut_statement
+            | functions_statement
     '''
 
 
@@ -151,7 +152,6 @@ def p_attr_statement(p):
     '''
     attribut_statement : encaps NAME
     '''
-
 
 
 def p_function(p):
@@ -176,7 +176,7 @@ def p_main(p):
 
 def p_statements(p):
     '''
-    statements : statements statement
+    statements : statement statements
                 | empty
     '''
 
@@ -187,9 +187,10 @@ def p_statement(p):
                 | print_statement
                 | scanf_statement
                 | if_statement
+                | loop_control
                 | empty
     '''
-    print(run(p[1]))
+    run(p[1])
 
 
 def p_varAssign(p):
@@ -213,6 +214,29 @@ def p_scanfStat(p):
     p[0] = ('efk_statement', p[3])
 
 
+def p_loopControl(p):
+    '''
+        loop_control : tamenguct '(' INT ')' '{' statementsLoop '}'
+    '''
+    p[0] = ('loopStat', p[3],p[6])
+
+def p_statementsLoop(p):
+    '''
+        statementsLoop : statementLoop statementLoop
+                        | empty
+    '''
+
+    p[0] =(p[1], p[2])
+
+def p_statementloop(p):
+    '''
+     statementLoop : var_assign
+                        | print_statement
+                        | scanf_statement
+                        | if_statement
+                        | empty
+    '''
+    p[0] = p[1]
 
 def p_ifStatement(p):
     '''
@@ -225,10 +249,11 @@ def p_ifStatement(p):
 
 def p_conStatements(p):
     '''
-    con_statements : con_statement con_statements
+    con_statements : con_statement con_statement con_statement
                     | empty
     '''
-    p[0] = p[1]
+    p[0] = (p[1], p[2], p[3])
+
 
 def p_conStatement(p):
     '''
@@ -239,12 +264,13 @@ def p_conStatement(p):
                         | empty
     '''
     p[0] = p[1]
+
+
 def p_condition(p):
     '''
         condition : expression comparaison expression
     '''
     p[0] = (p[2], p[1], p[3])
-
 
 
 def p_comparaison(p):
@@ -257,6 +283,7 @@ def p_comparaison(p):
                     | NE
     '''
     p[0] = p[1]
+
 
 def p_expression(p):
     '''
@@ -315,20 +342,21 @@ def run(p):
         elif p[0] == '/':
             return run(p[1]) / run(p[2])
         elif p[0] == '=':
-            if (type(p[2]) == tuple and p[2][0] == 'string'):
+            if type(p[2]) == tuple and p[2][0] == 'string':
                 env[p[1]] = p[2][1]
             else:
                 env[p[1]] = run(p[2])
             print(env)
         elif p[0] == 'var':
-            if(p[1] not in env):
+            if p[1] not in env:
                 return 'Undeclared variable found!'
             else:
-                print("contenu")
                 return env[p[1]]
         elif p[0] == 'aru_statement':
-            if(p[1] in env):
+            if p[1] in env:
                 print(env[p[1]])
+            elif p[1][1] in env:
+                print(env[p[1][1]])
             else:
                 return run(p[1])
         elif p[0] == 'efk_statement':
@@ -342,19 +370,105 @@ def run(p):
             elif isfloat(s):
                 env[p[1]] = float(s)
                 print("it s float")
+        elif p[0] == 'loopStat':
+            print("hahuwa")
+            print(p)
+            a = p[1]
+            print(p[2])
+            for i in range(a):
+                run(p[2][0])
+                run(p[2][1])
+
         elif p[0] == 'if_statement':
+            print(p[2])
             if p[1][0] == "==":
                 if isinstance(p[1][2], int) and p[1][1][0] == 'var':
-                   if compare(env[p[1][1][1]], p[1][2]):
-                       print("dkhelt")
-                       run(p[2])
-
+                    if compare(env[p[1][1][1]], p[1][2]):
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
                 elif isinstance(p[1][2], float) and p[1][1][0] == 'var':
-                    print(env[p[1][1][1]])
-                    print(p[1][2])
+                    if compare(env[p[1][1][1]], p[1][2]):
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
                 elif p[1][1][0] == 'var' and p[1][2][0] == 'var':
-                    print(env[p[1][1][1]])
-                    print(env[p[1][2][1]])
+                    if compare(env[p[1][1][1]], env[p[1][2][0]]):
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                else:
+                    print("condition error")
+            elif p[1][0] == ">=":
+                if isinstance(p[1][2], int) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] >= p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif isinstance(p[1][2], float) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] >= p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif p[1][1][0] == 'var' and p[1][2][0] == 'var':
+                    if env[p[1][1][1]] >= env[p[1][2][0]]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                else:
+                    print("condition error")
+            elif p[1][0] == "<=":
+                if isinstance(p[1][2], int) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] <= p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif isinstance(p[1][2], float) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] <= p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif p[1][1][0] == 'var' and p[1][2][0] == 'var':
+                    if env[p[1][1][1]] <= env[p[1][2][0]]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                else:
+                    print("condition error")
+            elif p[1][0] == ">":
+                if isinstance(p[1][2], int) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] > p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif isinstance(p[1][2], float) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] > p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif p[1][1][0] == 'var' and p[1][2][0] == 'var':
+                    if env[p[1][1][1]] > env[p[1][2][0]]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                else:
+                    print("condition error")
+            elif p[1][0] == "<":
+                if isinstance(p[1][2], int) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] < p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif isinstance(p[1][2], float) and p[1][1][0] == 'var':
+                    if env[p[1][1][1]] < p[1][2]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif p[1][1][0] == 'var' and p[1][2][0] == 'var':
+                    if env[p[1][1][1]] < env[p[1][2][0]]:
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                else:
+                    print("condition error")
+            elif p[1][0] == "!=":
+                if isinstance(p[1][2], int) and p[1][1][0] == 'var':
+                    if not compare(env[p[1][1][1]], p[1][2]):
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif isinstance(p[1][2], float) and p[1][1][0] == 'var':
+                    if not compare(env[p[1][1][1]], p[1][2]):
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
+                elif p[1][1][0] == 'var' and p[1][2][0] == 'var':
+                    if not compare(env[p[1][1][1]], env[p[1][2][0]]):
+                        for i in [0, 1, 2]:
+                            run(p[2][i])
                 else:
                     print("condition error")
             else:
@@ -372,14 +486,14 @@ def compare(a, b):
 parser = yacc.yacc()
 
 data = '''
-     azayez taggayt $className {
+    azayez taggayt $className {
         uslig urkid ilem agejdan(){
-            $a=8;
-            ma( $a == 8 ){
-                 $a =10;
-            }  
+            $a=4;
+            tamenguct(5){
+                aru($a);
+                $b = 6;
+            }
         }
-        
     }
 '''
 
