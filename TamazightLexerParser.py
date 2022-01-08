@@ -29,22 +29,22 @@ reserved = {
 }
 
 tokens = [
-             'INT',
-             'FLOAT',
-             'NAME',
-             'PLUS',
-             'MINUS',
-             'DIVIDE',
-             'MULTIPLY',
-             'EQUALS',
-             'STRING',
-             'GT',
-             'LT',
-             'GE',
-             'LE',
-             'EE',
-             'NE'
-         ] + list(reserved.values())
+            'INT',
+            'FLOAT',
+            'NAME',
+            'PLUS',
+            'MINUS',
+            'DIVIDE',
+            'MULTIPLY',
+            'EQUALS',
+            'STRING',
+            'GT',
+            'LT',
+            'GE',
+            'LE',
+            'EE',
+            'NE'
+        ] + list(reserved.values())
 
 literals = [',', ';', '(', ')', '{', '}']
 
@@ -72,14 +72,9 @@ t_LE = r'\<\='
 t_EE = r'\=\='
 t_NE = r'\!\='
 
-t_ignore = r' '
-
-
 def t_STRING(t):
     r'"[^("|\n)]*"'
     return t
-
-
 
 def t_FLOAT(t):
     r'\d+\.\d*'
@@ -98,12 +93,12 @@ def t_NAME(t):
     t.type = "NAME"
     return t
 
+t_ignore = r' '
 
 def t_error(t):
     print(
         f"{RED}  {BOLD}  ERROR MESSAGE TAMAZIGHT {END}:  {BLUE} '{t.value[0]}' {END}")
     t.lexer.skip(1)
-
 
 def t_newline(t):
     r'\n+'
@@ -121,7 +116,17 @@ lexer = lex.lex()
 
 ### < P A R S E R >###
 
+##########Pour personaliser les messages d'erreur du parser ###########
+CBLUE = '\33[34m'
+CRED = '\033[91m'
+CEND = '\033[0m'
+BOLD = '\033[1m'
+UNDERLINE = '\033[4m'
+#########################################################################
+
+
 envFunct = {}
+
 precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'MULTIPLY', 'DIVIDE')
@@ -130,7 +135,8 @@ precedence = (
 
 def p_code(p):
     '''
-    code : encaps taggayt NAME '{' inner_code '}'
+    code : encaps taggayt NAME '{' inner_code '}' code 
+        | empty
     '''
 
 
@@ -153,7 +159,7 @@ def p_inCode(p):
 
 def p_attr_statement(p):
     '''
-    attribut_statement : encaps NAME
+    attribut_statement : encaps NAME ';'
     '''
 
 
@@ -205,7 +211,6 @@ def p_statements(p):
     statements : statement statements
                 | empty
     '''
-
 
 def p_statement(p):
     '''
@@ -361,8 +366,15 @@ def p_empty(p):
     p[0] = None
 
 
+# def p_error(p):
+#     print("Syntax error found !")
 def p_error(p):
-    print("Syntax error found !")
+    if p == None:
+        token = "end of file"
+    else:
+        token = f"({p.value}) "
+
+    print(f" {CRED}  {BOLD}  Erreur {CEND}: after or before  {CBLUE} {token} {CEND}")
 
 
 env = {}
@@ -523,22 +535,9 @@ def compare(a, b):
 
 parser = yacc.yacc()
 
-# data = '''
-#     azayez taggayt $className {
-#          uslig $fun(){
-#                 $a = 9;
-#                 aru($a);
-#             }
-#          uslig urkid ilem agejdan (){
-#             $a = 5;
-#             tasekkirt $fun;
-#          }
-#
-#
-#
-#     }
-# '''
-
+data = '''
+'''
+# parser.parse(data)
 
 def isfloat(num):
     try:
@@ -548,13 +547,13 @@ def isfloat(num):
         return False
 
 
+
+
+# path = "C:/Users/LENOVO/Desktop/CompilateurAmazigh/T++.txt"
+
+# file = open(path, 'r')
+# data = file.read()
 # parser.parse(data)
-
-path = "C:/Users/LENOVO/Desktop/CompilateurAmazigh/T++.txt"
-
-file = open(path, 'r')
-data = file.read()
-parser.parse(data)
 # for tok in parser:
 #    parse(tok)
 

@@ -1,4 +1,4 @@
-@ClassName
+@Class
 azayez taggayt $Tpp {
         
         @DeclareAProcedure
@@ -31,4 +31,8 @@ azayez taggayt $Tpp {
 
         }
 
+}
+uslig taggayt $anotherClass {
+    sehviver $x
+    sehviver $y
 }

@@ -3,158 +3,161 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 Grammar
 
 Rule 0     S' -> code
-Rule 1     code -> encaps taggayt NAME { inner_code }
-Rule 2     encaps -> azayez
-Rule 3     encaps -> uslig
-Rule 4     encaps -> sehviver
-Rule 5     encaps -> empty
-Rule 6     inner_code -> attribut_statement functions_statement
-Rule 7     inner_code -> attribut_statement
-Rule 8     inner_code -> functions_statement
-Rule 9     attribut_statement -> encaps NAME
-Rule 10    functions_statement -> method functions_statement
-Rule 11    functions_statement -> main functions_statement
-Rule 12    functions_statement -> empty
-Rule 13    method -> encaps NAME ( ) { fStates }
-Rule 14    fStates -> fState fState
-Rule 15    fStates -> empty
-Rule 16    fState -> var_assign
-Rule 17    fState -> print_statement
-Rule 18    fState -> scanf_statement
-Rule 19    fState -> if_statement
-Rule 20    fState -> loop_control
-Rule 21    fState -> empty
-Rule 22    main -> encaps urkid ilem agejdan ( ) { statements }
-Rule 23    statements -> statement statements
-Rule 24    statements -> empty
-Rule 25    statement -> var_assign
-Rule 26    statement -> print_statement
-Rule 27    statement -> call_function
-Rule 28    statement -> scanf_statement
-Rule 29    statement -> if_statement
-Rule 30    statement -> loop_control
-Rule 31    statement -> empty
-Rule 32    var_assign -> NAME EQUALS expression ;
-Rule 33    call_function -> tasekkirt NAME ;
-Rule 34    print_statement -> aru ( expression ) ;
-Rule 35    scanf_statement -> efk ( NAME ) ;
-Rule 36    loop_control -> tamenguct ( INT ) { statementsLoop }
-Rule 37    statementsLoop -> statementLoop statementLoop
-Rule 38    statementsLoop -> empty
-Rule 39    statementLoop -> var_assign
-Rule 40    statementLoop -> print_statement
-Rule 41    statementLoop -> scanf_statement
-Rule 42    statementLoop -> if_statement
-Rule 43    statementLoop -> empty
-Rule 44    if_statement -> ma ( condition ) { con_statements }
-Rule 45    con_statements -> con_statement con_statement con_statement
-Rule 46    con_statements -> empty
-Rule 47    con_statement -> var_assign
-Rule 48    con_statement -> print_statement
-Rule 49    con_statement -> scanf_statement
-Rule 50    con_statement -> if_statement
-Rule 51    con_statement -> empty
-Rule 52    condition -> expression comparaison expression
-Rule 53    comparaison -> GT
-Rule 54    comparaison -> LT
-Rule 55    comparaison -> GE
-Rule 56    comparaison -> LE
-Rule 57    comparaison -> EE
-Rule 58    comparaison -> NE
-Rule 59    expression -> expression MULTIPLY expression
-Rule 60    expression -> expression DIVIDE expression
-Rule 61    expression -> expression MINUS expression
-Rule 62    expression -> expression PLUS expression
-Rule 63    expression -> INT
-Rule 64    expression -> FLOAT
-Rule 65    expression -> STRING
-Rule 66    expression -> NAME
-Rule 67    empty -> <empty>
+Rule 1     code -> encaps taggayt NAME { inner_code } code
+Rule 2     code -> empty
+Rule 3     encaps -> azayez
+Rule 4     encaps -> uslig
+Rule 5     encaps -> sehviver
+Rule 6     encaps -> empty
+Rule 7     inner_code -> attribut_statement functions_statement
+Rule 8     inner_code -> attribut_statement
+Rule 9     inner_code -> functions_statement
+Rule 10    attribut_statement -> encaps NAME ;
+Rule 11    functions_statement -> method functions_statement
+Rule 12    functions_statement -> main functions_statement
+Rule 13    functions_statement -> empty
+Rule 14    method -> encaps NAME ( ) { fStates }
+Rule 15    fStates -> fState fState
+Rule 16    fStates -> empty
+Rule 17    fState -> var_assign
+Rule 18    fState -> print_statement
+Rule 19    fState -> scanf_statement
+Rule 20    fState -> if_statement
+Rule 21    fState -> loop_control
+Rule 22    fState -> empty
+Rule 23    main -> encaps urkid ilem agejdan ( ) { statements }
+Rule 24    statements -> statement statements
+Rule 25    statements -> empty
+Rule 26    statement -> var_assign
+Rule 27    statement -> print_statement
+Rule 28    statement -> call_function
+Rule 29    statement -> scanf_statement
+Rule 30    statement -> if_statement
+Rule 31    statement -> loop_control
+Rule 32    statement -> empty
+Rule 33    var_assign -> NAME EQUALS expression ;
+Rule 34    call_function -> tasekkirt NAME ;
+Rule 35    print_statement -> aru ( expression ) ;
+Rule 36    scanf_statement -> efk ( NAME ) ;
+Rule 37    loop_control -> tamenguct ( INT ) { statementsLoop }
+Rule 38    statementsLoop -> statementLoop statementLoop
+Rule 39    statementsLoop -> empty
+Rule 40    statementLoop -> var_assign
+Rule 41    statementLoop -> print_statement
+Rule 42    statementLoop -> scanf_statement
+Rule 43    statementLoop -> if_statement
+Rule 44    statementLoop -> empty
+Rule 45    if_statement -> ma ( condition ) { con_statements }
+Rule 46    con_statements -> con_statement con_statement con_statement
+Rule 47    con_statements -> empty
+Rule 48    con_statement -> var_assign
+Rule 49    con_statement -> print_statement
+Rule 50    con_statement -> scanf_statement
+Rule 51    con_statement -> if_statement
+Rule 52    con_statement -> empty
+Rule 53    condition -> expression comparaison expression
+Rule 54    comparaison -> GT
+Rule 55    comparaison -> LT
+Rule 56    comparaison -> GE
+Rule 57    comparaison -> LE
+Rule 58    comparaison -> EE
+Rule 59    comparaison -> NE
+Rule 60    expression -> expression MULTIPLY expression
+Rule 61    expression -> expression DIVIDE expression
+Rule 62    expression -> expression MINUS expression
+Rule 63    expression -> expression PLUS expression
+Rule 64    expression -> INT
+Rule 65    expression -> FLOAT
+Rule 66    expression -> STRING
+Rule 67    expression -> NAME
+Rule 68    empty -> <empty>
 
 Terminals, with rules where they appear
 
-(                    : 13 22 34 35 36 44
-)                    : 13 22 34 35 36 44
-;                    : 32 33 34 35
-DIVIDE               : 60
-EE                   : 57
-EQUALS               : 32
-FLOAT                : 64
-GE                   : 55
-GT                   : 53
-INT                  : 36 63
-LE                   : 56
-LT                   : 54
-MINUS                : 61
-MULTIPLY             : 59
-NAME                 : 1 9 13 32 33 35 66
-NE                   : 58
-PLUS                 : 62
-STRING               : 65
-agejdan              : 22
-aru                  : 34
-azayez               : 2
-efk                  : 35
+(                    : 14 23 35 36 37 45
+)                    : 14 23 35 36 37 45
+;                    : 10 33 34 35 36
+DIVIDE               : 61
+EE                   : 58
+EQUALS               : 33
+FLOAT                : 65
+GE                   : 56
+GT                   : 54
+INT                  : 37 64
+LE                   : 57
+LT                   : 55
+MINUS                : 62
+MULTIPLY             : 60
+NAME                 : 1 10 14 33 34 36 67
+NE                   : 59
+PLUS                 : 63
+STRING               : 66
+agejdan              : 23
+aru                  : 35
+azayez               : 3
+efk                  : 36
 error                : 
-ilem                 : 22
-ma                   : 44
-sehviver             : 4
+ilem                 : 23
+ma                   : 45
+sehviver             : 5
 taggayt              : 1
-tamenguct            : 36
-tasekkirt            : 33
-urkid                : 22
-uslig                : 3
-{                    : 1 13 22 36 44
-}                    : 1 13 22 36 44
+tamenguct            : 37
+tasekkirt            : 34
+urkid                : 23
+uslig                : 4
+{                    : 1 14 23 37 45
+}                    : 1 14 23 37 45
 
 Nonterminals, with rules where they appear
 
-attribut_statement   : 6 7
-call_function        : 27
-code                 : 0
-comparaison          : 52
-con_statement        : 45 45 45
-con_statements       : 44
-condition            : 44
-empty                : 5 12 15 21 24 31 38 43 46 51
-encaps               : 1 9 13 22
-expression           : 32 34 52 52 59 59 60 60 61 61 62 62
-fState               : 14 14
-fStates              : 13
-functions_statement  : 6 8 10 11
-if_statement         : 19 29 42 50
+attribut_statement   : 7 8
+call_function        : 28
+code                 : 1 0
+comparaison          : 53
+con_statement        : 46 46 46
+con_statements       : 45
+condition            : 45
+empty                : 2 6 13 16 22 25 32 39 44 47 52
+encaps               : 1 10 14 23
+expression           : 33 35 53 53 60 60 61 61 62 62 63 63
+fState               : 15 15
+fStates              : 14
+functions_statement  : 7 9 11 12
+if_statement         : 20 30 43 51
 inner_code           : 1
-loop_control         : 20 30
-main                 : 11
-method               : 10
-print_statement      : 17 26 40 48
-scanf_statement      : 18 28 41 49
-statement            : 23
-statementLoop        : 37 37
-statements           : 22 23
-statementsLoop       : 36
-var_assign           : 16 25 39 47
+loop_control         : 21 31
+main                 : 12
+method               : 11
+print_statement      : 18 27 41 49
+scanf_statement      : 19 29 42 50
+statement            : 24
+statementLoop        : 38 38
+statements           : 23 24
+statementsLoop       : 37
+var_assign           : 17 26 40 48
 
 Parsing method: LALR
 
 state 0
 
     (0) S' -> . code
-    (1) code -> . encaps taggayt NAME { inner_code }
-    (2) encaps -> . azayez
-    (3) encaps -> . uslig
-    (4) encaps -> . sehviver
-    (5) encaps -> . empty
-    (67) empty -> .
+    (1) code -> . encaps taggayt NAME { inner_code } code
+    (2) code -> . empty
+    (3) encaps -> . azayez
+    (4) encaps -> . uslig
+    (5) encaps -> . sehviver
+    (6) encaps -> . empty
+    (68) empty -> .
 
-    azayez          shift and go to state 3
-    uslig           shift and go to state 4
-    sehviver        shift and go to state 5
-    taggayt         reduce using rule 67 (empty -> .)
+    azayez          shift and go to state 4
+    uslig           shift and go to state 5
+    sehviver        shift and go to state 6
+    $end            reduce using rule 68 (empty -> .)
+    taggayt         reduce using rule 68 (empty -> .)
 
     code                           shift and go to state 1
     encaps                         shift and go to state 2
-    empty                          shift and go to state 6
+    empty                          shift and go to state 3
 
 state 1
 
@@ -164,83 +167,85 @@ state 1
 
 state 2
 
-    (1) code -> encaps . taggayt NAME { inner_code }
+    (1) code -> encaps . taggayt NAME { inner_code } code
 
     taggayt         shift and go to state 7
 
 
 state 3
 
-    (2) encaps -> azayez .
+    (2) code -> empty .
+    (6) encaps -> empty .
 
-    taggayt         reduce using rule 2 (encaps -> azayez .)
-    NAME            reduce using rule 2 (encaps -> azayez .)
-    urkid           reduce using rule 2 (encaps -> azayez .)
+    $end            reduce using rule 2 (code -> empty .)
+    taggayt         reduce using rule 6 (encaps -> empty .)
 
 
 state 4
 
-    (3) encaps -> uslig .
+    (3) encaps -> azayez .
 
-    taggayt         reduce using rule 3 (encaps -> uslig .)
-    NAME            reduce using rule 3 (encaps -> uslig .)
-    urkid           reduce using rule 3 (encaps -> uslig .)
+    taggayt         reduce using rule 3 (encaps -> azayez .)
+    NAME            reduce using rule 3 (encaps -> azayez .)
+    urkid           reduce using rule 3 (encaps -> azayez .)
 
 
 state 5
 
-    (4) encaps -> sehviver .
+    (4) encaps -> uslig .
 
-    taggayt         reduce using rule 4 (encaps -> sehviver .)
-    NAME            reduce using rule 4 (encaps -> sehviver .)
-    urkid           reduce using rule 4 (encaps -> sehviver .)
+    taggayt         reduce using rule 4 (encaps -> uslig .)
+    NAME            reduce using rule 4 (encaps -> uslig .)
+    urkid           reduce using rule 4 (encaps -> uslig .)
 
 
 state 6
 
-    (5) encaps -> empty .
+    (5) encaps -> sehviver .
 
-    taggayt         reduce using rule 5 (encaps -> empty .)
+    taggayt         reduce using rule 5 (encaps -> sehviver .)
+    NAME            reduce using rule 5 (encaps -> sehviver .)
+    urkid           reduce using rule 5 (encaps -> sehviver .)
 
 
 state 7
 
-    (1) code -> encaps taggayt . NAME { inner_code }
+    (1) code -> encaps taggayt . NAME { inner_code } code
 
     NAME            shift and go to state 8
 
 
 state 8
 
-    (1) code -> encaps taggayt NAME . { inner_code }
+    (1) code -> encaps taggayt NAME . { inner_code } code
 
     {               shift and go to state 9
 
 
 state 9
 
-    (1) code -> encaps taggayt NAME { . inner_code }
-    (6) inner_code -> . attribut_statement functions_statement
-    (7) inner_code -> . attribut_statement
-    (8) inner_code -> . functions_statement
-    (9) attribut_statement -> . encaps NAME
-    (10) functions_statement -> . method functions_statement
-    (11) functions_statement -> . main functions_statement
-    (12) functions_statement -> . empty
-    (2) encaps -> . azayez
-    (3) encaps -> . uslig
-    (4) encaps -> . sehviver
-    (5) encaps -> . empty
-    (13) method -> . encaps NAME ( ) { fStates }
-    (22) main -> . encaps urkid ilem agejdan ( ) { statements }
-    (67) empty -> .
+    (1) code -> encaps taggayt NAME { . inner_code } code
+    (7) inner_code -> . attribut_statement functions_statement
+    (8) inner_code -> . attribut_statement
+    (9) inner_code -> . functions_statement
+    (10) attribut_statement -> . encaps NAME ;
+    (11) functions_statement -> . method functions_statement
+    (12) functions_statement -> . main functions_statement
+    (13) functions_statement -> . empty
+    (3) encaps -> . azayez
+    (4) encaps -> . uslig
+    (5) encaps -> . sehviver
+    (6) encaps -> . empty
+    (14) method -> . encaps NAME ( ) { fStates }
+    (23) main -> . encaps urkid ilem agejdan ( ) { statements }
+    (68) empty -> .
 
-    azayez          shift and go to state 3
-    uslig           shift and go to state 4
-    sehviver        shift and go to state 5
-    }               reduce using rule 67 (empty -> .)
-    NAME            reduce using rule 67 (empty -> .)
-    urkid           reduce using rule 67 (empty -> .)
+    azayez          shift and go to state 4
+    uslig           shift and go to state 5
+    sehviver        shift and go to state 6
+    }               reduce using rule 68 (empty -> .)
+    NAME            reduce using rule 68 (empty -> .)
+    urkid           reduce using rule 68 (empty -> .)
 
     encaps                         shift and go to state 10
     inner_code                     shift and go to state 11
@@ -252,9 +257,9 @@ state 9
 
 state 10
 
-    (9) attribut_statement -> encaps . NAME
-    (13) method -> encaps . NAME ( ) { fStates }
-    (22) main -> encaps . urkid ilem agejdan ( ) { statements }
+    (10) attribut_statement -> encaps . NAME ;
+    (14) method -> encaps . NAME ( ) { fStates }
+    (23) main -> encaps . urkid ilem agejdan ( ) { statements }
 
     NAME            shift and go to state 17
     urkid           shift and go to state 18
@@ -262,35 +267,35 @@ state 10
 
 state 11
 
-    (1) code -> encaps taggayt NAME { inner_code . }
+    (1) code -> encaps taggayt NAME { inner_code . } code
 
     }               shift and go to state 19
 
 
 state 12
 
-    (6) inner_code -> attribut_statement . functions_statement
-    (7) inner_code -> attribut_statement .
-    (10) functions_statement -> . method functions_statement
-    (11) functions_statement -> . main functions_statement
-    (12) functions_statement -> . empty
-    (13) method -> . encaps NAME ( ) { fStates }
-    (22) main -> . encaps urkid ilem agejdan ( ) { statements }
-    (67) empty -> .
-    (2) encaps -> . azayez
-    (3) encaps -> . uslig
-    (4) encaps -> . sehviver
-    (5) encaps -> . empty
+    (7) inner_code -> attribut_statement . functions_statement
+    (8) inner_code -> attribut_statement .
+    (11) functions_statement -> . method functions_statement
+    (12) functions_statement -> . main functions_statement
+    (13) functions_statement -> . empty
+    (14) method -> . encaps NAME ( ) { fStates }
+    (23) main -> . encaps urkid ilem agejdan ( ) { statements }
+    (68) empty -> .
+    (3) encaps -> . azayez
+    (4) encaps -> . uslig
+    (5) encaps -> . sehviver
+    (6) encaps -> . empty
 
-  ! reduce/reduce conflict for } resolved using rule 7 (inner_code -> attribut_statement .)
-    }               reduce using rule 7 (inner_code -> attribut_statement .)
-    NAME            reduce using rule 67 (empty -> .)
-    urkid           reduce using rule 67 (empty -> .)
-    azayez          shift and go to state 3
-    uslig           shift and go to state 4
-    sehviver        shift and go to state 5
+  ! reduce/reduce conflict for } resolved using rule 8 (inner_code -> attribut_statement .)
+    }               reduce using rule 8 (inner_code -> attribut_statement .)
+    NAME            reduce using rule 68 (empty -> .)
+    urkid           reduce using rule 68 (empty -> .)
+    azayez          shift and go to state 4
+    uslig           shift and go to state 5
+    sehviver        shift and go to state 6
 
-  ! }               [ reduce using rule 67 (empty -> .) ]
+  ! }               [ reduce using rule 68 (empty -> .) ]
 
     functions_statement            shift and go to state 20
     method                         shift and go to state 14
@@ -300,31 +305,31 @@ state 12
 
 state 13
 
-    (8) inner_code -> functions_statement .
+    (9) inner_code -> functions_statement .
 
-    }               reduce using rule 8 (inner_code -> functions_statement .)
+    }               reduce using rule 9 (inner_code -> functions_statement .)
 
 
 state 14
 
-    (10) functions_statement -> method . functions_statement
-    (10) functions_statement -> . method functions_statement
-    (11) functions_statement -> . main functions_statement
-    (12) functions_statement -> . empty
-    (13) method -> . encaps NAME ( ) { fStates }
-    (22) main -> . encaps urkid ilem agejdan ( ) { statements }
-    (67) empty -> .
-    (2) encaps -> . azayez
-    (3) encaps -> . uslig
-    (4) encaps -> . sehviver
-    (5) encaps -> . empty
+    (11) functions_statement -> method . functions_statement
+    (11) functions_statement -> . method functions_statement
+    (12) functions_statement -> . main functions_statement
+    (13) functions_statement -> . empty
+    (14) method -> . encaps NAME ( ) { fStates }
+    (23) main -> . encaps urkid ilem agejdan ( ) { statements }
+    (68) empty -> .
+    (3) encaps -> . azayez
+    (4) encaps -> . uslig
+    (5) encaps -> . sehviver
+    (6) encaps -> . empty
 
-    }               reduce using rule 67 (empty -> .)
-    NAME            reduce using rule 67 (empty -> .)
-    urkid           reduce using rule 67 (empty -> .)
-    azayez          shift and go to state 3
-    uslig           shift and go to state 4
-    sehviver        shift and go to state 5
+    }               reduce using rule 68 (empty -> .)
+    NAME            reduce using rule 68 (empty -> .)
+    urkid           reduce using rule 68 (empty -> .)
+    azayez          shift and go to state 4
+    uslig           shift and go to state 5
+    sehviver        shift and go to state 6
 
     method                         shift and go to state 14
     functions_statement            shift and go to state 22
@@ -334,24 +339,24 @@ state 14
 
 state 15
 
-    (11) functions_statement -> main . functions_statement
-    (10) functions_statement -> . method functions_statement
-    (11) functions_statement -> . main functions_statement
-    (12) functions_statement -> . empty
-    (13) method -> . encaps NAME ( ) { fStates }
-    (22) main -> . encaps urkid ilem agejdan ( ) { statements }
-    (67) empty -> .
-    (2) encaps -> . azayez
-    (3) encaps -> . uslig
-    (4) encaps -> . sehviver
-    (5) encaps -> . empty
+    (12) functions_statement -> main . functions_statement
+    (11) functions_statement -> . method functions_statement
+    (12) functions_statement -> . main functions_statement
+    (13) functions_statement -> . empty
+    (14) method -> . encaps NAME ( ) { fStates }
+    (23) main -> . encaps urkid ilem agejdan ( ) { statements }
+    (68) empty -> .
+    (3) encaps -> . azayez
+    (4) encaps -> . uslig
+    (5) encaps -> . sehviver
+    (6) encaps -> . empty
 
-    }               reduce using rule 67 (empty -> .)
-    NAME            reduce using rule 67 (empty -> .)
-    urkid           reduce using rule 67 (empty -> .)
-    azayez          shift and go to state 3
-    uslig           shift and go to state 4
-    sehviver        shift and go to state 5
+    }               reduce using rule 68 (empty -> .)
+    NAME            reduce using rule 68 (empty -> .)
+    urkid           reduce using rule 68 (empty -> .)
+    azayez          shift and go to state 4
+    uslig           shift and go to state 5
+    sehviver        shift and go to state 6
 
     main                           shift and go to state 15
     functions_statement            shift and go to state 23
@@ -361,641 +366,461 @@ state 15
 
 state 16
 
-    (12) functions_statement -> empty .
-    (5) encaps -> empty .
+    (13) functions_statement -> empty .
+    (6) encaps -> empty .
 
-    }               reduce using rule 12 (functions_statement -> empty .)
-    NAME            reduce using rule 5 (encaps -> empty .)
-    urkid           reduce using rule 5 (encaps -> empty .)
+    }               reduce using rule 13 (functions_statement -> empty .)
+    NAME            reduce using rule 6 (encaps -> empty .)
+    urkid           reduce using rule 6 (encaps -> empty .)
 
 
 state 17
 
-    (9) attribut_statement -> encaps NAME .
-    (13) method -> encaps NAME . ( ) { fStates }
+    (10) attribut_statement -> encaps NAME . ;
+    (14) method -> encaps NAME . ( ) { fStates }
 
-    azayez          reduce using rule 9 (attribut_statement -> encaps NAME .)
-    uslig           reduce using rule 9 (attribut_statement -> encaps NAME .)
-    sehviver        reduce using rule 9 (attribut_statement -> encaps NAME .)
-    NAME            reduce using rule 9 (attribut_statement -> encaps NAME .)
-    urkid           reduce using rule 9 (attribut_statement -> encaps NAME .)
-    }               reduce using rule 9 (attribut_statement -> encaps NAME .)
-    (               shift and go to state 24
+    ;               shift and go to state 24
+    (               shift and go to state 25
 
 
 state 18
 
-    (22) main -> encaps urkid . ilem agejdan ( ) { statements }
+    (23) main -> encaps urkid . ilem agejdan ( ) { statements }
 
-    ilem            shift and go to state 25
+    ilem            shift and go to state 26
 
 
 state 19
 
-    (1) code -> encaps taggayt NAME { inner_code } .
+    (1) code -> encaps taggayt NAME { inner_code } . code
+    (1) code -> . encaps taggayt NAME { inner_code } code
+    (2) code -> . empty
+    (3) encaps -> . azayez
+    (4) encaps -> . uslig
+    (5) encaps -> . sehviver
+    (6) encaps -> . empty
+    (68) empty -> .
 
-    $end            reduce using rule 1 (code -> encaps taggayt NAME { inner_code } .)
+    azayez          shift and go to state 4
+    uslig           shift and go to state 5
+    sehviver        shift and go to state 6
+    $end            reduce using rule 68 (empty -> .)
+    taggayt         reduce using rule 68 (empty -> .)
 
+    encaps                         shift and go to state 2
+    code                           shift and go to state 27
+    empty                          shift and go to state 3
 
 state 20
 
-    (6) inner_code -> attribut_statement functions_statement .
+    (7) inner_code -> attribut_statement functions_statement .
 
-    }               reduce using rule 6 (inner_code -> attribut_statement functions_statement .)
+    }               reduce using rule 7 (inner_code -> attribut_statement functions_statement .)
 
 
 state 21
 
-    (13) method -> encaps . NAME ( ) { fStates }
-    (22) main -> encaps . urkid ilem agejdan ( ) { statements }
+    (14) method -> encaps . NAME ( ) { fStates }
+    (23) main -> encaps . urkid ilem agejdan ( ) { statements }
 
-    NAME            shift and go to state 26
+    NAME            shift and go to state 28
     urkid           shift and go to state 18
 
 
 state 22
 
-    (10) functions_statement -> method functions_statement .
+    (11) functions_statement -> method functions_statement .
 
-    }               reduce using rule 10 (functions_statement -> method functions_statement .)
+    }               reduce using rule 11 (functions_statement -> method functions_statement .)
 
 
 state 23
 
-    (11) functions_statement -> main functions_statement .
+    (12) functions_statement -> main functions_statement .
 
-    }               reduce using rule 11 (functions_statement -> main functions_statement .)
+    }               reduce using rule 12 (functions_statement -> main functions_statement .)
 
 
 state 24
 
-    (13) method -> encaps NAME ( . ) { fStates }
+    (10) attribut_statement -> encaps NAME ; .
 
-    )               shift and go to state 27
+    azayez          reduce using rule 10 (attribut_statement -> encaps NAME ; .)
+    uslig           reduce using rule 10 (attribut_statement -> encaps NAME ; .)
+    sehviver        reduce using rule 10 (attribut_statement -> encaps NAME ; .)
+    NAME            reduce using rule 10 (attribut_statement -> encaps NAME ; .)
+    urkid           reduce using rule 10 (attribut_statement -> encaps NAME ; .)
+    }               reduce using rule 10 (attribut_statement -> encaps NAME ; .)
 
 
 state 25
 
-    (22) main -> encaps urkid ilem . agejdan ( ) { statements }
+    (14) method -> encaps NAME ( . ) { fStates }
 
-    agejdan         shift and go to state 28
+    )               shift and go to state 29
 
 
 state 26
 
-    (13) method -> encaps NAME . ( ) { fStates }
+    (23) main -> encaps urkid ilem . agejdan ( ) { statements }
 
-    (               shift and go to state 24
+    agejdan         shift and go to state 30
 
 
 state 27
 
-    (13) method -> encaps NAME ( ) . { fStates }
+    (1) code -> encaps taggayt NAME { inner_code } code .
 
-    {               shift and go to state 29
+    $end            reduce using rule 1 (code -> encaps taggayt NAME { inner_code } code .)
 
 
 state 28
 
-    (22) main -> encaps urkid ilem agejdan . ( ) { statements }
+    (14) method -> encaps NAME . ( ) { fStates }
 
-    (               shift and go to state 30
+    (               shift and go to state 25
 
 
 state 29
 
-    (13) method -> encaps NAME ( ) { . fStates }
-    (14) fStates -> . fState fState
-    (15) fStates -> . empty
-    (16) fState -> . var_assign
-    (17) fState -> . print_statement
-    (18) fState -> . scanf_statement
-    (19) fState -> . if_statement
-    (20) fState -> . loop_control
-    (21) fState -> . empty
-    (67) empty -> .
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (36) loop_control -> . tamenguct ( INT ) { statementsLoop }
+    (14) method -> encaps NAME ( ) . { fStates }
+
+    {               shift and go to state 31
+
+
+state 30
+
+    (23) main -> encaps urkid ilem agejdan . ( ) { statements }
+
+    (               shift and go to state 32
+
+
+state 31
+
+    (14) method -> encaps NAME ( ) { . fStates }
+    (15) fStates -> . fState fState
+    (16) fStates -> . empty
+    (17) fState -> . var_assign
+    (18) fState -> . print_statement
+    (19) fState -> . scanf_statement
+    (20) fState -> . if_statement
+    (21) fState -> . loop_control
+    (22) fState -> . empty
+    (68) empty -> .
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (37) loop_control -> . tamenguct ( INT ) { statementsLoop }
 
   ! shift/reduce conflict for NAME resolved as shift
   ! shift/reduce conflict for aru resolved as shift
   ! shift/reduce conflict for efk resolved as shift
   ! shift/reduce conflict for ma resolved as shift
   ! shift/reduce conflict for tamenguct resolved as shift
-    }               reduce using rule 67 (empty -> .)
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    tamenguct       shift and go to state 43
+    }               reduce using rule 68 (empty -> .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    tamenguct       shift and go to state 45
 
-  ! NAME            [ reduce using rule 67 (empty -> .) ]
-  ! aru             [ reduce using rule 67 (empty -> .) ]
-  ! efk             [ reduce using rule 67 (empty -> .) ]
-  ! ma              [ reduce using rule 67 (empty -> .) ]
-  ! tamenguct       [ reduce using rule 67 (empty -> .) ]
+  ! NAME            [ reduce using rule 68 (empty -> .) ]
+  ! aru             [ reduce using rule 68 (empty -> .) ]
+  ! efk             [ reduce using rule 68 (empty -> .) ]
+  ! ma              [ reduce using rule 68 (empty -> .) ]
+  ! tamenguct       [ reduce using rule 68 (empty -> .) ]
 
-    fStates                        shift and go to state 32
-    fState                         shift and go to state 33
-    empty                          shift and go to state 34
-    var_assign                     shift and go to state 35
-    print_statement                shift and go to state 36
-    scanf_statement                shift and go to state 37
-    if_statement                   shift and go to state 38
-    loop_control                   shift and go to state 39
-
-state 30
-
-    (22) main -> encaps urkid ilem agejdan ( . ) { statements }
-
-    )               shift and go to state 44
-
-
-state 31
-
-    (32) var_assign -> NAME . EQUALS expression ;
-
-    EQUALS          shift and go to state 45
-
+    fStates                        shift and go to state 34
+    fState                         shift and go to state 35
+    empty                          shift and go to state 36
+    var_assign                     shift and go to state 37
+    print_statement                shift and go to state 38
+    scanf_statement                shift and go to state 39
+    if_statement                   shift and go to state 40
+    loop_control                   shift and go to state 41
 
 state 32
 
-    (13) method -> encaps NAME ( ) { fStates . }
+    (23) main -> encaps urkid ilem agejdan ( . ) { statements }
 
-    }               shift and go to state 46
+    )               shift and go to state 46
 
 
 state 33
 
-    (14) fStates -> fState . fState
-    (16) fState -> . var_assign
-    (17) fState -> . print_statement
-    (18) fState -> . scanf_statement
-    (19) fState -> . if_statement
-    (20) fState -> . loop_control
-    (21) fState -> . empty
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (36) loop_control -> . tamenguct ( INT ) { statementsLoop }
-    (67) empty -> .
+    (33) var_assign -> NAME . EQUALS expression ;
 
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    tamenguct       shift and go to state 43
-    }               reduce using rule 67 (empty -> .)
+    EQUALS          shift and go to state 47
 
-    fState                         shift and go to state 47
-    var_assign                     shift and go to state 35
-    print_statement                shift and go to state 36
-    scanf_statement                shift and go to state 37
-    if_statement                   shift and go to state 38
-    loop_control                   shift and go to state 39
-    empty                          shift and go to state 48
 
 state 34
 
-    (15) fStates -> empty .
-    (21) fState -> empty .
+    (14) method -> encaps NAME ( ) { fStates . }
 
-  ! reduce/reduce conflict for } resolved using rule 15 (fStates -> empty .)
-    }               reduce using rule 15 (fStates -> empty .)
-    NAME            reduce using rule 21 (fState -> empty .)
-    aru             reduce using rule 21 (fState -> empty .)
-    efk             reduce using rule 21 (fState -> empty .)
-    ma              reduce using rule 21 (fState -> empty .)
-    tamenguct       reduce using rule 21 (fState -> empty .)
-
-  ! }               [ reduce using rule 21 (fState -> empty .) ]
+    }               shift and go to state 48
 
 
 state 35
 
-    (16) fState -> var_assign .
+    (15) fStates -> fState . fState
+    (17) fState -> . var_assign
+    (18) fState -> . print_statement
+    (19) fState -> . scanf_statement
+    (20) fState -> . if_statement
+    (21) fState -> . loop_control
+    (22) fState -> . empty
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (37) loop_control -> . tamenguct ( INT ) { statementsLoop }
+    (68) empty -> .
 
-    NAME            reduce using rule 16 (fState -> var_assign .)
-    aru             reduce using rule 16 (fState -> var_assign .)
-    efk             reduce using rule 16 (fState -> var_assign .)
-    ma              reduce using rule 16 (fState -> var_assign .)
-    tamenguct       reduce using rule 16 (fState -> var_assign .)
-    }               reduce using rule 16 (fState -> var_assign .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    tamenguct       shift and go to state 45
+    }               reduce using rule 68 (empty -> .)
 
+    fState                         shift and go to state 49
+    var_assign                     shift and go to state 37
+    print_statement                shift and go to state 38
+    scanf_statement                shift and go to state 39
+    if_statement                   shift and go to state 40
+    loop_control                   shift and go to state 41
+    empty                          shift and go to state 50
 
 state 36
 
-    (17) fState -> print_statement .
+    (16) fStates -> empty .
+    (22) fState -> empty .
 
-    NAME            reduce using rule 17 (fState -> print_statement .)
-    aru             reduce using rule 17 (fState -> print_statement .)
-    efk             reduce using rule 17 (fState -> print_statement .)
-    ma              reduce using rule 17 (fState -> print_statement .)
-    tamenguct       reduce using rule 17 (fState -> print_statement .)
-    }               reduce using rule 17 (fState -> print_statement .)
+  ! reduce/reduce conflict for } resolved using rule 16 (fStates -> empty .)
+    }               reduce using rule 16 (fStates -> empty .)
+    NAME            reduce using rule 22 (fState -> empty .)
+    aru             reduce using rule 22 (fState -> empty .)
+    efk             reduce using rule 22 (fState -> empty .)
+    ma              reduce using rule 22 (fState -> empty .)
+    tamenguct       reduce using rule 22 (fState -> empty .)
+
+  ! }               [ reduce using rule 22 (fState -> empty .) ]
 
 
 state 37
 
-    (18) fState -> scanf_statement .
+    (17) fState -> var_assign .
 
-    NAME            reduce using rule 18 (fState -> scanf_statement .)
-    aru             reduce using rule 18 (fState -> scanf_statement .)
-    efk             reduce using rule 18 (fState -> scanf_statement .)
-    ma              reduce using rule 18 (fState -> scanf_statement .)
-    tamenguct       reduce using rule 18 (fState -> scanf_statement .)
-    }               reduce using rule 18 (fState -> scanf_statement .)
+    NAME            reduce using rule 17 (fState -> var_assign .)
+    aru             reduce using rule 17 (fState -> var_assign .)
+    efk             reduce using rule 17 (fState -> var_assign .)
+    ma              reduce using rule 17 (fState -> var_assign .)
+    tamenguct       reduce using rule 17 (fState -> var_assign .)
+    }               reduce using rule 17 (fState -> var_assign .)
 
 
 state 38
 
-    (19) fState -> if_statement .
+    (18) fState -> print_statement .
 
-    NAME            reduce using rule 19 (fState -> if_statement .)
-    aru             reduce using rule 19 (fState -> if_statement .)
-    efk             reduce using rule 19 (fState -> if_statement .)
-    ma              reduce using rule 19 (fState -> if_statement .)
-    tamenguct       reduce using rule 19 (fState -> if_statement .)
-    }               reduce using rule 19 (fState -> if_statement .)
+    NAME            reduce using rule 18 (fState -> print_statement .)
+    aru             reduce using rule 18 (fState -> print_statement .)
+    efk             reduce using rule 18 (fState -> print_statement .)
+    ma              reduce using rule 18 (fState -> print_statement .)
+    tamenguct       reduce using rule 18 (fState -> print_statement .)
+    }               reduce using rule 18 (fState -> print_statement .)
 
 
 state 39
 
-    (20) fState -> loop_control .
+    (19) fState -> scanf_statement .
 
-    NAME            reduce using rule 20 (fState -> loop_control .)
-    aru             reduce using rule 20 (fState -> loop_control .)
-    efk             reduce using rule 20 (fState -> loop_control .)
-    ma              reduce using rule 20 (fState -> loop_control .)
-    tamenguct       reduce using rule 20 (fState -> loop_control .)
-    }               reduce using rule 20 (fState -> loop_control .)
+    NAME            reduce using rule 19 (fState -> scanf_statement .)
+    aru             reduce using rule 19 (fState -> scanf_statement .)
+    efk             reduce using rule 19 (fState -> scanf_statement .)
+    ma              reduce using rule 19 (fState -> scanf_statement .)
+    tamenguct       reduce using rule 19 (fState -> scanf_statement .)
+    }               reduce using rule 19 (fState -> scanf_statement .)
 
 
 state 40
 
-    (34) print_statement -> aru . ( expression ) ;
+    (20) fState -> if_statement .
 
-    (               shift and go to state 49
+    NAME            reduce using rule 20 (fState -> if_statement .)
+    aru             reduce using rule 20 (fState -> if_statement .)
+    efk             reduce using rule 20 (fState -> if_statement .)
+    ma              reduce using rule 20 (fState -> if_statement .)
+    tamenguct       reduce using rule 20 (fState -> if_statement .)
+    }               reduce using rule 20 (fState -> if_statement .)
 
 
 state 41
 
-    (35) scanf_statement -> efk . ( NAME ) ;
+    (21) fState -> loop_control .
 
-    (               shift and go to state 50
+    NAME            reduce using rule 21 (fState -> loop_control .)
+    aru             reduce using rule 21 (fState -> loop_control .)
+    efk             reduce using rule 21 (fState -> loop_control .)
+    ma              reduce using rule 21 (fState -> loop_control .)
+    tamenguct       reduce using rule 21 (fState -> loop_control .)
+    }               reduce using rule 21 (fState -> loop_control .)
 
 
 state 42
 
-    (44) if_statement -> ma . ( condition ) { con_statements }
+    (35) print_statement -> aru . ( expression ) ;
 
     (               shift and go to state 51
 
 
 state 43
 
-    (36) loop_control -> tamenguct . ( INT ) { statementsLoop }
+    (36) scanf_statement -> efk . ( NAME ) ;
 
     (               shift and go to state 52
 
 
 state 44
 
-    (22) main -> encaps urkid ilem agejdan ( ) . { statements }
+    (45) if_statement -> ma . ( condition ) { con_statements }
 
-    {               shift and go to state 53
+    (               shift and go to state 53
 
 
 state 45
 
-    (32) var_assign -> NAME EQUALS . expression ;
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (37) loop_control -> tamenguct . ( INT ) { statementsLoop }
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    (               shift and go to state 54
 
-    expression                     shift and go to state 55
 
 state 46
 
-    (13) method -> encaps NAME ( ) { fStates } .
+    (23) main -> encaps urkid ilem agejdan ( ) . { statements }
 
-    azayez          reduce using rule 13 (method -> encaps NAME ( ) { fStates } .)
-    uslig           reduce using rule 13 (method -> encaps NAME ( ) { fStates } .)
-    sehviver        reduce using rule 13 (method -> encaps NAME ( ) { fStates } .)
-    NAME            reduce using rule 13 (method -> encaps NAME ( ) { fStates } .)
-    urkid           reduce using rule 13 (method -> encaps NAME ( ) { fStates } .)
-    }               reduce using rule 13 (method -> encaps NAME ( ) { fStates } .)
+    {               shift and go to state 55
 
 
 state 47
 
-    (14) fStates -> fState fState .
+    (33) var_assign -> NAME EQUALS . expression ;
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-    }               reduce using rule 14 (fStates -> fState fState .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
+    expression                     shift and go to state 57
 
 state 48
 
-    (21) fState -> empty .
+    (14) method -> encaps NAME ( ) { fStates } .
 
-    }               reduce using rule 21 (fState -> empty .)
+    azayez          reduce using rule 14 (method -> encaps NAME ( ) { fStates } .)
+    uslig           reduce using rule 14 (method -> encaps NAME ( ) { fStates } .)
+    sehviver        reduce using rule 14 (method -> encaps NAME ( ) { fStates } .)
+    NAME            reduce using rule 14 (method -> encaps NAME ( ) { fStates } .)
+    urkid           reduce using rule 14 (method -> encaps NAME ( ) { fStates } .)
+    }               reduce using rule 14 (method -> encaps NAME ( ) { fStates } .)
 
 
 state 49
 
-    (34) print_statement -> aru ( . expression ) ;
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (15) fStates -> fState fState .
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    }               reduce using rule 15 (fStates -> fState fState .)
 
-    expression                     shift and go to state 59
 
 state 50
 
-    (35) scanf_statement -> efk ( . NAME ) ;
+    (22) fState -> empty .
 
-    NAME            shift and go to state 60
+    }               reduce using rule 22 (fState -> empty .)
 
 
 state 51
 
-    (44) if_statement -> ma ( . condition ) { con_statements }
-    (52) condition -> . expression comparaison expression
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (35) print_statement -> aru ( . expression ) ;
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
-    condition                      shift and go to state 61
-    expression                     shift and go to state 62
+    expression                     shift and go to state 61
 
 state 52
 
-    (36) loop_control -> tamenguct ( . INT ) { statementsLoop }
+    (36) scanf_statement -> efk ( . NAME ) ;
 
-    INT             shift and go to state 63
+    NAME            shift and go to state 62
 
 
 state 53
 
-    (22) main -> encaps urkid ilem agejdan ( ) { . statements }
-    (23) statements -> . statement statements
-    (24) statements -> . empty
-    (25) statement -> . var_assign
-    (26) statement -> . print_statement
-    (27) statement -> . call_function
-    (28) statement -> . scanf_statement
-    (29) statement -> . if_statement
-    (30) statement -> . loop_control
-    (31) statement -> . empty
-    (67) empty -> .
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (33) call_function -> . tasekkirt NAME ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (36) loop_control -> . tamenguct ( INT ) { statementsLoop }
+    (45) if_statement -> ma ( . condition ) { con_statements }
+    (53) condition -> . expression comparaison expression
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-  ! shift/reduce conflict for NAME resolved as shift
-  ! shift/reduce conflict for aru resolved as shift
-  ! shift/reduce conflict for tasekkirt resolved as shift
-  ! shift/reduce conflict for efk resolved as shift
-  ! shift/reduce conflict for ma resolved as shift
-  ! shift/reduce conflict for tamenguct resolved as shift
-    }               reduce using rule 67 (empty -> .)
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    tasekkirt       shift and go to state 73
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    tamenguct       shift and go to state 43
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
-  ! NAME            [ reduce using rule 67 (empty -> .) ]
-  ! aru             [ reduce using rule 67 (empty -> .) ]
-  ! tasekkirt       [ reduce using rule 67 (empty -> .) ]
-  ! efk             [ reduce using rule 67 (empty -> .) ]
-  ! ma              [ reduce using rule 67 (empty -> .) ]
-  ! tamenguct       [ reduce using rule 67 (empty -> .) ]
-
-    statements                     shift and go to state 64
-    statement                      shift and go to state 65
-    empty                          shift and go to state 66
-    var_assign                     shift and go to state 67
-    print_statement                shift and go to state 68
-    call_function                  shift and go to state 69
-    scanf_statement                shift and go to state 70
-    if_statement                   shift and go to state 71
-    loop_control                   shift and go to state 72
+    condition                      shift and go to state 63
+    expression                     shift and go to state 64
 
 state 54
 
-    (66) expression -> NAME .
+    (37) loop_control -> tamenguct ( . INT ) { statementsLoop }
 
-    ;               reduce using rule 66 (expression -> NAME .)
-    MULTIPLY        reduce using rule 66 (expression -> NAME .)
-    DIVIDE          reduce using rule 66 (expression -> NAME .)
-    MINUS           reduce using rule 66 (expression -> NAME .)
-    PLUS            reduce using rule 66 (expression -> NAME .)
-    )               reduce using rule 66 (expression -> NAME .)
-    GT              reduce using rule 66 (expression -> NAME .)
-    LT              reduce using rule 66 (expression -> NAME .)
-    GE              reduce using rule 66 (expression -> NAME .)
-    LE              reduce using rule 66 (expression -> NAME .)
-    EE              reduce using rule 66 (expression -> NAME .)
-    NE              reduce using rule 66 (expression -> NAME .)
+    INT             shift and go to state 65
 
 
 state 55
 
-    (32) var_assign -> NAME EQUALS expression . ;
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
-
-    ;               shift and go to state 74
-    MULTIPLY        shift and go to state 75
-    DIVIDE          shift and go to state 76
-    MINUS           shift and go to state 77
-    PLUS            shift and go to state 78
-
-
-state 56
-
-    (63) expression -> INT .
-
-    ;               reduce using rule 63 (expression -> INT .)
-    MULTIPLY        reduce using rule 63 (expression -> INT .)
-    DIVIDE          reduce using rule 63 (expression -> INT .)
-    MINUS           reduce using rule 63 (expression -> INT .)
-    PLUS            reduce using rule 63 (expression -> INT .)
-    )               reduce using rule 63 (expression -> INT .)
-    GT              reduce using rule 63 (expression -> INT .)
-    LT              reduce using rule 63 (expression -> INT .)
-    GE              reduce using rule 63 (expression -> INT .)
-    LE              reduce using rule 63 (expression -> INT .)
-    EE              reduce using rule 63 (expression -> INT .)
-    NE              reduce using rule 63 (expression -> INT .)
-
-
-state 57
-
-    (64) expression -> FLOAT .
-
-    ;               reduce using rule 64 (expression -> FLOAT .)
-    MULTIPLY        reduce using rule 64 (expression -> FLOAT .)
-    DIVIDE          reduce using rule 64 (expression -> FLOAT .)
-    MINUS           reduce using rule 64 (expression -> FLOAT .)
-    PLUS            reduce using rule 64 (expression -> FLOAT .)
-    )               reduce using rule 64 (expression -> FLOAT .)
-    GT              reduce using rule 64 (expression -> FLOAT .)
-    LT              reduce using rule 64 (expression -> FLOAT .)
-    GE              reduce using rule 64 (expression -> FLOAT .)
-    LE              reduce using rule 64 (expression -> FLOAT .)
-    EE              reduce using rule 64 (expression -> FLOAT .)
-    NE              reduce using rule 64 (expression -> FLOAT .)
-
-
-state 58
-
-    (65) expression -> STRING .
-
-    ;               reduce using rule 65 (expression -> STRING .)
-    MULTIPLY        reduce using rule 65 (expression -> STRING .)
-    DIVIDE          reduce using rule 65 (expression -> STRING .)
-    MINUS           reduce using rule 65 (expression -> STRING .)
-    PLUS            reduce using rule 65 (expression -> STRING .)
-    )               reduce using rule 65 (expression -> STRING .)
-    GT              reduce using rule 65 (expression -> STRING .)
-    LT              reduce using rule 65 (expression -> STRING .)
-    GE              reduce using rule 65 (expression -> STRING .)
-    LE              reduce using rule 65 (expression -> STRING .)
-    EE              reduce using rule 65 (expression -> STRING .)
-    NE              reduce using rule 65 (expression -> STRING .)
-
-
-state 59
-
-    (34) print_statement -> aru ( expression . ) ;
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
-
-    )               shift and go to state 79
-    MULTIPLY        shift and go to state 75
-    DIVIDE          shift and go to state 76
-    MINUS           shift and go to state 77
-    PLUS            shift and go to state 78
-
-
-state 60
-
-    (35) scanf_statement -> efk ( NAME . ) ;
-
-    )               shift and go to state 80
-
-
-state 61
-
-    (44) if_statement -> ma ( condition . ) { con_statements }
-
-    )               shift and go to state 81
-
-
-state 62
-
-    (52) condition -> expression . comparaison expression
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
-    (53) comparaison -> . GT
-    (54) comparaison -> . LT
-    (55) comparaison -> . GE
-    (56) comparaison -> . LE
-    (57) comparaison -> . EE
-    (58) comparaison -> . NE
-
-    MULTIPLY        shift and go to state 75
-    DIVIDE          shift and go to state 76
-    MINUS           shift and go to state 77
-    PLUS            shift and go to state 78
-    GT              shift and go to state 83
-    LT              shift and go to state 84
-    GE              shift and go to state 85
-    LE              shift and go to state 86
-    EE              shift and go to state 87
-    NE              shift and go to state 88
-
-    comparaison                    shift and go to state 82
-
-state 63
-
-    (36) loop_control -> tamenguct ( INT . ) { statementsLoop }
-
-    )               shift and go to state 89
-
-
-state 64
-
-    (22) main -> encaps urkid ilem agejdan ( ) { statements . }
-
-    }               shift and go to state 90
-
-
-state 65
-
-    (23) statements -> statement . statements
-    (23) statements -> . statement statements
-    (24) statements -> . empty
-    (25) statement -> . var_assign
-    (26) statement -> . print_statement
-    (27) statement -> . call_function
-    (28) statement -> . scanf_statement
-    (29) statement -> . if_statement
-    (30) statement -> . loop_control
-    (31) statement -> . empty
-    (67) empty -> .
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (33) call_function -> . tasekkirt NAME ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (36) loop_control -> . tamenguct ( INT ) { statementsLoop }
+    (23) main -> encaps urkid ilem agejdan ( ) { . statements }
+    (24) statements -> . statement statements
+    (25) statements -> . empty
+    (26) statement -> . var_assign
+    (27) statement -> . print_statement
+    (28) statement -> . call_function
+    (29) statement -> . scanf_statement
+    (30) statement -> . if_statement
+    (31) statement -> . loop_control
+    (32) statement -> . empty
+    (68) empty -> .
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (34) call_function -> . tasekkirt NAME ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (37) loop_control -> . tamenguct ( INT ) { statementsLoop }
 
   ! shift/reduce conflict for NAME resolved as shift
   ! shift/reduce conflict for aru resolved as shift
@@ -1003,913 +828,1121 @@ state 65
   ! shift/reduce conflict for efk resolved as shift
   ! shift/reduce conflict for ma resolved as shift
   ! shift/reduce conflict for tamenguct resolved as shift
-    }               reduce using rule 67 (empty -> .)
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    tasekkirt       shift and go to state 73
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    tamenguct       shift and go to state 43
+    }               reduce using rule 68 (empty -> .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    tasekkirt       shift and go to state 75
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    tamenguct       shift and go to state 45
 
-  ! NAME            [ reduce using rule 67 (empty -> .) ]
-  ! aru             [ reduce using rule 67 (empty -> .) ]
-  ! tasekkirt       [ reduce using rule 67 (empty -> .) ]
-  ! efk             [ reduce using rule 67 (empty -> .) ]
-  ! ma              [ reduce using rule 67 (empty -> .) ]
-  ! tamenguct       [ reduce using rule 67 (empty -> .) ]
+  ! NAME            [ reduce using rule 68 (empty -> .) ]
+  ! aru             [ reduce using rule 68 (empty -> .) ]
+  ! tasekkirt       [ reduce using rule 68 (empty -> .) ]
+  ! efk             [ reduce using rule 68 (empty -> .) ]
+  ! ma              [ reduce using rule 68 (empty -> .) ]
+  ! tamenguct       [ reduce using rule 68 (empty -> .) ]
 
-    statement                      shift and go to state 65
-    statements                     shift and go to state 91
-    empty                          shift and go to state 66
-    var_assign                     shift and go to state 67
-    print_statement                shift and go to state 68
-    call_function                  shift and go to state 69
-    scanf_statement                shift and go to state 70
-    if_statement                   shift and go to state 71
-    loop_control                   shift and go to state 72
+    statements                     shift and go to state 66
+    statement                      shift and go to state 67
+    empty                          shift and go to state 68
+    var_assign                     shift and go to state 69
+    print_statement                shift and go to state 70
+    call_function                  shift and go to state 71
+    scanf_statement                shift and go to state 72
+    if_statement                   shift and go to state 73
+    loop_control                   shift and go to state 74
+
+state 56
+
+    (67) expression -> NAME .
+
+    ;               reduce using rule 67 (expression -> NAME .)
+    MULTIPLY        reduce using rule 67 (expression -> NAME .)
+    DIVIDE          reduce using rule 67 (expression -> NAME .)
+    MINUS           reduce using rule 67 (expression -> NAME .)
+    PLUS            reduce using rule 67 (expression -> NAME .)
+    )               reduce using rule 67 (expression -> NAME .)
+    GT              reduce using rule 67 (expression -> NAME .)
+    LT              reduce using rule 67 (expression -> NAME .)
+    GE              reduce using rule 67 (expression -> NAME .)
+    LE              reduce using rule 67 (expression -> NAME .)
+    EE              reduce using rule 67 (expression -> NAME .)
+    NE              reduce using rule 67 (expression -> NAME .)
+
+
+state 57
+
+    (33) var_assign -> NAME EQUALS expression . ;
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
+
+    ;               shift and go to state 76
+    MULTIPLY        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    MINUS           shift and go to state 79
+    PLUS            shift and go to state 80
+
+
+state 58
+
+    (64) expression -> INT .
+
+    ;               reduce using rule 64 (expression -> INT .)
+    MULTIPLY        reduce using rule 64 (expression -> INT .)
+    DIVIDE          reduce using rule 64 (expression -> INT .)
+    MINUS           reduce using rule 64 (expression -> INT .)
+    PLUS            reduce using rule 64 (expression -> INT .)
+    )               reduce using rule 64 (expression -> INT .)
+    GT              reduce using rule 64 (expression -> INT .)
+    LT              reduce using rule 64 (expression -> INT .)
+    GE              reduce using rule 64 (expression -> INT .)
+    LE              reduce using rule 64 (expression -> INT .)
+    EE              reduce using rule 64 (expression -> INT .)
+    NE              reduce using rule 64 (expression -> INT .)
+
+
+state 59
+
+    (65) expression -> FLOAT .
+
+    ;               reduce using rule 65 (expression -> FLOAT .)
+    MULTIPLY        reduce using rule 65 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 65 (expression -> FLOAT .)
+    MINUS           reduce using rule 65 (expression -> FLOAT .)
+    PLUS            reduce using rule 65 (expression -> FLOAT .)
+    )               reduce using rule 65 (expression -> FLOAT .)
+    GT              reduce using rule 65 (expression -> FLOAT .)
+    LT              reduce using rule 65 (expression -> FLOAT .)
+    GE              reduce using rule 65 (expression -> FLOAT .)
+    LE              reduce using rule 65 (expression -> FLOAT .)
+    EE              reduce using rule 65 (expression -> FLOAT .)
+    NE              reduce using rule 65 (expression -> FLOAT .)
+
+
+state 60
+
+    (66) expression -> STRING .
+
+    ;               reduce using rule 66 (expression -> STRING .)
+    MULTIPLY        reduce using rule 66 (expression -> STRING .)
+    DIVIDE          reduce using rule 66 (expression -> STRING .)
+    MINUS           reduce using rule 66 (expression -> STRING .)
+    PLUS            reduce using rule 66 (expression -> STRING .)
+    )               reduce using rule 66 (expression -> STRING .)
+    GT              reduce using rule 66 (expression -> STRING .)
+    LT              reduce using rule 66 (expression -> STRING .)
+    GE              reduce using rule 66 (expression -> STRING .)
+    LE              reduce using rule 66 (expression -> STRING .)
+    EE              reduce using rule 66 (expression -> STRING .)
+    NE              reduce using rule 66 (expression -> STRING .)
+
+
+state 61
+
+    (35) print_statement -> aru ( expression . ) ;
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
+
+    )               shift and go to state 81
+    MULTIPLY        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    MINUS           shift and go to state 79
+    PLUS            shift and go to state 80
+
+
+state 62
+
+    (36) scanf_statement -> efk ( NAME . ) ;
+
+    )               shift and go to state 82
+
+
+state 63
+
+    (45) if_statement -> ma ( condition . ) { con_statements }
+
+    )               shift and go to state 83
+
+
+state 64
+
+    (53) condition -> expression . comparaison expression
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
+    (54) comparaison -> . GT
+    (55) comparaison -> . LT
+    (56) comparaison -> . GE
+    (57) comparaison -> . LE
+    (58) comparaison -> . EE
+    (59) comparaison -> . NE
+
+    MULTIPLY        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    MINUS           shift and go to state 79
+    PLUS            shift and go to state 80
+    GT              shift and go to state 85
+    LT              shift and go to state 86
+    GE              shift and go to state 87
+    LE              shift and go to state 88
+    EE              shift and go to state 89
+    NE              shift and go to state 90
+
+    comparaison                    shift and go to state 84
+
+state 65
+
+    (37) loop_control -> tamenguct ( INT . ) { statementsLoop }
+
+    )               shift and go to state 91
+
 
 state 66
 
-    (24) statements -> empty .
-    (31) statement -> empty .
+    (23) main -> encaps urkid ilem agejdan ( ) { statements . }
 
-  ! reduce/reduce conflict for } resolved using rule 24 (statements -> empty .)
-    }               reduce using rule 24 (statements -> empty .)
-    NAME            reduce using rule 31 (statement -> empty .)
-    aru             reduce using rule 31 (statement -> empty .)
-    tasekkirt       reduce using rule 31 (statement -> empty .)
-    efk             reduce using rule 31 (statement -> empty .)
-    ma              reduce using rule 31 (statement -> empty .)
-    tamenguct       reduce using rule 31 (statement -> empty .)
-
-  ! }               [ reduce using rule 31 (statement -> empty .) ]
+    }               shift and go to state 92
 
 
 state 67
 
-    (25) statement -> var_assign .
+    (24) statements -> statement . statements
+    (24) statements -> . statement statements
+    (25) statements -> . empty
+    (26) statement -> . var_assign
+    (27) statement -> . print_statement
+    (28) statement -> . call_function
+    (29) statement -> . scanf_statement
+    (30) statement -> . if_statement
+    (31) statement -> . loop_control
+    (32) statement -> . empty
+    (68) empty -> .
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (34) call_function -> . tasekkirt NAME ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (37) loop_control -> . tamenguct ( INT ) { statementsLoop }
 
-    NAME            reduce using rule 25 (statement -> var_assign .)
-    aru             reduce using rule 25 (statement -> var_assign .)
-    tasekkirt       reduce using rule 25 (statement -> var_assign .)
-    efk             reduce using rule 25 (statement -> var_assign .)
-    ma              reduce using rule 25 (statement -> var_assign .)
-    tamenguct       reduce using rule 25 (statement -> var_assign .)
-    }               reduce using rule 25 (statement -> var_assign .)
+  ! shift/reduce conflict for NAME resolved as shift
+  ! shift/reduce conflict for aru resolved as shift
+  ! shift/reduce conflict for tasekkirt resolved as shift
+  ! shift/reduce conflict for efk resolved as shift
+  ! shift/reduce conflict for ma resolved as shift
+  ! shift/reduce conflict for tamenguct resolved as shift
+    }               reduce using rule 68 (empty -> .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    tasekkirt       shift and go to state 75
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    tamenguct       shift and go to state 45
 
+  ! NAME            [ reduce using rule 68 (empty -> .) ]
+  ! aru             [ reduce using rule 68 (empty -> .) ]
+  ! tasekkirt       [ reduce using rule 68 (empty -> .) ]
+  ! efk             [ reduce using rule 68 (empty -> .) ]
+  ! ma              [ reduce using rule 68 (empty -> .) ]
+  ! tamenguct       [ reduce using rule 68 (empty -> .) ]
+
+    statement                      shift and go to state 67
+    statements                     shift and go to state 93
+    empty                          shift and go to state 68
+    var_assign                     shift and go to state 69
+    print_statement                shift and go to state 70
+    call_function                  shift and go to state 71
+    scanf_statement                shift and go to state 72
+    if_statement                   shift and go to state 73
+    loop_control                   shift and go to state 74
 
 state 68
 
-    (26) statement -> print_statement .
+    (25) statements -> empty .
+    (32) statement -> empty .
 
-    NAME            reduce using rule 26 (statement -> print_statement .)
-    aru             reduce using rule 26 (statement -> print_statement .)
-    tasekkirt       reduce using rule 26 (statement -> print_statement .)
-    efk             reduce using rule 26 (statement -> print_statement .)
-    ma              reduce using rule 26 (statement -> print_statement .)
-    tamenguct       reduce using rule 26 (statement -> print_statement .)
-    }               reduce using rule 26 (statement -> print_statement .)
+  ! reduce/reduce conflict for } resolved using rule 25 (statements -> empty .)
+    }               reduce using rule 25 (statements -> empty .)
+    NAME            reduce using rule 32 (statement -> empty .)
+    aru             reduce using rule 32 (statement -> empty .)
+    tasekkirt       reduce using rule 32 (statement -> empty .)
+    efk             reduce using rule 32 (statement -> empty .)
+    ma              reduce using rule 32 (statement -> empty .)
+    tamenguct       reduce using rule 32 (statement -> empty .)
+
+  ! }               [ reduce using rule 32 (statement -> empty .) ]
 
 
 state 69
 
-    (27) statement -> call_function .
+    (26) statement -> var_assign .
 
-    NAME            reduce using rule 27 (statement -> call_function .)
-    aru             reduce using rule 27 (statement -> call_function .)
-    tasekkirt       reduce using rule 27 (statement -> call_function .)
-    efk             reduce using rule 27 (statement -> call_function .)
-    ma              reduce using rule 27 (statement -> call_function .)
-    tamenguct       reduce using rule 27 (statement -> call_function .)
-    }               reduce using rule 27 (statement -> call_function .)
+    NAME            reduce using rule 26 (statement -> var_assign .)
+    aru             reduce using rule 26 (statement -> var_assign .)
+    tasekkirt       reduce using rule 26 (statement -> var_assign .)
+    efk             reduce using rule 26 (statement -> var_assign .)
+    ma              reduce using rule 26 (statement -> var_assign .)
+    tamenguct       reduce using rule 26 (statement -> var_assign .)
+    }               reduce using rule 26 (statement -> var_assign .)
 
 
 state 70
 
-    (28) statement -> scanf_statement .
+    (27) statement -> print_statement .
 
-    NAME            reduce using rule 28 (statement -> scanf_statement .)
-    aru             reduce using rule 28 (statement -> scanf_statement .)
-    tasekkirt       reduce using rule 28 (statement -> scanf_statement .)
-    efk             reduce using rule 28 (statement -> scanf_statement .)
-    ma              reduce using rule 28 (statement -> scanf_statement .)
-    tamenguct       reduce using rule 28 (statement -> scanf_statement .)
-    }               reduce using rule 28 (statement -> scanf_statement .)
+    NAME            reduce using rule 27 (statement -> print_statement .)
+    aru             reduce using rule 27 (statement -> print_statement .)
+    tasekkirt       reduce using rule 27 (statement -> print_statement .)
+    efk             reduce using rule 27 (statement -> print_statement .)
+    ma              reduce using rule 27 (statement -> print_statement .)
+    tamenguct       reduce using rule 27 (statement -> print_statement .)
+    }               reduce using rule 27 (statement -> print_statement .)
 
 
 state 71
 
-    (29) statement -> if_statement .
+    (28) statement -> call_function .
 
-    NAME            reduce using rule 29 (statement -> if_statement .)
-    aru             reduce using rule 29 (statement -> if_statement .)
-    tasekkirt       reduce using rule 29 (statement -> if_statement .)
-    efk             reduce using rule 29 (statement -> if_statement .)
-    ma              reduce using rule 29 (statement -> if_statement .)
-    tamenguct       reduce using rule 29 (statement -> if_statement .)
-    }               reduce using rule 29 (statement -> if_statement .)
+    NAME            reduce using rule 28 (statement -> call_function .)
+    aru             reduce using rule 28 (statement -> call_function .)
+    tasekkirt       reduce using rule 28 (statement -> call_function .)
+    efk             reduce using rule 28 (statement -> call_function .)
+    ma              reduce using rule 28 (statement -> call_function .)
+    tamenguct       reduce using rule 28 (statement -> call_function .)
+    }               reduce using rule 28 (statement -> call_function .)
 
 
 state 72
 
-    (30) statement -> loop_control .
+    (29) statement -> scanf_statement .
 
-    NAME            reduce using rule 30 (statement -> loop_control .)
-    aru             reduce using rule 30 (statement -> loop_control .)
-    tasekkirt       reduce using rule 30 (statement -> loop_control .)
-    efk             reduce using rule 30 (statement -> loop_control .)
-    ma              reduce using rule 30 (statement -> loop_control .)
-    tamenguct       reduce using rule 30 (statement -> loop_control .)
-    }               reduce using rule 30 (statement -> loop_control .)
+    NAME            reduce using rule 29 (statement -> scanf_statement .)
+    aru             reduce using rule 29 (statement -> scanf_statement .)
+    tasekkirt       reduce using rule 29 (statement -> scanf_statement .)
+    efk             reduce using rule 29 (statement -> scanf_statement .)
+    ma              reduce using rule 29 (statement -> scanf_statement .)
+    tamenguct       reduce using rule 29 (statement -> scanf_statement .)
+    }               reduce using rule 29 (statement -> scanf_statement .)
 
 
 state 73
 
-    (33) call_function -> tasekkirt . NAME ;
+    (30) statement -> if_statement .
 
-    NAME            shift and go to state 92
+    NAME            reduce using rule 30 (statement -> if_statement .)
+    aru             reduce using rule 30 (statement -> if_statement .)
+    tasekkirt       reduce using rule 30 (statement -> if_statement .)
+    efk             reduce using rule 30 (statement -> if_statement .)
+    ma              reduce using rule 30 (statement -> if_statement .)
+    tamenguct       reduce using rule 30 (statement -> if_statement .)
+    }               reduce using rule 30 (statement -> if_statement .)
 
 
 state 74
 
-    (32) var_assign -> NAME EQUALS expression ; .
+    (31) statement -> loop_control .
 
-    NAME            reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
-    aru             reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
-    efk             reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
-    ma              reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
-    tamenguct       reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
-    }               reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
-    tasekkirt       reduce using rule 32 (var_assign -> NAME EQUALS expression ; .)
+    NAME            reduce using rule 31 (statement -> loop_control .)
+    aru             reduce using rule 31 (statement -> loop_control .)
+    tasekkirt       reduce using rule 31 (statement -> loop_control .)
+    efk             reduce using rule 31 (statement -> loop_control .)
+    ma              reduce using rule 31 (statement -> loop_control .)
+    tamenguct       reduce using rule 31 (statement -> loop_control .)
+    }               reduce using rule 31 (statement -> loop_control .)
 
 
 state 75
 
-    (59) expression -> expression MULTIPLY . expression
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (34) call_function -> tasekkirt . NAME ;
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    NAME            shift and go to state 94
 
-    expression                     shift and go to state 93
 
 state 76
 
-    (60) expression -> expression DIVIDE . expression
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (33) var_assign -> NAME EQUALS expression ; .
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    NAME            reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
+    aru             reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
+    efk             reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
+    ma              reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
+    tamenguct       reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
+    }               reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
+    tasekkirt       reduce using rule 33 (var_assign -> NAME EQUALS expression ; .)
 
-    expression                     shift and go to state 94
 
 state 77
 
-    (61) expression -> expression MINUS . expression
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (60) expression -> expression MULTIPLY . expression
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
     expression                     shift and go to state 95
 
 state 78
 
-    (62) expression -> expression PLUS . expression
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (61) expression -> expression DIVIDE . expression
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
     expression                     shift and go to state 96
 
 state 79
 
-    (34) print_statement -> aru ( expression ) . ;
+    (62) expression -> expression MINUS . expression
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-    ;               shift and go to state 97
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
+    expression                     shift and go to state 97
 
 state 80
 
-    (35) scanf_statement -> efk ( NAME ) . ;
+    (63) expression -> expression PLUS . expression
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
 
-    ;               shift and go to state 98
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
 
+    expression                     shift and go to state 98
 
 state 81
 
-    (44) if_statement -> ma ( condition ) . { con_statements }
+    (35) print_statement -> aru ( expression ) . ;
 
-    {               shift and go to state 99
+    ;               shift and go to state 99
 
 
 state 82
 
-    (52) condition -> expression comparaison . expression
-    (59) expression -> . expression MULTIPLY expression
-    (60) expression -> . expression DIVIDE expression
-    (61) expression -> . expression MINUS expression
-    (62) expression -> . expression PLUS expression
-    (63) expression -> . INT
-    (64) expression -> . FLOAT
-    (65) expression -> . STRING
-    (66) expression -> . NAME
+    (36) scanf_statement -> efk ( NAME ) . ;
 
-    INT             shift and go to state 56
-    FLOAT           shift and go to state 57
-    STRING          shift and go to state 58
-    NAME            shift and go to state 54
+    ;               shift and go to state 100
 
-    expression                     shift and go to state 100
 
 state 83
 
-    (53) comparaison -> GT .
-
-    INT             reduce using rule 53 (comparaison -> GT .)
-    FLOAT           reduce using rule 53 (comparaison -> GT .)
-    STRING          reduce using rule 53 (comparaison -> GT .)
-    NAME            reduce using rule 53 (comparaison -> GT .)
-
-
-state 84
-
-    (54) comparaison -> LT .
-
-    INT             reduce using rule 54 (comparaison -> LT .)
-    FLOAT           reduce using rule 54 (comparaison -> LT .)
-    STRING          reduce using rule 54 (comparaison -> LT .)
-    NAME            reduce using rule 54 (comparaison -> LT .)
-
-
-state 85
-
-    (55) comparaison -> GE .
-
-    INT             reduce using rule 55 (comparaison -> GE .)
-    FLOAT           reduce using rule 55 (comparaison -> GE .)
-    STRING          reduce using rule 55 (comparaison -> GE .)
-    NAME            reduce using rule 55 (comparaison -> GE .)
-
-
-state 86
-
-    (56) comparaison -> LE .
-
-    INT             reduce using rule 56 (comparaison -> LE .)
-    FLOAT           reduce using rule 56 (comparaison -> LE .)
-    STRING          reduce using rule 56 (comparaison -> LE .)
-    NAME            reduce using rule 56 (comparaison -> LE .)
-
-
-state 87
-
-    (57) comparaison -> EE .
-
-    INT             reduce using rule 57 (comparaison -> EE .)
-    FLOAT           reduce using rule 57 (comparaison -> EE .)
-    STRING          reduce using rule 57 (comparaison -> EE .)
-    NAME            reduce using rule 57 (comparaison -> EE .)
-
-
-state 88
-
-    (58) comparaison -> NE .
-
-    INT             reduce using rule 58 (comparaison -> NE .)
-    FLOAT           reduce using rule 58 (comparaison -> NE .)
-    STRING          reduce using rule 58 (comparaison -> NE .)
-    NAME            reduce using rule 58 (comparaison -> NE .)
-
-
-state 89
-
-    (36) loop_control -> tamenguct ( INT ) . { statementsLoop }
+    (45) if_statement -> ma ( condition ) . { con_statements }
 
     {               shift and go to state 101
 
 
+state 84
+
+    (53) condition -> expression comparaison . expression
+    (60) expression -> . expression MULTIPLY expression
+    (61) expression -> . expression DIVIDE expression
+    (62) expression -> . expression MINUS expression
+    (63) expression -> . expression PLUS expression
+    (64) expression -> . INT
+    (65) expression -> . FLOAT
+    (66) expression -> . STRING
+    (67) expression -> . NAME
+
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    STRING          shift and go to state 60
+    NAME            shift and go to state 56
+
+    expression                     shift and go to state 102
+
+state 85
+
+    (54) comparaison -> GT .
+
+    INT             reduce using rule 54 (comparaison -> GT .)
+    FLOAT           reduce using rule 54 (comparaison -> GT .)
+    STRING          reduce using rule 54 (comparaison -> GT .)
+    NAME            reduce using rule 54 (comparaison -> GT .)
+
+
+state 86
+
+    (55) comparaison -> LT .
+
+    INT             reduce using rule 55 (comparaison -> LT .)
+    FLOAT           reduce using rule 55 (comparaison -> LT .)
+    STRING          reduce using rule 55 (comparaison -> LT .)
+    NAME            reduce using rule 55 (comparaison -> LT .)
+
+
+state 87
+
+    (56) comparaison -> GE .
+
+    INT             reduce using rule 56 (comparaison -> GE .)
+    FLOAT           reduce using rule 56 (comparaison -> GE .)
+    STRING          reduce using rule 56 (comparaison -> GE .)
+    NAME            reduce using rule 56 (comparaison -> GE .)
+
+
+state 88
+
+    (57) comparaison -> LE .
+
+    INT             reduce using rule 57 (comparaison -> LE .)
+    FLOAT           reduce using rule 57 (comparaison -> LE .)
+    STRING          reduce using rule 57 (comparaison -> LE .)
+    NAME            reduce using rule 57 (comparaison -> LE .)
+
+
+state 89
+
+    (58) comparaison -> EE .
+
+    INT             reduce using rule 58 (comparaison -> EE .)
+    FLOAT           reduce using rule 58 (comparaison -> EE .)
+    STRING          reduce using rule 58 (comparaison -> EE .)
+    NAME            reduce using rule 58 (comparaison -> EE .)
+
+
 state 90
 
-    (22) main -> encaps urkid ilem agejdan ( ) { statements } .
+    (59) comparaison -> NE .
 
-    azayez          reduce using rule 22 (main -> encaps urkid ilem agejdan ( ) { statements } .)
-    uslig           reduce using rule 22 (main -> encaps urkid ilem agejdan ( ) { statements } .)
-    sehviver        reduce using rule 22 (main -> encaps urkid ilem agejdan ( ) { statements } .)
-    NAME            reduce using rule 22 (main -> encaps urkid ilem agejdan ( ) { statements } .)
-    urkid           reduce using rule 22 (main -> encaps urkid ilem agejdan ( ) { statements } .)
-    }               reduce using rule 22 (main -> encaps urkid ilem agejdan ( ) { statements } .)
+    INT             reduce using rule 59 (comparaison -> NE .)
+    FLOAT           reduce using rule 59 (comparaison -> NE .)
+    STRING          reduce using rule 59 (comparaison -> NE .)
+    NAME            reduce using rule 59 (comparaison -> NE .)
 
 
 state 91
 
-    (23) statements -> statement statements .
+    (37) loop_control -> tamenguct ( INT ) . { statementsLoop }
 
-    }               reduce using rule 23 (statements -> statement statements .)
+    {               shift and go to state 103
 
 
 state 92
 
-    (33) call_function -> tasekkirt NAME . ;
+    (23) main -> encaps urkid ilem agejdan ( ) { statements } .
 
-    ;               shift and go to state 102
+    azayez          reduce using rule 23 (main -> encaps urkid ilem agejdan ( ) { statements } .)
+    uslig           reduce using rule 23 (main -> encaps urkid ilem agejdan ( ) { statements } .)
+    sehviver        reduce using rule 23 (main -> encaps urkid ilem agejdan ( ) { statements } .)
+    NAME            reduce using rule 23 (main -> encaps urkid ilem agejdan ( ) { statements } .)
+    urkid           reduce using rule 23 (main -> encaps urkid ilem agejdan ( ) { statements } .)
+    }               reduce using rule 23 (main -> encaps urkid ilem agejdan ( ) { statements } .)
 
 
 state 93
 
-    (59) expression -> expression MULTIPLY expression .
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
+    (24) statements -> statement statements .
 
-    ;               reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    MULTIPLY        reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    DIVIDE          reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    MINUS           reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    PLUS            reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    )               reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    GT              reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    LT              reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    GE              reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    LE              reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    EE              reduce using rule 59 (expression -> expression MULTIPLY expression .)
-    NE              reduce using rule 59 (expression -> expression MULTIPLY expression .)
-
-  ! MULTIPLY        [ shift and go to state 75 ]
-  ! DIVIDE          [ shift and go to state 76 ]
-  ! MINUS           [ shift and go to state 77 ]
-  ! PLUS            [ shift and go to state 78 ]
+    }               reduce using rule 24 (statements -> statement statements .)
 
 
 state 94
 
-    (60) expression -> expression DIVIDE expression .
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
+    (34) call_function -> tasekkirt NAME . ;
 
-    ;               reduce using rule 60 (expression -> expression DIVIDE expression .)
-    MULTIPLY        reduce using rule 60 (expression -> expression DIVIDE expression .)
-    DIVIDE          reduce using rule 60 (expression -> expression DIVIDE expression .)
-    MINUS           reduce using rule 60 (expression -> expression DIVIDE expression .)
-    PLUS            reduce using rule 60 (expression -> expression DIVIDE expression .)
-    )               reduce using rule 60 (expression -> expression DIVIDE expression .)
-    GT              reduce using rule 60 (expression -> expression DIVIDE expression .)
-    LT              reduce using rule 60 (expression -> expression DIVIDE expression .)
-    GE              reduce using rule 60 (expression -> expression DIVIDE expression .)
-    LE              reduce using rule 60 (expression -> expression DIVIDE expression .)
-    EE              reduce using rule 60 (expression -> expression DIVIDE expression .)
-    NE              reduce using rule 60 (expression -> expression DIVIDE expression .)
-
-  ! MULTIPLY        [ shift and go to state 75 ]
-  ! DIVIDE          [ shift and go to state 76 ]
-  ! MINUS           [ shift and go to state 77 ]
-  ! PLUS            [ shift and go to state 78 ]
+    ;               shift and go to state 104
 
 
 state 95
 
-    (61) expression -> expression MINUS expression .
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
+    (60) expression -> expression MULTIPLY expression .
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
 
-    ;               reduce using rule 61 (expression -> expression MINUS expression .)
-    MINUS           reduce using rule 61 (expression -> expression MINUS expression .)
-    PLUS            reduce using rule 61 (expression -> expression MINUS expression .)
-    )               reduce using rule 61 (expression -> expression MINUS expression .)
-    GT              reduce using rule 61 (expression -> expression MINUS expression .)
-    LT              reduce using rule 61 (expression -> expression MINUS expression .)
-    GE              reduce using rule 61 (expression -> expression MINUS expression .)
-    LE              reduce using rule 61 (expression -> expression MINUS expression .)
-    EE              reduce using rule 61 (expression -> expression MINUS expression .)
-    NE              reduce using rule 61 (expression -> expression MINUS expression .)
-    MULTIPLY        shift and go to state 75
-    DIVIDE          shift and go to state 76
+    ;               reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    MULTIPLY        reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    DIVIDE          reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    MINUS           reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    PLUS            reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    )               reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    GT              reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    LT              reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    GE              reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    LE              reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    EE              reduce using rule 60 (expression -> expression MULTIPLY expression .)
+    NE              reduce using rule 60 (expression -> expression MULTIPLY expression .)
 
-  ! MULTIPLY        [ reduce using rule 61 (expression -> expression MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 61 (expression -> expression MINUS expression .) ]
-  ! MINUS           [ shift and go to state 77 ]
-  ! PLUS            [ shift and go to state 78 ]
+  ! MULTIPLY        [ shift and go to state 77 ]
+  ! DIVIDE          [ shift and go to state 78 ]
+  ! MINUS           [ shift and go to state 79 ]
+  ! PLUS            [ shift and go to state 80 ]
 
 
 state 96
 
-    (62) expression -> expression PLUS expression .
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
+    (61) expression -> expression DIVIDE expression .
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
 
-    ;               reduce using rule 62 (expression -> expression PLUS expression .)
-    MINUS           reduce using rule 62 (expression -> expression PLUS expression .)
-    PLUS            reduce using rule 62 (expression -> expression PLUS expression .)
-    )               reduce using rule 62 (expression -> expression PLUS expression .)
-    GT              reduce using rule 62 (expression -> expression PLUS expression .)
-    LT              reduce using rule 62 (expression -> expression PLUS expression .)
-    GE              reduce using rule 62 (expression -> expression PLUS expression .)
-    LE              reduce using rule 62 (expression -> expression PLUS expression .)
-    EE              reduce using rule 62 (expression -> expression PLUS expression .)
-    NE              reduce using rule 62 (expression -> expression PLUS expression .)
-    MULTIPLY        shift and go to state 75
-    DIVIDE          shift and go to state 76
+    ;               reduce using rule 61 (expression -> expression DIVIDE expression .)
+    MULTIPLY        reduce using rule 61 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 61 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 61 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 61 (expression -> expression DIVIDE expression .)
+    )               reduce using rule 61 (expression -> expression DIVIDE expression .)
+    GT              reduce using rule 61 (expression -> expression DIVIDE expression .)
+    LT              reduce using rule 61 (expression -> expression DIVIDE expression .)
+    GE              reduce using rule 61 (expression -> expression DIVIDE expression .)
+    LE              reduce using rule 61 (expression -> expression DIVIDE expression .)
+    EE              reduce using rule 61 (expression -> expression DIVIDE expression .)
+    NE              reduce using rule 61 (expression -> expression DIVIDE expression .)
 
-  ! MULTIPLY        [ reduce using rule 62 (expression -> expression PLUS expression .) ]
-  ! DIVIDE          [ reduce using rule 62 (expression -> expression PLUS expression .) ]
-  ! MINUS           [ shift and go to state 77 ]
-  ! PLUS            [ shift and go to state 78 ]
+  ! MULTIPLY        [ shift and go to state 77 ]
+  ! DIVIDE          [ shift and go to state 78 ]
+  ! MINUS           [ shift and go to state 79 ]
+  ! PLUS            [ shift and go to state 80 ]
 
 
 state 97
 
-    (34) print_statement -> aru ( expression ) ; .
+    (62) expression -> expression MINUS expression .
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
 
-    NAME            reduce using rule 34 (print_statement -> aru ( expression ) ; .)
-    aru             reduce using rule 34 (print_statement -> aru ( expression ) ; .)
-    efk             reduce using rule 34 (print_statement -> aru ( expression ) ; .)
-    ma              reduce using rule 34 (print_statement -> aru ( expression ) ; .)
-    tamenguct       reduce using rule 34 (print_statement -> aru ( expression ) ; .)
-    }               reduce using rule 34 (print_statement -> aru ( expression ) ; .)
-    tasekkirt       reduce using rule 34 (print_statement -> aru ( expression ) ; .)
+    ;               reduce using rule 62 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 62 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 62 (expression -> expression MINUS expression .)
+    )               reduce using rule 62 (expression -> expression MINUS expression .)
+    GT              reduce using rule 62 (expression -> expression MINUS expression .)
+    LT              reduce using rule 62 (expression -> expression MINUS expression .)
+    GE              reduce using rule 62 (expression -> expression MINUS expression .)
+    LE              reduce using rule 62 (expression -> expression MINUS expression .)
+    EE              reduce using rule 62 (expression -> expression MINUS expression .)
+    NE              reduce using rule 62 (expression -> expression MINUS expression .)
+    MULTIPLY        shift and go to state 77
+    DIVIDE          shift and go to state 78
+
+  ! MULTIPLY        [ reduce using rule 62 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 62 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ shift and go to state 79 ]
+  ! PLUS            [ shift and go to state 80 ]
 
 
 state 98
 
-    (35) scanf_statement -> efk ( NAME ) ; .
+    (63) expression -> expression PLUS expression .
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
 
-    NAME            reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
-    aru             reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
-    efk             reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
-    ma              reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
-    tamenguct       reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
-    }               reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
-    tasekkirt       reduce using rule 35 (scanf_statement -> efk ( NAME ) ; .)
+    ;               reduce using rule 63 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 63 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 63 (expression -> expression PLUS expression .)
+    )               reduce using rule 63 (expression -> expression PLUS expression .)
+    GT              reduce using rule 63 (expression -> expression PLUS expression .)
+    LT              reduce using rule 63 (expression -> expression PLUS expression .)
+    GE              reduce using rule 63 (expression -> expression PLUS expression .)
+    LE              reduce using rule 63 (expression -> expression PLUS expression .)
+    EE              reduce using rule 63 (expression -> expression PLUS expression .)
+    NE              reduce using rule 63 (expression -> expression PLUS expression .)
+    MULTIPLY        shift and go to state 77
+    DIVIDE          shift and go to state 78
+
+  ! MULTIPLY        [ reduce using rule 63 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 63 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ shift and go to state 79 ]
+  ! PLUS            [ shift and go to state 80 ]
 
 
 state 99
 
-    (44) if_statement -> ma ( condition ) { . con_statements }
-    (45) con_statements -> . con_statement con_statement con_statement
-    (46) con_statements -> . empty
-    (47) con_statement -> . var_assign
-    (48) con_statement -> . print_statement
-    (49) con_statement -> . scanf_statement
-    (50) con_statement -> . if_statement
-    (51) con_statement -> . empty
-    (67) empty -> .
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
+    (35) print_statement -> aru ( expression ) ; .
 
-  ! shift/reduce conflict for NAME resolved as shift
-  ! shift/reduce conflict for aru resolved as shift
-  ! shift/reduce conflict for efk resolved as shift
-  ! shift/reduce conflict for ma resolved as shift
-    }               reduce using rule 67 (empty -> .)
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
+    NAME            reduce using rule 35 (print_statement -> aru ( expression ) ; .)
+    aru             reduce using rule 35 (print_statement -> aru ( expression ) ; .)
+    efk             reduce using rule 35 (print_statement -> aru ( expression ) ; .)
+    ma              reduce using rule 35 (print_statement -> aru ( expression ) ; .)
+    tamenguct       reduce using rule 35 (print_statement -> aru ( expression ) ; .)
+    }               reduce using rule 35 (print_statement -> aru ( expression ) ; .)
+    tasekkirt       reduce using rule 35 (print_statement -> aru ( expression ) ; .)
 
-  ! NAME            [ reduce using rule 67 (empty -> .) ]
-  ! aru             [ reduce using rule 67 (empty -> .) ]
-  ! efk             [ reduce using rule 67 (empty -> .) ]
-  ! ma              [ reduce using rule 67 (empty -> .) ]
-
-    con_statements                 shift and go to state 103
-    con_statement                  shift and go to state 104
-    empty                          shift and go to state 105
-    var_assign                     shift and go to state 106
-    print_statement                shift and go to state 107
-    scanf_statement                shift and go to state 108
-    if_statement                   shift and go to state 109
 
 state 100
 
-    (52) condition -> expression comparaison expression .
-    (59) expression -> expression . MULTIPLY expression
-    (60) expression -> expression . DIVIDE expression
-    (61) expression -> expression . MINUS expression
-    (62) expression -> expression . PLUS expression
+    (36) scanf_statement -> efk ( NAME ) ; .
 
-    )               reduce using rule 52 (condition -> expression comparaison expression .)
-    MULTIPLY        shift and go to state 75
-    DIVIDE          shift and go to state 76
-    MINUS           shift and go to state 77
-    PLUS            shift and go to state 78
+    NAME            reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
+    aru             reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
+    efk             reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
+    ma              reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
+    tamenguct       reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
+    }               reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
+    tasekkirt       reduce using rule 36 (scanf_statement -> efk ( NAME ) ; .)
 
 
 state 101
 
-    (36) loop_control -> tamenguct ( INT ) { . statementsLoop }
-    (37) statementsLoop -> . statementLoop statementLoop
-    (38) statementsLoop -> . empty
-    (39) statementLoop -> . var_assign
-    (40) statementLoop -> . print_statement
-    (41) statementLoop -> . scanf_statement
-    (42) statementLoop -> . if_statement
-    (43) statementLoop -> . empty
-    (67) empty -> .
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
+    (45) if_statement -> ma ( condition ) { . con_statements }
+    (46) con_statements -> . con_statement con_statement con_statement
+    (47) con_statements -> . empty
+    (48) con_statement -> . var_assign
+    (49) con_statement -> . print_statement
+    (50) con_statement -> . scanf_statement
+    (51) con_statement -> . if_statement
+    (52) con_statement -> . empty
+    (68) empty -> .
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
 
   ! shift/reduce conflict for NAME resolved as shift
   ! shift/reduce conflict for aru resolved as shift
   ! shift/reduce conflict for efk resolved as shift
   ! shift/reduce conflict for ma resolved as shift
-    }               reduce using rule 67 (empty -> .)
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
+    }               reduce using rule 68 (empty -> .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
 
-  ! NAME            [ reduce using rule 67 (empty -> .) ]
-  ! aru             [ reduce using rule 67 (empty -> .) ]
-  ! efk             [ reduce using rule 67 (empty -> .) ]
-  ! ma              [ reduce using rule 67 (empty -> .) ]
+  ! NAME            [ reduce using rule 68 (empty -> .) ]
+  ! aru             [ reduce using rule 68 (empty -> .) ]
+  ! efk             [ reduce using rule 68 (empty -> .) ]
+  ! ma              [ reduce using rule 68 (empty -> .) ]
 
-    statementsLoop                 shift and go to state 110
-    statementLoop                  shift and go to state 111
-    empty                          shift and go to state 112
-    var_assign                     shift and go to state 113
-    print_statement                shift and go to state 114
-    scanf_statement                shift and go to state 115
-    if_statement                   shift and go to state 116
+    con_statements                 shift and go to state 105
+    con_statement                  shift and go to state 106
+    empty                          shift and go to state 107
+    var_assign                     shift and go to state 108
+    print_statement                shift and go to state 109
+    scanf_statement                shift and go to state 110
+    if_statement                   shift and go to state 111
 
 state 102
 
-    (33) call_function -> tasekkirt NAME ; .
+    (53) condition -> expression comparaison expression .
+    (60) expression -> expression . MULTIPLY expression
+    (61) expression -> expression . DIVIDE expression
+    (62) expression -> expression . MINUS expression
+    (63) expression -> expression . PLUS expression
 
-    NAME            reduce using rule 33 (call_function -> tasekkirt NAME ; .)
-    aru             reduce using rule 33 (call_function -> tasekkirt NAME ; .)
-    tasekkirt       reduce using rule 33 (call_function -> tasekkirt NAME ; .)
-    efk             reduce using rule 33 (call_function -> tasekkirt NAME ; .)
-    ma              reduce using rule 33 (call_function -> tasekkirt NAME ; .)
-    tamenguct       reduce using rule 33 (call_function -> tasekkirt NAME ; .)
-    }               reduce using rule 33 (call_function -> tasekkirt NAME ; .)
+    )               reduce using rule 53 (condition -> expression comparaison expression .)
+    MULTIPLY        shift and go to state 77
+    DIVIDE          shift and go to state 78
+    MINUS           shift and go to state 79
+    PLUS            shift and go to state 80
 
 
 state 103
 
-    (44) if_statement -> ma ( condition ) { con_statements . }
-
-    }               shift and go to state 117
-
-
-state 104
-
-    (45) con_statements -> con_statement . con_statement con_statement
-    (47) con_statement -> . var_assign
-    (48) con_statement -> . print_statement
-    (49) con_statement -> . scanf_statement
-    (50) con_statement -> . if_statement
-    (51) con_statement -> . empty
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (67) empty -> .
+    (37) loop_control -> tamenguct ( INT ) { . statementsLoop }
+    (38) statementsLoop -> . statementLoop statementLoop
+    (39) statementsLoop -> . empty
+    (40) statementLoop -> . var_assign
+    (41) statementLoop -> . print_statement
+    (42) statementLoop -> . scanf_statement
+    (43) statementLoop -> . if_statement
+    (44) statementLoop -> . empty
+    (68) empty -> .
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
 
   ! shift/reduce conflict for NAME resolved as shift
   ! shift/reduce conflict for aru resolved as shift
   ! shift/reduce conflict for efk resolved as shift
   ! shift/reduce conflict for ma resolved as shift
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    }               reduce using rule 67 (empty -> .)
+    }               reduce using rule 68 (empty -> .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
 
-  ! NAME            [ reduce using rule 67 (empty -> .) ]
-  ! aru             [ reduce using rule 67 (empty -> .) ]
-  ! efk             [ reduce using rule 67 (empty -> .) ]
-  ! ma              [ reduce using rule 67 (empty -> .) ]
+  ! NAME            [ reduce using rule 68 (empty -> .) ]
+  ! aru             [ reduce using rule 68 (empty -> .) ]
+  ! efk             [ reduce using rule 68 (empty -> .) ]
+  ! ma              [ reduce using rule 68 (empty -> .) ]
 
-    con_statement                  shift and go to state 118
-    var_assign                     shift and go to state 106
-    print_statement                shift and go to state 107
-    scanf_statement                shift and go to state 108
-    if_statement                   shift and go to state 109
-    empty                          shift and go to state 119
+    statementsLoop                 shift and go to state 112
+    statementLoop                  shift and go to state 113
+    empty                          shift and go to state 114
+    var_assign                     shift and go to state 115
+    print_statement                shift and go to state 116
+    scanf_statement                shift and go to state 117
+    if_statement                   shift and go to state 118
+
+state 104
+
+    (34) call_function -> tasekkirt NAME ; .
+
+    NAME            reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+    aru             reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+    tasekkirt       reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+    efk             reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+    ma              reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+    tamenguct       reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+    }               reduce using rule 34 (call_function -> tasekkirt NAME ; .)
+
 
 state 105
 
-    (46) con_statements -> empty .
-    (51) con_statement -> empty .
+    (45) if_statement -> ma ( condition ) { con_statements . }
 
-  ! reduce/reduce conflict for } resolved using rule 46 (con_statements -> empty .)
-    }               reduce using rule 46 (con_statements -> empty .)
-    NAME            reduce using rule 51 (con_statement -> empty .)
-    aru             reduce using rule 51 (con_statement -> empty .)
-    efk             reduce using rule 51 (con_statement -> empty .)
-    ma              reduce using rule 51 (con_statement -> empty .)
-
-  ! }               [ reduce using rule 51 (con_statement -> empty .) ]
+    }               shift and go to state 119
 
 
 state 106
 
-    (47) con_statement -> var_assign .
+    (46) con_statements -> con_statement . con_statement con_statement
+    (48) con_statement -> . var_assign
+    (49) con_statement -> . print_statement
+    (50) con_statement -> . scanf_statement
+    (51) con_statement -> . if_statement
+    (52) con_statement -> . empty
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (68) empty -> .
 
-    NAME            reduce using rule 47 (con_statement -> var_assign .)
-    aru             reduce using rule 47 (con_statement -> var_assign .)
-    efk             reduce using rule 47 (con_statement -> var_assign .)
-    ma              reduce using rule 47 (con_statement -> var_assign .)
-    }               reduce using rule 47 (con_statement -> var_assign .)
+  ! shift/reduce conflict for NAME resolved as shift
+  ! shift/reduce conflict for aru resolved as shift
+  ! shift/reduce conflict for efk resolved as shift
+  ! shift/reduce conflict for ma resolved as shift
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    }               reduce using rule 68 (empty -> .)
 
+  ! NAME            [ reduce using rule 68 (empty -> .) ]
+  ! aru             [ reduce using rule 68 (empty -> .) ]
+  ! efk             [ reduce using rule 68 (empty -> .) ]
+  ! ma              [ reduce using rule 68 (empty -> .) ]
+
+    con_statement                  shift and go to state 120
+    var_assign                     shift and go to state 108
+    print_statement                shift and go to state 109
+    scanf_statement                shift and go to state 110
+    if_statement                   shift and go to state 111
+    empty                          shift and go to state 121
 
 state 107
 
-    (48) con_statement -> print_statement .
+    (47) con_statements -> empty .
+    (52) con_statement -> empty .
 
-    NAME            reduce using rule 48 (con_statement -> print_statement .)
-    aru             reduce using rule 48 (con_statement -> print_statement .)
-    efk             reduce using rule 48 (con_statement -> print_statement .)
-    ma              reduce using rule 48 (con_statement -> print_statement .)
-    }               reduce using rule 48 (con_statement -> print_statement .)
+  ! reduce/reduce conflict for } resolved using rule 47 (con_statements -> empty .)
+    }               reduce using rule 47 (con_statements -> empty .)
+    NAME            reduce using rule 52 (con_statement -> empty .)
+    aru             reduce using rule 52 (con_statement -> empty .)
+    efk             reduce using rule 52 (con_statement -> empty .)
+    ma              reduce using rule 52 (con_statement -> empty .)
+
+  ! }               [ reduce using rule 52 (con_statement -> empty .) ]
 
 
 state 108
 
-    (49) con_statement -> scanf_statement .
+    (48) con_statement -> var_assign .
 
-    NAME            reduce using rule 49 (con_statement -> scanf_statement .)
-    aru             reduce using rule 49 (con_statement -> scanf_statement .)
-    efk             reduce using rule 49 (con_statement -> scanf_statement .)
-    ma              reduce using rule 49 (con_statement -> scanf_statement .)
-    }               reduce using rule 49 (con_statement -> scanf_statement .)
+    NAME            reduce using rule 48 (con_statement -> var_assign .)
+    aru             reduce using rule 48 (con_statement -> var_assign .)
+    efk             reduce using rule 48 (con_statement -> var_assign .)
+    ma              reduce using rule 48 (con_statement -> var_assign .)
+    }               reduce using rule 48 (con_statement -> var_assign .)
 
 
 state 109
 
-    (50) con_statement -> if_statement .
+    (49) con_statement -> print_statement .
 
-    NAME            reduce using rule 50 (con_statement -> if_statement .)
-    aru             reduce using rule 50 (con_statement -> if_statement .)
-    efk             reduce using rule 50 (con_statement -> if_statement .)
-    ma              reduce using rule 50 (con_statement -> if_statement .)
-    }               reduce using rule 50 (con_statement -> if_statement .)
+    NAME            reduce using rule 49 (con_statement -> print_statement .)
+    aru             reduce using rule 49 (con_statement -> print_statement .)
+    efk             reduce using rule 49 (con_statement -> print_statement .)
+    ma              reduce using rule 49 (con_statement -> print_statement .)
+    }               reduce using rule 49 (con_statement -> print_statement .)
 
 
 state 110
 
-    (36) loop_control -> tamenguct ( INT ) { statementsLoop . }
+    (50) con_statement -> scanf_statement .
 
-    }               shift and go to state 120
+    NAME            reduce using rule 50 (con_statement -> scanf_statement .)
+    aru             reduce using rule 50 (con_statement -> scanf_statement .)
+    efk             reduce using rule 50 (con_statement -> scanf_statement .)
+    ma              reduce using rule 50 (con_statement -> scanf_statement .)
+    }               reduce using rule 50 (con_statement -> scanf_statement .)
 
 
 state 111
 
-    (37) statementsLoop -> statementLoop . statementLoop
-    (39) statementLoop -> . var_assign
-    (40) statementLoop -> . print_statement
-    (41) statementLoop -> . scanf_statement
-    (42) statementLoop -> . if_statement
-    (43) statementLoop -> . empty
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (67) empty -> .
+    (51) con_statement -> if_statement .
 
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    }               reduce using rule 67 (empty -> .)
+    NAME            reduce using rule 51 (con_statement -> if_statement .)
+    aru             reduce using rule 51 (con_statement -> if_statement .)
+    efk             reduce using rule 51 (con_statement -> if_statement .)
+    ma              reduce using rule 51 (con_statement -> if_statement .)
+    }               reduce using rule 51 (con_statement -> if_statement .)
 
-    statementLoop                  shift and go to state 121
-    var_assign                     shift and go to state 113
-    print_statement                shift and go to state 114
-    scanf_statement                shift and go to state 115
-    if_statement                   shift and go to state 116
-    empty                          shift and go to state 122
 
 state 112
 
-    (38) statementsLoop -> empty .
-    (43) statementLoop -> empty .
+    (37) loop_control -> tamenguct ( INT ) { statementsLoop . }
 
-  ! reduce/reduce conflict for } resolved using rule 38 (statementsLoop -> empty .)
-    }               reduce using rule 38 (statementsLoop -> empty .)
-    NAME            reduce using rule 43 (statementLoop -> empty .)
-    aru             reduce using rule 43 (statementLoop -> empty .)
-    efk             reduce using rule 43 (statementLoop -> empty .)
-    ma              reduce using rule 43 (statementLoop -> empty .)
-
-  ! }               [ reduce using rule 43 (statementLoop -> empty .) ]
+    }               shift and go to state 122
 
 
 state 113
 
-    (39) statementLoop -> var_assign .
+    (38) statementsLoop -> statementLoop . statementLoop
+    (40) statementLoop -> . var_assign
+    (41) statementLoop -> . print_statement
+    (42) statementLoop -> . scanf_statement
+    (43) statementLoop -> . if_statement
+    (44) statementLoop -> . empty
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (68) empty -> .
 
-    NAME            reduce using rule 39 (statementLoop -> var_assign .)
-    aru             reduce using rule 39 (statementLoop -> var_assign .)
-    efk             reduce using rule 39 (statementLoop -> var_assign .)
-    ma              reduce using rule 39 (statementLoop -> var_assign .)
-    }               reduce using rule 39 (statementLoop -> var_assign .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    }               reduce using rule 68 (empty -> .)
 
+    statementLoop                  shift and go to state 123
+    var_assign                     shift and go to state 115
+    print_statement                shift and go to state 116
+    scanf_statement                shift and go to state 117
+    if_statement                   shift and go to state 118
+    empty                          shift and go to state 124
 
 state 114
 
-    (40) statementLoop -> print_statement .
+    (39) statementsLoop -> empty .
+    (44) statementLoop -> empty .
 
-    NAME            reduce using rule 40 (statementLoop -> print_statement .)
-    aru             reduce using rule 40 (statementLoop -> print_statement .)
-    efk             reduce using rule 40 (statementLoop -> print_statement .)
-    ma              reduce using rule 40 (statementLoop -> print_statement .)
-    }               reduce using rule 40 (statementLoop -> print_statement .)
+  ! reduce/reduce conflict for } resolved using rule 39 (statementsLoop -> empty .)
+    }               reduce using rule 39 (statementsLoop -> empty .)
+    NAME            reduce using rule 44 (statementLoop -> empty .)
+    aru             reduce using rule 44 (statementLoop -> empty .)
+    efk             reduce using rule 44 (statementLoop -> empty .)
+    ma              reduce using rule 44 (statementLoop -> empty .)
+
+  ! }               [ reduce using rule 44 (statementLoop -> empty .) ]
 
 
 state 115
 
-    (41) statementLoop -> scanf_statement .
+    (40) statementLoop -> var_assign .
 
-    NAME            reduce using rule 41 (statementLoop -> scanf_statement .)
-    aru             reduce using rule 41 (statementLoop -> scanf_statement .)
-    efk             reduce using rule 41 (statementLoop -> scanf_statement .)
-    ma              reduce using rule 41 (statementLoop -> scanf_statement .)
-    }               reduce using rule 41 (statementLoop -> scanf_statement .)
+    NAME            reduce using rule 40 (statementLoop -> var_assign .)
+    aru             reduce using rule 40 (statementLoop -> var_assign .)
+    efk             reduce using rule 40 (statementLoop -> var_assign .)
+    ma              reduce using rule 40 (statementLoop -> var_assign .)
+    }               reduce using rule 40 (statementLoop -> var_assign .)
 
 
 state 116
 
-    (42) statementLoop -> if_statement .
+    (41) statementLoop -> print_statement .
 
-    NAME            reduce using rule 42 (statementLoop -> if_statement .)
-    aru             reduce using rule 42 (statementLoop -> if_statement .)
-    efk             reduce using rule 42 (statementLoop -> if_statement .)
-    ma              reduce using rule 42 (statementLoop -> if_statement .)
-    }               reduce using rule 42 (statementLoop -> if_statement .)
+    NAME            reduce using rule 41 (statementLoop -> print_statement .)
+    aru             reduce using rule 41 (statementLoop -> print_statement .)
+    efk             reduce using rule 41 (statementLoop -> print_statement .)
+    ma              reduce using rule 41 (statementLoop -> print_statement .)
+    }               reduce using rule 41 (statementLoop -> print_statement .)
 
 
 state 117
 
-    (44) if_statement -> ma ( condition ) { con_statements } .
+    (42) statementLoop -> scanf_statement .
 
-    NAME            reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
-    aru             reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
-    efk             reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
-    ma              reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
-    tamenguct       reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
-    }               reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
-    tasekkirt       reduce using rule 44 (if_statement -> ma ( condition ) { con_statements } .)
+    NAME            reduce using rule 42 (statementLoop -> scanf_statement .)
+    aru             reduce using rule 42 (statementLoop -> scanf_statement .)
+    efk             reduce using rule 42 (statementLoop -> scanf_statement .)
+    ma              reduce using rule 42 (statementLoop -> scanf_statement .)
+    }               reduce using rule 42 (statementLoop -> scanf_statement .)
 
 
 state 118
 
-    (45) con_statements -> con_statement con_statement . con_statement
-    (47) con_statement -> . var_assign
-    (48) con_statement -> . print_statement
-    (49) con_statement -> . scanf_statement
-    (50) con_statement -> . if_statement
-    (51) con_statement -> . empty
-    (32) var_assign -> . NAME EQUALS expression ;
-    (34) print_statement -> . aru ( expression ) ;
-    (35) scanf_statement -> . efk ( NAME ) ;
-    (44) if_statement -> . ma ( condition ) { con_statements }
-    (67) empty -> .
+    (43) statementLoop -> if_statement .
 
-    NAME            shift and go to state 31
-    aru             shift and go to state 40
-    efk             shift and go to state 41
-    ma              shift and go to state 42
-    }               reduce using rule 67 (empty -> .)
+    NAME            reduce using rule 43 (statementLoop -> if_statement .)
+    aru             reduce using rule 43 (statementLoop -> if_statement .)
+    efk             reduce using rule 43 (statementLoop -> if_statement .)
+    ma              reduce using rule 43 (statementLoop -> if_statement .)
+    }               reduce using rule 43 (statementLoop -> if_statement .)
 
-    con_statement                  shift and go to state 123
-    var_assign                     shift and go to state 106
-    print_statement                shift and go to state 107
-    scanf_statement                shift and go to state 108
-    if_statement                   shift and go to state 109
-    empty                          shift and go to state 119
 
 state 119
 
-    (51) con_statement -> empty .
+    (45) if_statement -> ma ( condition ) { con_statements } .
 
-    NAME            reduce using rule 51 (con_statement -> empty .)
-    aru             reduce using rule 51 (con_statement -> empty .)
-    efk             reduce using rule 51 (con_statement -> empty .)
-    ma              reduce using rule 51 (con_statement -> empty .)
-    }               reduce using rule 51 (con_statement -> empty .)
+    NAME            reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
+    aru             reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
+    efk             reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
+    ma              reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
+    tamenguct       reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
+    }               reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
+    tasekkirt       reduce using rule 45 (if_statement -> ma ( condition ) { con_statements } .)
 
 
 state 120
 
-    (36) loop_control -> tamenguct ( INT ) { statementsLoop } .
+    (46) con_statements -> con_statement con_statement . con_statement
+    (48) con_statement -> . var_assign
+    (49) con_statement -> . print_statement
+    (50) con_statement -> . scanf_statement
+    (51) con_statement -> . if_statement
+    (52) con_statement -> . empty
+    (33) var_assign -> . NAME EQUALS expression ;
+    (35) print_statement -> . aru ( expression ) ;
+    (36) scanf_statement -> . efk ( NAME ) ;
+    (45) if_statement -> . ma ( condition ) { con_statements }
+    (68) empty -> .
 
-    NAME            reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
-    aru             reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
-    efk             reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
-    ma              reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
-    tamenguct       reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
-    }               reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
-    tasekkirt       reduce using rule 36 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    NAME            shift and go to state 33
+    aru             shift and go to state 42
+    efk             shift and go to state 43
+    ma              shift and go to state 44
+    }               reduce using rule 68 (empty -> .)
 
+    con_statement                  shift and go to state 125
+    var_assign                     shift and go to state 108
+    print_statement                shift and go to state 109
+    scanf_statement                shift and go to state 110
+    if_statement                   shift and go to state 111
+    empty                          shift and go to state 121
 
 state 121
 
-    (37) statementsLoop -> statementLoop statementLoop .
+    (52) con_statement -> empty .
 
-    }               reduce using rule 37 (statementsLoop -> statementLoop statementLoop .)
+    NAME            reduce using rule 52 (con_statement -> empty .)
+    aru             reduce using rule 52 (con_statement -> empty .)
+    efk             reduce using rule 52 (con_statement -> empty .)
+    ma              reduce using rule 52 (con_statement -> empty .)
+    }               reduce using rule 52 (con_statement -> empty .)
 
 
 state 122
 
-    (43) statementLoop -> empty .
+    (37) loop_control -> tamenguct ( INT ) { statementsLoop } .
 
-    }               reduce using rule 43 (statementLoop -> empty .)
+    NAME            reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    aru             reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    efk             reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    ma              reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    tamenguct       reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    }               reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
+    tasekkirt       reduce using rule 37 (loop_control -> tamenguct ( INT ) { statementsLoop } .)
 
 
 state 123
 
-    (45) con_statements -> con_statement con_statement con_statement .
+    (38) statementsLoop -> statementLoop statementLoop .
 
-    }               reduce using rule 45 (con_statements -> con_statement con_statement con_statement .)
+    }               reduce using rule 38 (statementsLoop -> statementLoop statementLoop .)
+
+
+state 124
+
+    (44) statementLoop -> empty .
+
+    }               reduce using rule 44 (statementLoop -> empty .)
+
+
+state 125
+
+    (46) con_statements -> con_statement con_statement con_statement .
+
+    }               reduce using rule 46 (con_statements -> con_statement con_statement con_statement .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for NAME in state 29 resolved as shift
-WARNING: shift/reduce conflict for aru in state 29 resolved as shift
-WARNING: shift/reduce conflict for efk in state 29 resolved as shift
-WARNING: shift/reduce conflict for ma in state 29 resolved as shift
-WARNING: shift/reduce conflict for tamenguct in state 29 resolved as shift
-WARNING: shift/reduce conflict for NAME in state 53 resolved as shift
-WARNING: shift/reduce conflict for aru in state 53 resolved as shift
-WARNING: shift/reduce conflict for tasekkirt in state 53 resolved as shift
-WARNING: shift/reduce conflict for efk in state 53 resolved as shift
-WARNING: shift/reduce conflict for ma in state 53 resolved as shift
-WARNING: shift/reduce conflict for tamenguct in state 53 resolved as shift
-WARNING: shift/reduce conflict for NAME in state 65 resolved as shift
-WARNING: shift/reduce conflict for aru in state 65 resolved as shift
-WARNING: shift/reduce conflict for tasekkirt in state 65 resolved as shift
-WARNING: shift/reduce conflict for efk in state 65 resolved as shift
-WARNING: shift/reduce conflict for ma in state 65 resolved as shift
-WARNING: shift/reduce conflict for tamenguct in state 65 resolved as shift
-WARNING: shift/reduce conflict for NAME in state 99 resolved as shift
-WARNING: shift/reduce conflict for aru in state 99 resolved as shift
-WARNING: shift/reduce conflict for efk in state 99 resolved as shift
-WARNING: shift/reduce conflict for ma in state 99 resolved as shift
+WARNING: shift/reduce conflict for NAME in state 31 resolved as shift
+WARNING: shift/reduce conflict for aru in state 31 resolved as shift
+WARNING: shift/reduce conflict for efk in state 31 resolved as shift
+WARNING: shift/reduce conflict for ma in state 31 resolved as shift
+WARNING: shift/reduce conflict for tamenguct in state 31 resolved as shift
+WARNING: shift/reduce conflict for NAME in state 55 resolved as shift
+WARNING: shift/reduce conflict for aru in state 55 resolved as shift
+WARNING: shift/reduce conflict for tasekkirt in state 55 resolved as shift
+WARNING: shift/reduce conflict for efk in state 55 resolved as shift
+WARNING: shift/reduce conflict for ma in state 55 resolved as shift
+WARNING: shift/reduce conflict for tamenguct in state 55 resolved as shift
+WARNING: shift/reduce conflict for NAME in state 67 resolved as shift
+WARNING: shift/reduce conflict for aru in state 67 resolved as shift
+WARNING: shift/reduce conflict for tasekkirt in state 67 resolved as shift
+WARNING: shift/reduce conflict for efk in state 67 resolved as shift
+WARNING: shift/reduce conflict for ma in state 67 resolved as shift
+WARNING: shift/reduce conflict for tamenguct in state 67 resolved as shift
 WARNING: shift/reduce conflict for NAME in state 101 resolved as shift
 WARNING: shift/reduce conflict for aru in state 101 resolved as shift
 WARNING: shift/reduce conflict for efk in state 101 resolved as shift
 WARNING: shift/reduce conflict for ma in state 101 resolved as shift
-WARNING: shift/reduce conflict for NAME in state 104 resolved as shift
-WARNING: shift/reduce conflict for aru in state 104 resolved as shift
-WARNING: shift/reduce conflict for efk in state 104 resolved as shift
-WARNING: shift/reduce conflict for ma in state 104 resolved as shift
+WARNING: shift/reduce conflict for NAME in state 103 resolved as shift
+WARNING: shift/reduce conflict for aru in state 103 resolved as shift
+WARNING: shift/reduce conflict for efk in state 103 resolved as shift
+WARNING: shift/reduce conflict for ma in state 103 resolved as shift
+WARNING: shift/reduce conflict for NAME in state 106 resolved as shift
+WARNING: shift/reduce conflict for aru in state 106 resolved as shift
+WARNING: shift/reduce conflict for efk in state 106 resolved as shift
+WARNING: shift/reduce conflict for ma in state 106 resolved as shift
 WARNING: reduce/reduce conflict in state 12 resolved using rule (inner_code -> attribut_statement)
 WARNING: rejected rule (empty -> <empty>) in state 12
-WARNING: reduce/reduce conflict in state 34 resolved using rule (fStates -> empty)
-WARNING: rejected rule (fState -> empty) in state 34
-WARNING: reduce/reduce conflict in state 66 resolved using rule (statements -> empty)
-WARNING: rejected rule (statement -> empty) in state 66
-WARNING: reduce/reduce conflict in state 105 resolved using rule (con_statements -> empty)
-WARNING: rejected rule (con_statement -> empty) in state 105
-WARNING: reduce/reduce conflict in state 112 resolved using rule (statementsLoop -> empty)
-WARNING: rejected rule (statementLoop -> empty) in state 112
+WARNING: reduce/reduce conflict in state 36 resolved using rule (fStates -> empty)
+WARNING: rejected rule (fState -> empty) in state 36
+WARNING: reduce/reduce conflict in state 68 resolved using rule (statements -> empty)
+WARNING: rejected rule (statement -> empty) in state 68
+WARNING: reduce/reduce conflict in state 107 resolved using rule (con_statements -> empty)
+WARNING: rejected rule (con_statement -> empty) in state 107
+WARNING: reduce/reduce conflict in state 114 resolved using rule (statementsLoop -> empty)
+WARNING: rejected rule (statementLoop -> empty) in state 114
